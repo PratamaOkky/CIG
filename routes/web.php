@@ -18,5 +18,20 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('home');
+});
+Route::get('/tentangkami', function () {
+    return view('tentangkami');
+});
+Route::get('/layanan', function () {
+    return view('layanan');
+});
+Route::get('/karir', function () {
+    return view('karir');
+});
+Route::get('/kontak', function () {
+    return view('kontak');
+});
+Route::get('/login', function () {
+    return view('auth.login');
 });
