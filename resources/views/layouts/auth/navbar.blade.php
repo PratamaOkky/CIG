@@ -30,7 +30,8 @@
                         <a class="nav-link active">Kontak</a>
                     </li>
 
-                    <button type="submit" class="btn btn-danger">Keluar</button>
+                    {{-- <button type="submit" class="btn btn-danger">Keluar</button> --}}
+                    <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
                 </ul>
             </div>
         </div>

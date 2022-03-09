@@ -21,14 +21,15 @@
                     <div class="card-content">
                         <div class="card-body">
                             <h1 class="mb-5">Silakan Masuk</h1>
-                            <form action="">
+                            <form action="{{route('login')}}" method="POST" class="need-validation">
+                                @csrf
                                 <div class="form-group position-relative has-icon-left mb-4">
-                                    <input type="text" class="form-control form-control" placeholder="Nip">
+                                    <input type="text" name="nip" class="form-control form-control" placeholder="Nip">
                                     <div class="form-control-icon"><i class="bi bi-person"></i></div>
                                 </div>
 
                                 <div class="form-group position-relative has-icon-left mb-4">
-                                    <input type="password" class="form-control form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control form-control" placeholder="Password">
                                     <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
                                 </div>
 
@@ -39,7 +40,7 @@
                                     </label>
                                 </div> --}}
 
-                                <button type="submit" class="btn btn-danger" style="margin-left: 416px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
+                                <button type="submit" class="btn btn-danger" style="margin-left: 415px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
                             </form>
                         </div>
                     </div>

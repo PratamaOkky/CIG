@@ -18,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [DashboardController::class, 'index']);
 
-Route::get('/login', [AuthController::class,'login']);
+// Dashboard Admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Login
+Route::get('/login', [AuthController::class,'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
