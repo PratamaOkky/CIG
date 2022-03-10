@@ -28,7 +28,7 @@
     <div class="row match-height">
         <div class="col-12">
             <div class="card-group">
-                <div class="card">
+                <div class="card" style="border: none">
                     <div class="card-content">
                         <div class="card-body">
                             <h1 class="mb-5">Garda Mitra Nasional</h1>
@@ -36,8 +36,8 @@
                         </div>
                     </div>
                 </div>
-                <hr style="border-left: 3px #bb1d33 solid; height:250px; width:0px;">
-                <div class="card">
+                <hr style="border-left: 3px #bb1d33 solid; height:350px; width:0px; margin-top: -25px">
+                <div class="card" style="border: none">
                     <div class="card-content">
                         <div class="card-body">
                             <h1 class="mb-5">Silakan Masuk</h1>

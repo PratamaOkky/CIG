@@ -47,3 +47,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard Admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::get('/data-user', [DashboardController::class, 'userCount'])->name('userCount')->middleware('auth');
