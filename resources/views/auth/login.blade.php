@@ -4,6 +4,26 @@
 
 @section('auth')
 
+@if (session()->has('success'))
+
+    <div class="alert alert-success alert-dissmissable fade show" role="alert">
+        {{ session('sucsess') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+
+@endif
+
+@if (session()->has('loginErorr'))
+
+    <div class="alert alert-danger alert-dissmissable fade show" role="alert">
+        {{ session('loginError') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+
+@endif
+
 <div class="container" style="margin-top: 100px">
     <div class="row match-height">
         <div class="col-12">
@@ -24,12 +44,17 @@
                             <form action="{{route('login')}}" method="POST" class="need-validation">
                                 @csrf
                                 <div class="form-group position-relative has-icon-left mb-4">
-                                    <input type="text" name="nip" class="form-control form-control" placeholder="Nip">
+                                    <input type="text" name="nip" class="form-control" @error('nip') is-invalid @enderror placeholder="Nip" value="{{ old('nip') }}" autofocus required>
                                     <div class="form-control-icon"><i class="bi bi-person"></i></div>
+                                    @error('nip')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group position-relative has-icon-left mb-4">
-                                    <input type="password" name="password" class="form-control form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control form-control" placeholder="Password" autofocus required>
                                     <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
                                 </div>
 

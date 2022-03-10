@@ -14,21 +14,36 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // dd($request->all());
-        if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
-            if (Auth::check() && Auth::user()->id_level == 1) {
-                return redirect('/dashboard');
-            } else {
-                // return redirect()->route('profile.show', encrypt(Auth()->user()->id));
-            }
-        } else {
-            return redirect('/login')->with('message-danger', 'NIP atau Password Anda Salah!');
+        $user = $request->validate([
+            'nip' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($user)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
         }
+
+        return back()->with('loginError', 'Login Failed');
+        // if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
+        //     if (Auth::check() && Auth::user()->id_level == 1) {
+        //         return redirect('/dashboard');
+        //     } else {
+        //         // return redirect()->route('profile.show', encrypt(Auth()->user()->id));
+        //     }
+        // } else {
+        //     return redirect('/login')->with('message-danger', 'NIP atau Password Anda Salah!');
+        // }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }

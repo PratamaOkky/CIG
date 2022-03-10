@@ -19,13 +19,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Dashboard Admin
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 // Login
-Route::get('/login', [AuthController::class,'index'])->name('login');
+Route::get('/login', [AuthController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Dashboard Admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
