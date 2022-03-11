@@ -1,19 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
+<style>
+hr{
+    border: 0;
+    /* height: 30px; */
+    border-style: solid;
+    border-color: rgb(187, 29, 51);
+    border-width: 5px 0 0 0;
+    border-radius: 20px
+}
+</style>
 
-        <a class="navbar-brand" href="#">
-      <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" width="50" height="60" alt="Malas Ngoding">
-      GARDA MITRA NASIONAL
-    </a>
-    <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="tentang.blade.php" class="nav-link"><span>Tentang Kami</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>Layanan</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>Karir</span></a></li>
-					<li class="nav-item"><a href="#" class="nav-link"><span>Kontak</span></a></li>
-					</ul>
-			</div>
-		</div>
-	</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+        <a class="navbar-brand" href="{{route('dashboard')}}">
+            <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">
+            Garda Mitra Nasional
+          </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{route('userCount')}}">Tentang Kami</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Layanan</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Karir</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active">Kontak</a>
+                    </li>
+
+                    {{-- <button type="submit" class="btn btn-danger">Login</button> --}}
+                    <a href="{{route('login')}}" class="btn btn-danger">Login</a>
+                </ul>
+            </div>
+        </div>
+  </nav>
+  <hr class="mt-auto">
