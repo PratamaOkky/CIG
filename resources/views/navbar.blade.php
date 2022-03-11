@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-            
+
         <a class="navbar-brand" href="#">
       <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" width="50" height="60" alt="Malas Ngoding">
       GARDA MITRA NASIONAL
@@ -17,4 +17,3 @@
 			</div>
 		</div>
 	</nav>
-    

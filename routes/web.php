@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,18 @@ Route::get('/karir', function () {
 Route::get('/kontak', function () {
     return view('kontak');
 });
-Route::get('/login', function () {
-    return view('auth.login');
-});
+
+// Dashboard Admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Login
+Route::get('/login', [AuthController::class,'index'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// Logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Dashboard Admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+Route::get('/data-user', [DashboardController::class, 'userCount'])->name('userCount')->middleware('auth');

@@ -1,4 +1,4 @@
-@section('title', 'Register')
+@section('title', 'Register Page')
 
 @extends('layouts.auth.template')
 

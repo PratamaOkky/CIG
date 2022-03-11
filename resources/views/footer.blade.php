@@ -1,4 +1,5 @@
-
-<div style="background: #350106; font-size: 15px; color: white">
-<center>Garda Mitra Nasional</center>
-</div>
+<nav class="navbar navbar-light text-align-center" style="background-color: #350106">
+    <div class="container justify-content-center">
+        <p style="color: white;">Copyright &copy; PT GARDA MITRA NASIONAL</p>
+    </div>
+</nav>
