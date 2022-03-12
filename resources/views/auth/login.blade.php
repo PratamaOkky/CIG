@@ -65,7 +65,7 @@
                                     </label>
                                 </div> --}}
 
-                                <button type="submit" class="btn btn-danger" style="margin-left: 415px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
+                                <button type="submit" class="btn btn-danger" style="margin-left: 452px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
                             </form>
                         </div>
                     </div>

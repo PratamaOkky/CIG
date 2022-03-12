@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Karir extends Model
 {
     use HasFactory;
+
+    protected $table = 'tb_karir';
+
+    protected $fillable = [
+        'lowongan',
+        'posisi',
+        'detail',
+    ];
 }

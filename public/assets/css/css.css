@@ -1,0 +1,83 @@
+.card
+{
+    border: none;
+    display: grid;
+    grid-template-columns: 100% auto;
+    text-align: center;
+}
+.hr-nav
+{
+    border: 0;
+    height: 30px;
+    border-style: solid;
+    /* border-color: #bb1d33 !important; */
+    border-width: 4px 0 0 0;
+    color: #bb1d33 !important;
+}
+
+.garis
+{
+    border-left: 3px solid !important;
+    height: 85px !important;
+    width: 0px !important;
+    margin-top: -100px !important;
+    margin-left: 550px;
+    color: #bb1d33;
+}
+
+.box
+{
+    width: 50px;
+    height: 50px;
+    background: #bb1d33;
+    border-radius: 15px;
+    position: relative;
+    left: 42%;
+}
+
+.bi, .bi-plus-circle
+{
+    /* margin-bottom: 50px; */
+    margin-left: 55px;
+    position: relative;
+    top: -70px;
+    color: black;
+}
+
+.rectangle
+{
+    position: absolute;
+    width: 996px;
+    height: 73px;
+    left: 185px;
+    top: 300px;
+    background: rgba(187, 29, 51, 0.1);
+    border-radius: 26px;
+}
+
+tr, th
+{
+    border: none !important;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-modal
+{
+    width: 395px;
+}
+
+.icon
+{
+    position: absolute;
+    top: 42%;
+    margin-left: 200px;
+}
+
+.karir
+{
+    display: grid;
+    grid-template-columns: 55% auto;
+    text-align: center;
+    margin-left: 150px;
+}
