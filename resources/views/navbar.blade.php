@@ -63,7 +63,7 @@ hr{
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-        <a class="navbar-brand" href="{{route('dashboard')}}">
+        <a class="navbar-brand" href="{{route('home')}}">
             <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">
             Garda Mitra Nasional
           </a>

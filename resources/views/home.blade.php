@@ -6,8 +6,8 @@
         <div class="row">
             <div class=col-md-8 py-5>
                 <div style="color:#BB1D33; padding-top: 200px;
-                        text-align: left; font-family: Poppins; font-size: 35px; width: 500px">Garda Mitra Nasional
-                        <p style="font-size:14px; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. 
+                        text-align: left; font-family: Poppins; font-weight: 700; font-size: 35px; width: 500px">Garda Mitra Nasional
+                        <p style="font-size:14px; font-weight: 400;color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. 
                             Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi 
                             yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
                 </div><a href="{{route('login')}}" class="btn1 btn1-danger">Lebih Detail ► </a>
