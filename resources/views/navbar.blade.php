@@ -53,6 +53,12 @@ hr{
   border-radius: 12px;
   font-size: 16px;
 }
+.btn1 {
+  background-color: #87020E;
+  padding: 5px 30px 5px;
+  border-radius: 12px;
+  font-size: 16px;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
@@ -64,10 +70,10 @@ hr{
 			
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="{{route('userCount')}}">Tentang Kami</a></li>
-					<li class="nav-item"><a class="nav-link active" href="{{route('userCount')}}">Layanan</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{route('userCount')}}">Karir</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{route('userCount')}}">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('tentang')}}">Tentang Kami</a></li>
+				          	<li class="nav-item"><a class="nav-link active" href="{{route('layanan')}}">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('kariru')}}">Karir</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{route('kontak')}}">Kontak</a></li>
                     {{-- <button type="submit" class="btn btn-danger" >Login</button> --}}
                     <a href="{{route('login')}}" class="btn btn-danger">Login</a>
                 </ul>

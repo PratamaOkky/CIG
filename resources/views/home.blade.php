@@ -10,21 +10,14 @@
                         <p style="font-size:14px; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. 
                             Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi 
                             yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
-                </div>
+                </div><a href="{{route('login')}}" class="btn1 btn1-danger">Lebih Detail ► </a>
             </div>
-        <div class=col-md-4 py-5>
-        <img src="{{asset('assets/images/home-top.png')}}"style="width:343px;height:666px;padding-top: 150px;padding-bottom: 100px;">
-        </div> 
-    </div>
-</div> 
-    <a href="{{route('login')}}" class="btn btn-danger">Lebih Detail ► </a> 
-    <a href='https://google.com'><img src="{{asset('assets/images/ic-tw.png')}}"style="width:30px;height:30px;"><a>
-    <a href='google.com'><img src="{{asset('assets/images/ic-ig.png')}}"style="width:30px;height:30px;"><a>
-    <a href='google.com'><img src="{{asset('assets/images/ic-yt.png')}}"style="width:30px;height:30px;"><a>
-    <a href='google.com'><img src="{{asset('assets/images/ic-yt.png')}}"style="width:30px;height:30px;"><a>
-       
+            <div class=col-md-4 py-5>
+                 <img src="{{asset('assets/images/home-top.png')}}"style="width:343px;height:666px;padding-top: 150px;padding-bottom: 100px;">
+            </div> 
+        </div>
+    </div>      
 </div>
-
 <div class="container">
         <div class="row g-0">
             <div class="col-md-3">
@@ -75,6 +68,6 @@
         <div class=col-md-4 py-5>
         <img src="{{asset('assets/images/home-bot.png')}}"style="width:100%;height:100%; padding-top: 100px">
         </div> 
-        //////////////
+
 </div>
 @endsection
