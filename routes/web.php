@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KarirController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -32,12 +29,8 @@ Route::get('/layanan', function () {
 Route::get('/kariru', function () {
     return view('kariru');
 })->name('kariru');
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
-
-// Dashboard Admin
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/kontak', [HomeController::class, 'indexKontak'])->name('kontak');
+Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
 
 // Login
 Route::get('/login', [AuthController::class,'index'])->name('login')->middleware('guest');
@@ -46,13 +39,17 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 // Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Dashboard Admin
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::middleware('auth')->group(function() {
 
-Route::get('/data-user', [DashboardController::class, 'userCount'])->name('userCount')->middleware('auth');
+    // Dashboard Admin
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-// Route::get('/karir', [KarirController::class, 'index'])->name('karir')->middleware('auth');
-// Route::post('/karir', [KarirController::class, 'store'])->name('post')->middleware('auth');
-// Route::delete('/karir/{id}', [KarirController::class, 'destroy'])->name('delete')->middleware('auth');
+    // Data User
+    Route::get('/data-user', [DashboardController::class, 'userCount'])->name('userCount')->middleware('auth');
 
-Route::resource('karir', KarirController::class);
+    // Karir
+    Route::resource('karir', KarirController::class);
+
+});
+
+

@@ -19,6 +19,6 @@ class DashboardController extends Controller
 
     public function userCount()
     {
-        return view('admin.data-user');
+        return view('admin.datauser.index');
     }
 }

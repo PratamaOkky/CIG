@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pesan extends Model
 {
     use HasFactory;
+
+    protected $table = 'tb_pesan';
+
+    protected $fillable = [
+        'nama',
+        'email',
+        'suject',
+        'isi'
+    ];
 }

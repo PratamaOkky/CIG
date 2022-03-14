@@ -17,7 +17,7 @@ class KarirController extends Controller
     {
         $karirs = Karir::count();
         $karir = Karir::all();
-        return view('admin.karir', ['karirs'=>$karir, 'karir'=>$karirs]);
+        return view('admin.karir.index', ['karirs'=>$karir, 'karir'=>$karirs]);
     }
 
     /**
@@ -45,7 +45,7 @@ class KarirController extends Controller
         ]);
 
         $karir ['user'] = auth()->user()->id;
-        $karir ['detail'] = Str::limit(strip_tags($request->detail), 100);
+        $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
 
         Karir::create($karir);
 
@@ -83,7 +83,18 @@ class KarirController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $karir = $request->validate([
+            'lowongan' => 'required',
+            'posisi' => 'required',
+            'detail' => 'required'
+        ]);
+
+        $karir ['user'] = auth()->user()->id;
+        $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
+
+        Karir::update($karir);
+
+        return redirect('karir')->with('success', 'Berhasil Menambahkan Karir');
     }
 
     /**
@@ -95,6 +106,6 @@ class KarirController extends Controller
     public function destroy($id)
     {
         $karir = Karir::destroy($id);
-        return redirect('karir')->with('success', 'Berhasil Hapus Data', ['karir'=>$karir]);
+        return redirect('karir')->with('success', 'Berhasil Hapus Data');
     }
 }

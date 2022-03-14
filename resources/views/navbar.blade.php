@@ -41,7 +41,7 @@ hr{
     color: #5D4350;
     font-weight: 400;
     opacity: 1 !important; }
-   
+
 .navbar-brand {
   font-weight: 700;
   font-size: 22px;
@@ -67,7 +67,7 @@ hr{
             <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">
             Garda Mitra Nasional
           </a>
-			
+
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('tentang')}}">Tentang Kami</a></li>
