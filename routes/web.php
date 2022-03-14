@@ -22,19 +22,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
-Route::get('/tentangkami', function () {
-    return view('tentangkami');
-});
+})->name('home');
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
 Route::get('/layanan', function () {
     return view('layanan');
-});
-Route::get('/karir', function () {
-    return view('karir');
-});
+})->name('layanan');
+Route::get('/kariru', function () {
+    return view('kariru');
+})->name('kariru');
 Route::get('/kontak', function () {
     return view('kontak');
-});
+})->name('kontak');
 
 // Dashboard Admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

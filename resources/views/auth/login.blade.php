@@ -1,6 +1,6 @@
 @section('title', 'Login Page')
 
-@extends('layouts.auth.template')
+@extends('template')
 
 @section('auth')
 
