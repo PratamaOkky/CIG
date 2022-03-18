@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Gaji;
+use App\Models\Gender;
+
 class Pegawai extends Model
 {
     use HasFactory;
@@ -14,14 +17,28 @@ class Pegawai extends Model
     protected $fillable = [
         'nama',
         'nip',
-        'tempat_lhr',
-        'tgl_lahir',
-        'alamat',
-        'telpon',
         'jabatan',
-        'atasan',
-        'instalasi',
-        'foto',
-        'id_gaji'
+        'divisi',
+        'ttl',
+        'gender_id',
+        'kewarganegaraan',
+        'agama',
+        'alamat',
+        'npwp',
+        'no_kes',
+        'no_tk',
+        'email',
+        'tgl_masuk',
+        'gaji_id'
     ];
+
+    public function gaji()
+    {
+        return $this->belongsTo(Gaji::class, 'gaji_id');
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class, 'gender_id');
+    }
 }

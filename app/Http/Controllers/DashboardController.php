@@ -16,9 +16,4 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
-
-    public function userCount()
-    {
-        return view('admin.datauser.index');
-    }
 }

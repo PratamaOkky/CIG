@@ -13,9 +13,6 @@
         {{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> --}}
         <link rel="stylesheet" href="{{asset('assets/css/css.css')}}">
 
-        {{-- trix-editor --}}
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/trix.css')}}">
-        <script type="text/javascript" src="{{asset('assets/js/trix.js')}}"></script>
         <title>@yield('title')</title>
 
     </head>
@@ -46,26 +43,13 @@
 
         </div>
 
-        <script>
-            $('#edit').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget)
-                var lowongan = button.data('lowongan');
-                var posisi = button.data('posisi')
-                var detail = button.data('detail')
-                var id = button.data('id')
-
-                var modal = $(this)
-                modal.find('.modal-body #lowongan').val(lowongan);
-                modal.find('.modal-body #posisi').val(posisi);
-                modal.find('.modal-body #detail').val(detail);
-                modal.find('.modal-body #id').val(id);
-            })
-        </script>
+        <script type="text/javascript" src="{{asset('assets/js/trix.js')}}"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
         <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> --}}
     </body>
 </html>

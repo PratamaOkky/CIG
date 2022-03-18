@@ -11,11 +11,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('userCount')}}">Data User</a>
+                    <a class="nav-link active" href="{{route('pegawai.index')}}">Data User</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Penggajian</a>
+                    <a class="nav-link active" href="{{route('gaji')}}">Penggajian</a>
                 </li>
 
                 {{-- <li class="nav-item">
@@ -38,4 +38,4 @@
         </div>
     </div>
 </nav>
-<hr class="hr-nav mt-auto">
+<hr class="hr-nav mt-auto" color="red">
