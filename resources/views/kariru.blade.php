@@ -16,9 +16,20 @@
     </div>
 </div>
 <div class="container" style="padding-top:200px; padding-bottom:200px">
-    <table><center>
-       <h1> table lowongan dari database<h1>
-    </table>
+<h1> table lowongan dari database<h1>
+       <table class="table table-bordered table-hover">
+  <tr>
+    <th>Lowongan</th>
+    <th>posisi</th>
+    <th>Detail</th>
+  </tr>
+  @foreach($lowongan as $s) 
+  <tr>
+    <td>{{$s->karir}}</td>
+    <td>{{$s->posisi}}</td>
+    <td>{{$s->detail}}</td>
+</tr>
+</table>
 </div>
 
 @endsection

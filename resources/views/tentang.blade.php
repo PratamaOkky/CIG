@@ -10,7 +10,7 @@
                         text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Sejarah
                         <p style="font-size:14px;font-weight: 400; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. 
                             Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi 
-                            yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
+                            yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama dan koordinasi yang baik dengan badan keamanan pemerintah dan aparat keamanan setempat (TNI/POLRI/APPEM) Membina hubungan baik dengan masyarakat.</p>
         </div>
     </div>
 </div>
@@ -44,41 +44,64 @@
 </div>
             <center><p style="padding-top: 10px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Visi Misi
             <span style="color:#BB1D33">Strategi Sasaran</span> </p>
+            <center><p style="padding-top: 10px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 1000px;color:#BB1D33">VISI<br>
+            <div class="container" style="background: rgba(187, 29, 51, 0.03); border-radius: 0px 75px;color:#350106;font-family: Poppins;font-weight: 500; font-size: 35px; width: 1000px;">MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
+            </div>
+
 <div class="container">
     <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">  
         </div>
-        <div class="col-9"style="color:#5D4350; padding-top: 75px;
+        <div class="col-9"style="color:#BB1D33; padding-top: 75px;
                         text-align: left; font-family: Poppins;font-weight: 600; font-size: 28px;">Misi
         </div>
     </div>
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6" align="left" style="font-size: 16px font-weight: 400;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-         Elit quis euismod eu tristique. Magnis porttitor elementum maecenas odio.
+        <div class="col-9" align="left" style="font-size: 16px font-weight: 400;">
+        <ol>Mewujudkan  keamanan  dan  ketertiban  di  lingkungan  kerja  dalam  rangka  mendukung sistem PAM SWAKARSA
+        </ol><ol>Memberikan rasa aman dan nyaman
+        </ol><ol>Memberikan jasa pengamanan secara profesional
+        </ol><ol>Menjamin keselamatan dan keamanan bagi personil, material, dan kegiatan di  lingkungan kerja
+        </ol><ol>Mencegah, meniadakan serta mengatasi masalah keamanan yang dilakukan oleh  pihak eksternal maupun internal yang akan mengganggu dan merugikan.
+        </ol><ol>Memberikan saran dan masukan ke pengguna jasa demi lancarnya kegiatan usaha  mitra.
+</ol>
         </div>
-        <div class="col-3"></div>
     </div>
     <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">  
         </div>
-        <div class="col-9"style="color:#5D4350; padding-top: 75px;
-                        text-align: left; font-family: Poppins; font-size: 28px;">Misi
+        <div class="col-9"style="color:#BB1D33; padding-top: 75px;
+                        text-align: left; font-family: Poppins;font-weight: 600; font-size: 28px;">Strategi
         </div>
     </div>
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-6" align="left" style="font-size: 16px">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-         Elit quis euismod eu tristique. Magnis porttitor elementum maecenas odio.
+        <div class="col-9" align="left" style="font-size: 16px">
+        <ol>Memiliki personil pengamanan yang handal dan profesional
+</ol><ol>Membangun hubungan dan komunikasi yang harmonis serta memberi solusi bagi pengguna jasa
+</ol><ol>Mengembangkan kerja sama dan koordinasi yang baik dengan badan keamanan pemerintah dan aparat keamanan setempat (TNI/POLRI/APPEM)
+</ol><ol>Membina hubungan baik dengan masyarakat</ol>
         </div>
-        <div class="col-3"></div>
+      
     </div>
 
+<div class="row">
+<p style="padding-top: 10px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px
+align-items: center; justify-content: center; color:#BB1D33">Sasaran</p>
+<p align="left" style="font-size: 16px">Menciptakan suasana aman dengan cara menyelenggarakan sistem pengamanan dan keselamatan manusia baik pribadi
+     maupun kelompok serta harta benda pemilik. Para professional yang bergabung dalam PT. Garda Mitra Nasional 
+     dibangun dan dibesarkan dari kompetensi dan pengalaman untuk membuat lebih baik dalam bidang jasa pengelolaan 
+     keamanan.<br>
 </div>
-
-
+<div class="row" align="left" style="width: 1000px; padding-bottom:15px">  
+    <li> Perencanaan dan pengembangan sistem keamanan yang lebih baik dan efisien
+</li><li>Struktur biaya operasional yang lebih baik dan kompetitif
+</li><li>Security sebagai benteng perusahaan dari berbagai ancaman dan tindakan pelanggaran ketertiban selalu dibekali pengetahuan dan ketrampilan yang
+mampu bertindak dengan cepat dan akurat sesuai dengan petunjuk Instansi Pembina yaitu POLRI
+</li>
+</div>
+</div>
 @endsection
