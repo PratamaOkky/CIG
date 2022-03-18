@@ -1,3 +1,14 @@
+body
+{
+    font-family: Poppins;
+}
+
+.head
+{
+    font-weight: bold;
+    color: #BB1D33;
+}
+
 .card
 {
     border: none;
@@ -5,26 +16,22 @@
     grid-template-columns: 100% auto;
     text-align: center;
 }
-.hr-nav
+
+.garis-nav
 {
-    border: 0;
-    height: 30px;
+    height: 3px;
+    color: #BB1D33;
     border-style: solid;
-    /* border-color: #8B0000; */
-    border-width: 6px 0 0 0;
-    color: #8B0000;
-    background: transparent;
 }
 
 .garis
 {
-    border-left: 3px solid;
+
+    border-left: 1px #BB1D33 solid;
     height: 85px !important;
-    width: 0;
+    width: 0px;
     margin-top: -100px !important;
     margin-left: 550px;
-    color: #8B0000;
-    background: transparent;
 }
 
 .box
@@ -39,7 +46,6 @@
 
 .bi, .bi-plus-circle
 {
-    /* margin-bottom: 50px; */
     margin-left: 55px;
     position: relative;
     top: -70px;
@@ -67,14 +73,15 @@ tr, th
 
 .btn-modal
 {
-    width: 370px;
+    width: 79.1%;
+    /* background-color: #BB1D33; */
 }
 
 .icon
 {
     position: absolute;
     top: 42%;
-    margin-left: 200px;
+    margin-left: 310px;
 }
 
 .karir

@@ -31,11 +31,11 @@
                 </li>
 
                 {{-- <button type="submit" class="btn btn-danger">Keluar</button> --}}
-                <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
+                <a href="{{route('logout')}}" class="btn btn-danger" style="background-color: #BB1D33">Keluar</a>
 
                 <form action="{{route('logout')}}" method="POST">@csrf</form>
             </ul>
         </div>
     </div>
 </nav>
-<hr class="hr-nav mt-auto" color="red">
+<div class="garis-nav"></div>

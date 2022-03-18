@@ -17,10 +17,10 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body" style="text-align: justify; margin-top: 100px">
-                            <h1 class="mb-4">Upload Gaji</h1>
+                            <h1 class="head mb-4">Upload Gaji</h1>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio officia enim modi placeat. Quibusdam repellat nam ipsa velit qui. Animi asperiores ea ex quisquam dolorum recusandae laudantium sunt mollitia iure.</p>
 
-                            <button type="button" class="btn btn-danger border-0 btn-lg ml-auto mt-3" style="display: inline; font-size: 12px; width: 20%" data-bs-toggle="modal" data-bs-target="#uploadFile">Upload File <i class="fa fa-cloud-upload"></i></button>
+                            <button type="button" class="btn btn-danger border-0 btn-lg ml-auto mt-3" style="display: inline; font-size: 12px; width: 20%; background-color: #BB1D33" data-bs-toggle="modal" data-bs-target="#uploadFile">Upload File <i class="fa fa-cloud-upload"></i></button>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -57,7 +57,7 @@
                             @enderror
                         </div>
                         <div class="button mb-3">
-                            <button type="submit" class="btn btn-danger btn-modal">Simpan</button>
+                            <button type="submit" class="btn btn-danger btn-modal" style="background-color: #BB1D33">Simpan</button>
                         </div>
                         </div>
                     </form>
