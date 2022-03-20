@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: white">
     <div class="container">
         <a class="navbar-brand" href="{{route('dashboard')}}">
             <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="35" height="40">

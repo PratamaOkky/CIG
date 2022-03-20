@@ -77,6 +77,7 @@
             </div>
         </div>
     </div>
+    <a href="#" class="btn btn-danger d-inline border-0">Slip Gaji</a>
 </div>
 
 @endsection
