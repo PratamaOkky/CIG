@@ -58,7 +58,7 @@
         @yield('content')
     </div>
     @include('footer1')
-    @include('footer')
+    @include('copyright')
 
     </div>
 
