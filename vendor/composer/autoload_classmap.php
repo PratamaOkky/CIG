@@ -13,7 +13,9 @@ return array(
     'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\KarirController' => $baseDir . '/app/Http/Controllers/KarirController.php',
+
     'App\\Http\\Controllers\\PegawaiController' => $baseDir . '/app/Http/Controllers/PegawaiController.php',
+
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -24,7 +26,9 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Gaji' => $baseDir . '/app/Models/Gaji.php',
+  
     'App\\Models\\Gender' => $baseDir . '/app/Models/Gender.php',
+
     'App\\Models\\Karir' => $baseDir . '/app/Models/Karir.php',
     'App\\Models\\Level' => $baseDir . '/app/Models/Level.php',
     'App\\Models\\Pegawai' => $baseDir . '/app/Models/Pegawai.php',
@@ -4970,6 +4974,13 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/type/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/type/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'Spatie\\GoogleFonts\\Commands\\FetchGoogleFontsCommand' => $vendorDir . '/spatie/laravel-google-fonts/src/Commands/FetchGoogleFontsCommand.php',
+    'Spatie\\GoogleFonts\\Fonts' => $vendorDir . '/spatie/laravel-google-fonts/src/Fonts.php',
+    'Spatie\\GoogleFonts\\GoogleFonts' => $vendorDir . '/spatie/laravel-google-fonts/src/GoogleFonts.php',
+    'Spatie\\GoogleFonts\\GoogleFontsServiceProvider' => $vendorDir . '/spatie/laravel-google-fonts/src/GoogleFontsServiceProvider.php',
+    'Spatie\\LaravelPackageTools\\Exceptions\\InvalidPackage' => $vendorDir . '/spatie/laravel-package-tools/src/Exceptions/InvalidPackage.php',
+    'Spatie\\LaravelPackageTools\\Package' => $vendorDir . '/spatie/laravel-package-tools/src/Package.php',
+    'Spatie\\LaravelPackageTools\\PackageServiceProvider' => $vendorDir . '/spatie/laravel-package-tools/src/PackageServiceProvider.php',
     'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\Attribute\\AsCommand' => $vendorDir . '/symfony/console/Attribute/AsCommand.php',

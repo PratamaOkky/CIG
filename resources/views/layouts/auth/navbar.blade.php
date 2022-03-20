@@ -59,9 +59,144 @@ hr{
   border-radius: 12px;
   font-size: 16px;
 }
+
+/* icon sosmed */
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+a {
+    text-decoration: none;
+    color: #fff;
+    
+}
+p > a:hover{
+    color: #d9d9d9;
+    text-decoration:  underline;
+}
+ul {
+    padding:0;
+    list-style: none;
+}
+.social-icon {
+    color: #fff;
+    
+}
+ul.social-icons {
+    margin-top: 1px;
+}
+.social-icons li {
+    vertical-align: top;
+    display: inline;
+    height: 10px;
+    padding:10;
+}
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+    
+}
+.fa-facebook {
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #5D4350;
+}
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+.fa-twitter {
+    padding:10px 12px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #5D4350;
+}
+.fa-twitter:hover {
+    background-color: #00aced;
+}
+.fa-youtube {
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #5D4350;
+}
+
+.fa-youtube:hover {
+    background-color: #e64a41;
+}
+.fa-facebook-square {
+    padding:10px 14px;
+    border-radius: 10px;
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    color:#5D4350;
+}
+.fa-facebook-square:hover {
+    color: #3d5b99;
+}
+.fa-instagram {
+    padding:10px 14px;
+    border-radius: 10px;
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    color:#5D4350;
+}
+.fa-instagram:hover {
+   color: #c32aa3;
+}
+.fa-twitter-square {
+    padding:10px 14px;
+    border-radius: 10px;
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    color:#5D4350;
+}
+.fa-twitter-square:hover {
+    color: #00aced;
+}
+.fa-youtube-play {
+    padding:10px 14px;
+    border-radius: 10px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    color:#5D4350;
+}
+.fa-youtube-play:hover {
+    color: #e64a41;
+}
+
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-light ftco-navbar-light sticky-top" id="ftco-navbar" >
 		<div class="container">
         <a class="navbar-brand" href="{{route('home')}}">
             <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">
@@ -79,6 +214,7 @@ hr{
 			</div>
 		</div>
 	</nav>
+<<<<<<< HEAD:resources/views/layouts/auth/navbar.blade.php
 
 
  --}}
@@ -122,3 +258,10 @@ hr{
 </nav>
 <div class="garis-nav"></div>
 
+=======
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+>>>>>>> 6b2e278e7cb5334d1cd5a4867c3eac933d50aa59:resources/views/navbar.blade.php
