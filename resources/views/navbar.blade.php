@@ -209,8 +209,7 @@ ul.social-icons {
 				          	<li class="nav-item"><a class="nav-link active" href="{{route('layanan')}}">Layanan</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{{ route('kariru')}}">Karir</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{{route('kontak')}}">Kontak</a></li>
-                    {{-- <button type="submit" class="btn btn-danger" >Login</button> --}}
-                    <a href="{{route('login')}}" class="btn btn-danger">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-danger">Login</a>
                 </ul>
 			</div>
 		</div>

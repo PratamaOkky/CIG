@@ -11,11 +11,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('userCount')}}">Data User</a>
+                    <a class="nav-link active" href="{{route('pegawai.index')}}">Data User</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Penggajian</a>
+                    <a class="nav-link active" href="{{route('gaji')}}">Penggajian</a>
                 </li>
 
                 {{-- <li class="nav-item">
@@ -31,11 +31,11 @@
                 </li>
 
                 {{-- <button type="submit" class="btn btn-danger">Keluar</button> --}}
-                <a href="{{route('logout')}}" class="btn btn-danger">Keluar</a>
+                <a href="{{route('logout')}}" class="btn btn-danger" style="background-color: #BB1D33">Keluar</a>
 
                 <form action="{{route('logout')}}" method="POST">@csrf</form>
             </ul>
         </div>
     </div>
 </nav>
-<hr class="hr-nav mt-auto">
+<div class="garis-nav"></div>

@@ -1,3 +1,14 @@
+body
+{
+    font-family: Poppins;
+}
+
+.head
+{
+    font-weight: bold;
+    color: #BB1D33;
+}
+
 .card
 {
     border: none;
@@ -5,24 +16,22 @@
     grid-template-columns: 100% auto;
     text-align: center;
 }
-.hr-nav
+
+.garis-nav
 {
-    border: 0;
-    height: 30px;
+    height: 3px;
+    color: #BB1D33;
     border-style: solid;
-    /* border-color: #bb1d33 !important; */
-    border-width: 4px 0 0 0;
-    color: #bb1d33 !important;
 }
 
 .garis
 {
-    border-left: 3px solid !important;
+
+    border-left: 1px #BB1D33 solid;
     height: 85px !important;
-    width: 0px !important;
+    width: 0px;
     margin-top: -100px !important;
     margin-left: 550px;
-    color: #bb1d33;
 }
 
 .box
@@ -37,7 +46,6 @@
 
 .bi, .bi-plus-circle
 {
-    /* margin-bottom: 50px; */
     margin-left: 55px;
     position: relative;
     top: -70px;
@@ -60,18 +68,20 @@ tr, th
     border: none !important;
     text-align: center;
     font-size: 14px;
+    width: 10%;
 }
 
 .btn-modal
 {
-    width: 370px;
+    width: 79.1%;
+    /* background-color: #BB1D33; */
 }
 
 .icon
 {
     position: absolute;
     top: 42%;
-    margin-left: 200px;
+    margin-left: 310px;
 }
 
 .karir
@@ -80,4 +90,8 @@ tr, th
     grid-template-columns: 55% auto;
     text-align: center;
     margin-left: 150px;
+}
+.footer
+{
+    margin-top: 100px;
 }

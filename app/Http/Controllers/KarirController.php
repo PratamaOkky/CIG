@@ -6,6 +6,10 @@ use App\Models\Karir;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Crypt;
+
+use Illuminate\Support\Facades\DB;
+
 class KarirController extends Controller
 {
     public function __construct()
@@ -38,18 +42,21 @@ class KarirController extends Controller
      */
     public function store(Request $request)
     {
-        $karir = $request->validate([
+        $request->validate([
             'lowongan' => 'required',
             'posisi' => 'required',
             'detail' => 'required'
         ]);
 
-        $karir ['user'] = auth()->user()->id;
+        $karir = new Karir();
+        $karir->lowongan = $request->lowongan;
+        $karir->posisi = $request->posisi;
+        // $karir ['user'] = auth()->user()->id;
         $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
 
-        Karir::create($karir);
+        $karir->update();
 
-        return redirect('karir')->with('success', 'Berhasil Menambahkan Karir');
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Karir');
     }
 
     /**
@@ -83,18 +90,21 @@ class KarirController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $karir = $request->validate([
+        $request->validate([
             'lowongan' => 'required',
             'posisi' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
         ]);
 
-        $karir ['user'] = auth()->user()->id;
-        $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
+        $dec = Crypt::decryptString($id);
+        $data = Karir::findOrFail($dec);
+        $data->lowongan = $request->lowongan;
+        $data->posisi = $request->posisi;
+        $data->detail = $request->detail;
 
-        Karir::update($karir);
+        $data->update();
 
-        return redirect('karir')->with('success', 'Berhasil Menambahkan Karir');
+        return redirect()->back()->with('success', 'Berhasil Ubah Karir');
     }
 
     /**
@@ -105,7 +115,11 @@ class KarirController extends Controller
      */
     public function destroy($id)
     {
-        $karir = Karir::destroy($id);
-        return redirect('karir')->with('success', 'Berhasil Hapus Data');
+        $dec = Crypt::decryptString($id);
+        $karir = Karir::findOrFail($dec);
+
+        $karir->delete();
+
+        return redirect()->back()->with('success', 'Berhasil Hapus Data');
     }
 }

@@ -14,7 +14,7 @@
         <nav class="navbar navbar-light">
             <div class="container">
                 <div class="section-header mt-5 mb-5 ml-0">
-                    <h2>Konten Karir</h2>
+                    <h1 class="head">Konten Karir</h1>
                 </div>
                 <form class="d-flex">
                     <span class="icon"><i class="fa fa-search"></i></span>
@@ -41,14 +41,13 @@
                     <div class="card-body">
                         <div class="box">
                             <h1 class="card-title">3</h1>
-                            {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i></a> --}}
                         </div>
                         <p class="card-text" style="margin-left: 26px">Pelamar</p>
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="garis">
+        <div class="garis"></div>
 
         <div class="rectangle">
 
@@ -63,10 +62,37 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form action="{{route('karir.store')}}" method="post">
+                    <form action="{{route('karir.store')}}" method="POST">
                         @csrf
                         <div class="modal-body">
-                        @include('admin.karir.form')
+                        <div class="mb-3">
+                            <label for="lowongan" class="col-form-label">Nama Karir</label>
+                            <input type="text" class="form-control @error('lowongan') is-invalid @enderror" name="lowongan" id="lowongan" placeholder="Masukan Nama Karir" required autofocus value="{{ old('lowongan')}}">
+                            @error('lowongan')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="posisi" class="col-form-label">Posisi</label>
+                            <input type="text" class="form-control @error('posisi') is-invalid @enderror" name="posisi" id="posisi" placeholder="Posisi" required autofocus value="{{ old('posisi')}}">
+                            @error('posisi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="detail" class="col-form-label">Detail</label>
+                            @error('detail')
+                                <div class="invalid-feedback">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                            @enderror
+                            <textarea class="form-control" id="detail" name="detail" value="{{ old('detail') }}" required autofocus></textarea>
+                            {{-- <trix-editor input="detail"></trix-editor> --}}
+                        </div>
                         <div class="button mb-3">
                             <button type="submit" class="btn btn-danger btn-modal">Simpan</button>
                         </div>
@@ -80,35 +106,8 @@
         </div>
         {{-- Modal Tambah --}}
 
-        {{-- -------------------------------------------------------------------------------------------- --}}
 
-        {{-- Edit Modal --}}
-        <div class="modal fade" id="edit">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel"> Edit Lowongan Karir</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <form action="{{route('karir.update', 'test')}}" method="post">
-                        @csrf
-                        <div class="modal-body">
-                        <input type="hidden" name="id" id="id" value="">
-                        @include('admin.karir.form')
-                        <div class="button mb-3">
-                        <button type="submit" class="btn btn-danger btn-modal">Simpan</button>
-                        </div>
-                        <div class="button mb-3">
-                            <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Close</button>
-                        </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {{-- Edit Modal --}}
-
+        {{-- Card --}}
         <div class="card" style="width: 940px; top: 60px; left: 30px;">
             <div class="row g-0">
                 @foreach ($karirs as $item)
@@ -120,13 +119,14 @@
                     <div class="card-body" style="text-align: start; margin-left: -130px;">
                         <h5 class="card-title">{{$item->lowongan}}</h5>
                         <p class="card-text">{{$item->posisi}}</p>
+                        {{-- <p class="card-text">{{$item->detail}}</p> --}}
 
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit" data-id="{{ $item->id }}" data-lowongan="{{$item->mylowongan}}" data-posisi="{{ $item->posisi }}" data-detail="{{ $item->detail }}" style="margin-left: 500px; margin-top: -115px;">Ubah</button>
+                        <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 500px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
 
-                        <form action="{{route('karir.destroy', $item->id)}}" method="POST" class="d-inline">
+                        <form action="{{route('karir.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-danger border-0" style="margin-left: 600px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
+                            <button class="btn btn-secondary border-0" style="margin-left: 600px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
                         </form>
                     </div>
 
@@ -134,6 +134,63 @@
                 @endforeach
             </div>
         </div>
+        {{-- Card --}}
+
+        {{-- Edit Modal --}}
+        @foreach ($karirs as $data)
+        <div class="modal fade" id="edit-{{ $data->id }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"> Edit Lowongan Karir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <form action="{{route('karir.update', Crypt::encryptString($data->id))}}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="lowongan" class="col-form-label">Nama Karir</label>
+                            <input type="text" class="form-control @error('lowongan') is-invalid @enderror" name="lowongan" id="lowongan" required autofocus value="{{ $data->lowongan }}">
+                            @error('lowongan')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="posisi" class="col-form-label">Posisi</label>
+                            <input type="text" class="form-control @error('posisi') is-invalid @enderror" name="posisi" id="posisi" required autofocus value="{{ $data->posisi }}">
+                            @error('posisi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="detail" class="col-form-label">Detail</label>
+                            @error('detail')
+                                <div class="invalid-feedback">
+                                    <p class="text-danger">{{ $message }}</p>
+                                </div>
+                            @enderror
+                            <textarea name="detail" id="detail" class="form-control" rows="10">{{$data->detail}}</textarea>
+                        </div>
+
+                        <div class="button mb-3 ml-auto">
+                        <button type="submit" class="btn btn-danger btn-modal" style="color: #BB1D33">Simpan</button>
+                        </div>
+                        <div class="button mb-3">
+                            <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        {{-- Edit Modal --}}
     </div>
 </div>
 
