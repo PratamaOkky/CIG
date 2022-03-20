@@ -23,15 +23,11 @@
     <body>
 
         <style>
-            /* ul{
-                margin-left: 24px;
-            } */
+
             li{
                 margin-left: 50px;
             }
-            .btn{
-                margin-left: 50px;
-            }
+
         </style>
 
         <div id="app">

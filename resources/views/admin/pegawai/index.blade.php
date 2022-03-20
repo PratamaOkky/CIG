@@ -9,7 +9,7 @@
         <nav class="navbar navbar-light">
             <div class="container">
                 <div class="section-header mt-5 mb-5 ml-0">
-                    <h1 class="head">Jumlah User</h1>
+                    <h1 class="head">Data Pegawai</h1>
                 </div>
                 <form class="d-flex">
                     <span class="icon"><i class="fa fa-search"></i></span>
@@ -41,26 +41,27 @@
                     </div>
                 </div>
             </div>
-            {{-- <hr style="border-left: 3px #bb1d33 solid; height:110px; width:0px; margin-top: -10px"> --}}
+
             <div class="col-md-4 col-sm-6 col-mb-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="box">
                             <h1 class="card-title">1</h1>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
+                            @if (auth()->user()->id_level == 1)
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
+                            @endif
                         </div>
                         <p class="card-text">Super Admin</p>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <hr class="garis"> --}}
 
         <div class="rectangle">
 
         </div>
 
-        <table class="table table-borderless table-sm mt-5 ml-5" style="max-width: 92%">
+        <table class="table table-borderless table-sm mt-5 ml-5" style="max-width: 92%; margin-bottom: 130px">
             <thead>
                 <tr>
                 <th>Nip</th>
@@ -84,21 +85,18 @@
                     <td>{{$item->divisi}}</td>
                     <td>{{$item->jabatan}}</td>
                     <td>
-                        <a href="{{route('pegawai.edit', encrypt($item->id))}}" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}" style="margin-left: -30px; margin-right: -30px; background-color: #bb1d33"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('pegawai.edit', encrypt($item->id))}}" class="btn btn-danger btn-sm border-0 d-inline" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}" style="margin-left: -80px; background-color: #bb1d33"><i class="fa fa-edit"></i></a>
 
-                        <form action="{{route('pegawai.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
+                        <form action="{{route('pegawai.destroy', Crypt::encryptString($item->id))}}" method="POST">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-danger btn-sm" style="background-color: #bb1d33" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-danger d-inline border-0 btn-sm" style="background-color: #bb1d33; margin-top: -44px; margin-left: 15px" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o"></i></button>
                         </form>
                     </td>
                 </tr>
             </tbody>
-
             @endforeach
-
         </table>
-
     </div>
 </div>
 
@@ -108,16 +106,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pegawai</h5>
-                @if (session()->has('success'))
-                <div id="success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
+                    @if (session()->has('success'))
+                    <div id="success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body">
-                <form action="{{route('pegawai.store')}}" method="POST">
+            <form action="{{route('pegawai.store')}}" method="POST">
+                <div class="modal-body">
                     @csrf
                     <div class="mb-3">
                         <label for="nama" class="col-form-label">Nama</label>
@@ -262,10 +261,8 @@
                     <div class="button mb-3">
                         <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Close</button>
                     </div>
-                </form>
-            </div>
-
-            {{-- @endforeach --}}
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -278,7 +275,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                {{-- <h5 class="modal-title" id="staticBackdropLabel"> Edit Lowongan Karir</h5> --}}
+                <h5 class="modal-title" id="staticBackdropLabel"> Edit Data Pegawai</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

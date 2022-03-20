@@ -2,16 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karir;
 use App\Models\Pesan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
+    public function index()
+    {
+        return view('homepage.home');
+    }
+
+    public function about()
+    {
+        return view('homepage.tentang');
+    }
+
+    public function layanan()
+    {
+        return view('homepage.layanan');
+    }
+
+    public function career(Request $request)
+    {
+        // $dec = Crypt::decryptString($id);
+        // $karir = Karir::findOrFail($dec);
+        $karir = Karir::OrderBy('created_at', 'asc')->get();
+        return view('homepage.kariru', ['karirs'=>$karir]);
+    }
 
     public function indexKontak()
     {
-        return view('kontak');
+        return view('homepage.kontak');
     }
 
     public function postKontak(Request $request)

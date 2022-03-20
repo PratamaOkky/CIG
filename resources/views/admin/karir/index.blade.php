@@ -13,7 +13,7 @@
             @endif
         <nav class="navbar navbar-light">
             <div class="container">
-                <div class="section-header mt-5 mb-5 ml-0">
+                <div class="section-header mt-5 mb-5">
                     <h1 class="head">Konten Karir</h1>
                 </div>
                 <form class="d-flex">

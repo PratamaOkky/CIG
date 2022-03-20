@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gaji;
 use App\Models\Gender;
+use App\Models\Level;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,12 @@ class PegawaiController extends Controller
 
     public function index(Pegawai $pegawai)
     {
+        $level = Level::all();
         $gaji = Gaji::all();
         $gender = Gender::all();
         $peg = Pegawai::count();
-        $pegawai = Pegawai::with('gender', 'gaji')->get();
-        // return view('admin.pegawai.index', compact('pegawai', 'peg', 'gender', 'gaji'));
-        return view('admin.pegawai.index', ['pegawai'=>$pegawai, 'peg'=>$peg, 'gender'=>$gender, 'gaji'=>$gaji]);
+        $pegawai = Pegawai::with('gender', 'gaji', 'level')->get();
+        return view('admin.pegawai.index', ['pegawai'=>$pegawai, 'peg'=>$peg, 'gender'=>$gender, 'gaji'=>$gaji, 'level'=>$level]);
     }
 
     /**
@@ -78,6 +79,7 @@ class PegawaiController extends Controller
         $pegawai->email = $request->email;
         $pegawai->tgl_masuk = $request->tgl_masuk;
         $pegawai->gaji_id = $request->gaji_id;
+        $pegawai->level_id = 3;
 
         $pegawai->save($validate);
 
@@ -115,46 +117,44 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'nama' => ['required'],
-        //     'nip' => ['required'],
-        //     'jabatan' => ['required'],
-        //     'divisi' => ['required'],
-        //     'ttl' => ['required'],
-        //     'gender_id' => ['required'],
-        //     'kewarganegaraan' => ['required'],
-        //     'agama' => ['required'],
-        //     'alamat' => ['required'],
-        //     'npwp' => ['required'],
-        //     'no_kes' => ['required'],
-        //     'no_tk' => ['required'],
-        //     'email' => ['required'],
-        //     'tgl_masuk' => ['required'],
-        //     'gaji_id' => ['required']
-        // ]);
+        $request->validate([
+            'nama' => ['required'],
+            'nip' => ['required'],
+            'jabatan' => ['required'],
+            'divisi' => ['required'],
+            'ttl' => ['required'],
+            'gender_id' => ['required'],
+            'kewarganegaraan' => ['required'],
+            'agama' => ['required'],
+            'alamat' => ['required'],
+            'npwp' => ['required'],
+            'no_kes' => ['required'],
+            'no_tk' => ['required'],
+            'email' => ['required'],
+            'tgl_masuk' => ['required'],
+            'gaji_id' => ['required']
+        ]);
 
         $dec = Crypt::decryptString($id);
-        $data = Pegawai::findOrfail($dec);
+        $pegawai = Pegawai::findOrfail($dec);
 
-        $data->update($request->all());
+        $pegawai->nama = $request->nama;
+        $pegawai->nip = $request->nip;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->divisi = $request->divisi;
+        $pegawai->ttl = $request->ttl;
+        $pegawai->gender_id = $request->gender_id;
+        $pegawai->kewarganegaraan = $request->kewarganegaraan;
+        $pegawai->agama = $request->agama;
+        $pegawai->alamat = $request->alamat;
+        $pegawai->npwp = $request->npwp;
+        $pegawai->no_kes = $request->no_kes;
+        $pegawai->no_tk = $request->no_tk;
+        $pegawai->email = $request->email;
+        $pegawai->tgl_masuk = $request->tgl_masuk;
+        $pegawai->gaji_id = $request->gaji_id;
 
-        // $pegawai->nama = $request->nama;
-        // $pegawai->nip = $request->nip;
-        // $pegawai->jabatan = $request->jabatan;
-        // $pegawai->divisi = $request->divisi;
-        // $pegawai->ttl = $request->ttl;
-        // $pegawai->gender_id = $request->gender_id;
-        // $pegawai->kewarganegaraan = $request->kewarganegaraan;
-        // $pegawai->agama = $request->agama;
-        // $pegawai->alamat = $request->alamat;
-        // $pegawai->npwp = $request->npwp;
-        // $pegawai->no_kes = $request->no_kes;
-        // $pegawai->no_tk = $request->no_tk;
-        // $pegawai->email = $request->email;
-        // $pegawai->tgl_masuk = $request->tgl_masuk;
-        // $pegawai->gaji_id = $request->gaji_id;
-
-        // $pegawai->save();
+        $pegawai->update();
 
         return redirect()->back()->with('success', 'Berhasil Ubah Data Pegawai');
     }

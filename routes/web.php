@@ -6,6 +6,7 @@ use App\Http\Controllers\GajiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KarirController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,18 +20,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-Route::get('/tentang', function () {
-    return view('tentang');
-})->name('tentang');
-Route::get('/layanan', function () {
-    return view('layanan');
-})->name('layanan');
-Route::get('/kariru', function () {
-    return view('kariru');
-})->name('kariru');
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('/');
+
+// About
+Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
+
+// Layanan
+Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+
+// Karir
+Route::get('/career', [HomeController::class, 'career'])->name('career');
+
+// Pesan
 Route::get('/kontak', [HomeController::class, 'indexKontak'])->name('kontak');
 Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
 
@@ -38,21 +40,27 @@ Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
 Route::get('/login', [AuthController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::middleware('auth')->group(function() {
+// User
+Route::group(['middleware' => ['auth', 'ceklevel:3']], function()
+{
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+});
 
+// Admin
+Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
+{
     // Dashboard Admin
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Data Pegawai
     Route::resource('pegawai', PegawaiController::class);
 
     // Data Gaji
-    Route::get('/gaji', [GajiController::class, 'index'])->name('gaji')->middleware('auth');
-    Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji')->middleware('auth');
+    Route::get('/gaji', [GajiController::class, 'index'])->name('gaji');
+    Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
 
     // Karir
     Route::resource('karir', KarirController::class);
-
 });
 
 // Logout

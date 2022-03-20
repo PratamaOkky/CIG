@@ -19,4 +19,9 @@ class Level extends Model
     {
         return $this->hasMany('App\Models\User');
     }
+
+    public function pegawai()
+    {
+        return $this->hasMany('App\Models\Pegawai');
+    }
 }

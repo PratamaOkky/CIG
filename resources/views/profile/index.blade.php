@@ -6,11 +6,11 @@
 
 <div class="section">
     <div class="container">
-        <div class="section-header mt-5 mb-4 ml-0">
+        <div class="section-header mt-5 mb-3">
             <h1 class="head">Selamat Datang</h1>
         </div>
 
-        <div class="card mb-3" style="max-width: 380px; border: none">
+        <div class="card mb-5" style="max-width: 380px; border: none">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="{{asset('assets/images/faces/1.jpg')}}" style="width: 190px; height: 179; margin-top: 23px" class="img-fluid rounded" alt="...">

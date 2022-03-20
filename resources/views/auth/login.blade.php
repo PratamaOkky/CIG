@@ -28,19 +28,19 @@
     <div class="row match-height">
         <div class="col-12">
             <div class="card-group">
-                <div class="card" style="border: none">
+                <div class="card" style="border: none; background: none">
                     <div class="card-content">
                         <div class="card-body">
-                            <h1 class="mb-5">Garda Mitra Nasional</h1>
+                            <h1 class="mb-5" style="color: #bb1d33">Garda Mitra Nasional</h1>
                             <p>Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
                         </div>
                     </div>
                 </div>
-                <hr style="border-left: 3px #bb1d33 solid; height:350px; width:0px; margin-top: -25px">
-                <div class="card" style="border: none">
+                <div style="border-left: 3px #bb1d33 solid; height:350px; width:0px; margin-top: -25px"></div>
+                <div class="card" style="border: none; background: none">
                     <div class="card-content">
                         <div class="card-body">
-                            <h1 class="mb-5">Silakan Masuk</h1>
+                            <h1 class="mb-5" style="color: #bb1d33">Silakan Masuk</h1>
                             <form action="{{route('login')}}" method="POST" class="need-validation">
                                 @csrf
                                 <div class="form-group position-relative has-icon-left mb-4">
@@ -65,7 +65,9 @@
                                     </label>
                                 </div> --}}
 
-                                <button type="submit" class="btn btn-danger" style="margin-left: 452px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
+                                <div class="form-group position-relative">
+                                    <button type="submit" class="btn btn-danger" style="margin-left: 418px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
+                                </div>
                             </form>
                         </div>
                     </div>

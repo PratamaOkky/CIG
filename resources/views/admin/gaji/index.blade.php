@@ -27,7 +27,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <img src="{{asset('assets/images/home-top.png')}}" height="416" width="343" alt="H">
+                                    <img src="{{asset('assets/images/bg-gaji.png')}}" height="416" width="343" alt="H">
                                 </div>
                             </div>
                         </div>

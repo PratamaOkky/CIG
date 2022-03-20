@@ -15,16 +15,18 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $user = $request->validate([
+        $request->validate([
             'nip' => 'required',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($user)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+        if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
+            if (Auth::check() && Auth::user()->id_level == 1 || Auth::check() && Auth::user()->id_level == 2) {
+                return redirect('dashboard');
+            } elseif (Auth::check() && Auth::user()->id_level == 3) {
+                return redirect()->route('profile', encrypt(Auth()->user()->id));
+            }
         }
-
         return back()->with('loginError', 'Login Failed');
     }
 
