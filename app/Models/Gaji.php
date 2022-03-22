@@ -11,34 +11,36 @@ class Gaji extends Model
 
     protected $table = 'tb_gaji';
 
-    protected $fillable = [
-        'gaji',
-        'tunjangan_makan',
-        'tunjangan_operasional',
-        'tunjangan_jabatan',
-        'lembur_nasional',
-        'lembur_biasa',
-        'koreksi',
-        'bpjs_kesehatan_perusahaan',
-        'bpjs_tenagakerja_perusahaan',
-        'koreksi_plus',
-        'bonus',
-        'total_plus',
-        'jaminan',
-        'koreksi_min',
-        'diksar',
-        'kta',
-        'pph21',
-        'bpjs_kes_karyawan',
-        'bpjs_tenagakerja_karyawan',
-        'bpjskes_perusahaan',
-        'bpjstk_perusahaan',
-        'potongan',
-        'totalgaji',
-    ];
+    protected $guarder = ['id'];
 
-    public function pegawai()
+    // protected $fillable = [
+    //     'gaji',
+    //     'tunjangan_makan',
+    //     'tunjangan_operasional',
+    //     'tunjangan_jabatan',
+    //     'lembur_nasional',
+    //     'lembur_biasa',
+    //     'koreksi',
+    //     'bpjs_kesehatan_perusahaan',
+    //     'bpjs_tenagakerja_perusahaan',
+    //     'koreksi_plus',
+    //     'bonus',
+    //     'total_plus',
+    //     'jaminan',
+    //     'koreksi_min',
+    //     'diksar',
+    //     'kta',
+    //     'pph21',
+    //     'bpjs_kes_karyawan',
+    //     'bpjs_tenagakerja_karyawan',
+    //     'bpjskes_perusahaan',
+    //     'bpjstk_perusahaan',
+    //     'potongan',
+    //     'totalgaji',
+    // ];
+
+    public function user()
     {
-        return $this->hasMany(Pegawai::class);
+        return $this->hasMany(User::class);
     }
 }

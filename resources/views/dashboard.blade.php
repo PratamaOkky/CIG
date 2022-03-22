@@ -10,16 +10,16 @@
             <h1 class="head">Selamat Datang</h1>
         </div>
 
-        <div class="card mb-3" style="max-width: 380px; border: none">
+        <div class="card mb-3" style="max-width: 100%; border: none">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{asset('assets/images/faces/1.jpg')}}" style="width: 190px; height: 179; margin-top: 23px" class="img-fluid rounded" alt="...">
+                    <img src="{{asset('assets/images/faces/1.jpg')}}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body" align="left">
-                        <h2 class="card-title">{{ auth()->user()->nama }}</h2>
-                        <p class="card-text">Direktur Operasional</p>
-                        <p class="card-text">3603212376880006</p>
+                    <div class="card-body" align="left" style="margin-left: -250px;">
+                        <h2 class="card-title" style="font-size: 26px">{{ auth()->user()->nama }}</h2>
+                        <p class="card-text">{{ auth()->user()->divisi }}</p>
+                        <p class="card-text">{{ auth()->user()->nip }}</p>
                     </div>
                 </div>
             </div>
@@ -32,52 +32,52 @@
 
                     <tbody>
                       <tr>
-                        <td>Kelahiran           :   Jakarta</td>
+                        <td>Kelahiran : {{ auth()->user()->ttl }}</td>
                       </tr>
                       <tr>
-                        <td>Jenis Kelamin       :   Pria</td>
+                        <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>
                       </tr>
                       <tr>
-                        <td>Agama          :    Islam</td>
+                        <td>Agama : {{ auth()->user()->agama }}</td>
                       </tr>
                       <tr>
-                        <td>Kewarganegaraan          :    Indonesia</td>
+                        <td>Kewarganegaraan : {{ auth()->user()->kewarganegaraan }}</td>
                       </tr>
                       <tr>
-                        <td>Alamat          :    Simatupang Pasar Minggu Jakarta Selatan</td>
+                        <td>Alamat : {{ auth()->user()->alamat }}</td>
                       </tr>
                     </tbody>
                 </table>
 
             </div>
 
-            <div class="col-md-6 col-12">
+            <div class="col-md-6">
 
                 <table class="table table-striped table-borderless">
 
                     <tbody>
                         <tr>
-                          <td>Tahun Masuk           :   22 Juni 2011</td>
+                          <td>Tahun Masuk : {{ date('d-m-Y'), strtotime( auth()->user()->tgl_masuk ) }}</td>
                         </tr>
                         <tr>
-                          <td>NIP       :   3603212376880006</td>
+                          <td>NIP : {{ auth()->user()->nip }}</td>
                         </tr>
                         <tr>
-                          <td>NPWP          :    Islam</td>
+                          <td>NPWP : {{ auth()->user()->npwp }}</td>
                         </tr>
                         <tr>
-                          <td>BPJS Kesehatan          :    8976545674921</td>
+                          <td>BPJS Kesehatan : {{ auth()->user()->no_kes }}</td>
                         </tr>
                         <tr>
-                          <td>BPJS Tenaga Kerja          :    8976545674921</td>
+                          <td>BPJS Tenaga Kerja : {{ auth()->user()->no_tk }}</td>
                         </tr>
                       </tbody>
                 </table>
 
             </div>
 
-            <a href="#" class="btn btn-danger d-inline border-0">Slip Gaji</a>
         </div>
+        <a href="#" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
     </div>
 </div>
 

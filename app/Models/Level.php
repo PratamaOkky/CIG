@@ -17,11 +17,7 @@ class Level extends Model
 
     public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany(User::class);
     }
 
-    public function pegawai()
-    {
-        return $this->hasMany('App\Models\Pegawai');
-    }
 }

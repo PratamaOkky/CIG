@@ -54,7 +54,7 @@ class KarirController extends Controller
         // $karir ['user'] = auth()->user()->id;
         $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
 
-        $karir->update();
+        $karir->save();
 
         return redirect()->back()->with('success', 'Berhasil Menambahkan Karir');
     }
@@ -120,6 +120,6 @@ class KarirController extends Controller
 
         $karir->delete();
 
-        return redirect()->back()->with('success', 'Berhasil Hapus Data');
+        return redirect()->back()->with('success', 'Berhasil Hapus Karir');
     }
 }

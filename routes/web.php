@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KarirController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,8 @@ Route::get('/kontak', [HomeController::class, 'indexKontak'])->name('kontak');
 Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
 
 // Login
-Route::get('/login', [AuthController::class,'index'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // User
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function()
@@ -61,8 +62,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 
     // Karir
     Route::resource('karir', KarirController::class);
+
+    // Register
+    Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
 });
 
 // Logout
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

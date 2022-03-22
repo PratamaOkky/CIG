@@ -67,7 +67,7 @@ hr{
 a {
     text-decoration: none;
     color: #fff;
-    
+
 }
 p > a:hover{
     color: #d9d9d9;
@@ -79,7 +79,7 @@ ul {
 }
 .social-icon {
     color: #fff;
-    
+
 }
 ul.social-icons {
     margin-top: 1px;
@@ -93,7 +93,7 @@ ul.social-icons {
 .social-icons a {
     color: #fff;
     text-decoration: none;
-    
+
 }
 .fa-facebook {
     padding:10px 14px;
@@ -214,9 +214,6 @@ ul.social-icons {
 			</div>
 		</div>
 	</nav>
-<<<<<<< HEAD:resources/views/layouts/auth/navbar.blade.php
-
-
  --}}
 
  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -257,11 +254,8 @@ ul.social-icons {
     </div>
 </nav>
 <div class="garis-nav"></div>
-
-=======
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
->>>>>>> 6b2e278e7cb5334d1cd5a4867c3eac933d50aa59:resources/views/navbar.blade.php

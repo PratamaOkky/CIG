@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Gaji;
 use App\Imports\GajiImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -57,6 +56,6 @@ class GajiController extends Controller
 
         Excel::import(new GajiImport, public_path('/Data Gaji/'. $namaFile));
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Gaji Berhail Di Upload!');
     }
 }
