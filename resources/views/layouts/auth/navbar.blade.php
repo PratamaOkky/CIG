@@ -215,5 +215,40 @@ color: #FFFFFF;
 		</div>
 	</nav>
 
+ <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="{{route('/')}}">
+            <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="35" height="40">
+            Garda Mitra Nasional
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{route('tentang')}}">Tentang</a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{route('layanan')}}">Layanan</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('career')}}" class="nav-link active">Karir</a>
+                </li>
+
+                <li class="nav-item">
+                    <a  href="{{route('kontak')}}" class="nav-link active">Kontak</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="garis-nav"></div>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
