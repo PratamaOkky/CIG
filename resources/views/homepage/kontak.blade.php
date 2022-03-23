@@ -18,7 +18,7 @@ font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-
         <label>Email/Kontak</label>
         <input type="text" style="width: 75%"class="form-control" name="email" value="{{ old('email') }}">
         <label>Subjek</label>
-        <input type="text" style="width: 75%"class="form-control" name="subjek" value="{{ old('suject') }}">
+        <input type="text" style="width: 75%"class="form-control" name="suject" value="{{ old('subject') }}">
         <label>Pesan Yang Ingin Disampaikan</label>
         <textarea name="isi" style="width: 90%" class="form-control" cols="30" rows="10">{{ old('isi') }}</textarea><br>
         <button type="submit" class="btn-red btn-danger" style="font">Kirim</button>
