@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function career(Request $request)
     {
         $karir = Karir::OrderBy('created_at', 'asc')->get();
-        return view('homepage.karir', ['karirs'=>$karir]);
+        return view('homepage.kariru', ['karirs'=>$karir]);
     }
 
     public function store(Request $request)

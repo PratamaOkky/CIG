@@ -13,7 +13,10 @@
         <div class="col-6"style="color:#BB1D33; padding-top: 200px; text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">
             <img src="{{asset('assets/images/red.png')}}" style="width: 53px;height: 29px;left: 694px;top: 255px;">
             <p>Lowongan Kerja</p>
-            <p style="font-size:14px;font-weight: 400; color:#350106">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis vestibulum velit pharetra massa imperdiet fermentum amet, risus non. </p>
+            <p style="font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;color: #350106;">
+            GMN berkomitmen untuk mengembangkan budaya perusahaan yang mendorong peningkatan produktivitas dan kinerja sesuai visi misi perusahaan,
+<br>Kami selalu Mencari dan mengembagkan bakat yang memiliki integritas, penuh energi dan memenuhi kompetensi yang di perlukan<br>
+bergabunglah Menjadi bagian dari kami</p>
         </div>
     </div>
 
