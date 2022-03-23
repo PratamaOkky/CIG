@@ -6,11 +6,7 @@
 
 <div class="section">
     <div class="container">
-        @if (session()->has('success'))
-                <div id="success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
+
         <nav class="navbar navbar-light">
             <div class="container">
                 <div class="section-header mt-5 mb-5">
@@ -65,7 +61,6 @@
                     <div class="card-body" style="text-align: start; margin-left: -130px;">
                         <h5 class="card-title">{{$item->lowongan}}</h5>
                         <p class="card-text">{{$item->posisi}}</p>
-                        {{-- <p class="card-text">{{$item->detail}}</p> --}}
 
                         <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 500px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
 
@@ -85,6 +80,8 @@
         @include('admin.karir.create')
 
         @include('admin.karir.edit')
+
+        @include('sweetalert::alert')
     </div>
 </div>
 

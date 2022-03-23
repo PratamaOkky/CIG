@@ -1,19 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Pesan;
+use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class KontakController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        return $this->middleware('auth');
+    }
+
+    public function index(Pesan $pesan)
+    {
+        $pesan = Pesan::all();
+        $msg = Pesan::count();
+
+        return view('admin.kontak.index', ['msg'=>$msg, 'pesan'=>$pesan]);
     }
 
     /**

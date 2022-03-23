@@ -11,10 +11,12 @@ class Pesan extends Model
 
     protected $table = 'tb_pesan';
 
+    // protected $guarded = ['id'];
+
     protected $fillable = [
         'nama',
         'email',
-        'suject',
+        'subject',
         'isi'
     ];
 }

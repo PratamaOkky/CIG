@@ -1,5 +1,5 @@
  <style>
-   @import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 
 a {
@@ -196,7 +196,7 @@ color: #FFFFFF;
 /* icon sosmed */
 </style>
 
-<nav class="navbar navbar-expand-lg  ftco-navbar-light">
+<nav class="navbar navbar-expand-lg ftco-navbar-light">
 		<div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
             <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">

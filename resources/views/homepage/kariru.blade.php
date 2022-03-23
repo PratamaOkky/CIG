@@ -18,28 +18,26 @@
     </div>
 
 {{-- Card --}}
-<div class="card border-0" style="width: 100%; top: 60px;">
+@foreach ($karirs as $item)
+<div class="card mb-3" style="width: 100%; height: 110px; top: 60px; background: transparent">
     <div class="row g-0">
-        @foreach ($karirs as $item)
         <div class="col-md-4">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px; margin-left: 50px">
+            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 71px; width: 71px; margin-top: 20px; border-radius: 18px; margin-left: 29px">
         </div>
         <div class="col-md-8">
 
-            <div class="card-body" style="text-align: start; margin-left: -220px;">
+            <div class="card-body" style="margin-left: -250px; margin-top: 8px;">
                 <h5 class="card-title">{{$item->lowongan}}</h5>
                 <p class="card-text">{{$item->posisi}}</p>
-                {{-- <p class="card-text">{{$item->detail}}</p> --}}
 
-                {{-- <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 500px; margin-top: -115px; background-color: #BB1D33">Ubah</a> --}}
-                <button type="submit" class="btn btn-danger border-0 d-inline" style="margin-left: 500px; margin-top: -115px; background-color: #BB1D33">Kirim CV</button>
+                <button type="submit" class="btn btn-danger border-0 d-inline" data-bs-target="#tambah" data-bs-toggle="modal" style="margin-left: 762px; margin-top: -65px; background-color: #BB1D33">Kirim CV</button>
 
             </div>
 
         </div>
-        @endforeach
     </div>
 </div>
+@endforeach
 {{-- Card --}}
 
 </div>
