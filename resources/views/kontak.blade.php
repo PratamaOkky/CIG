@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row" style="font-family: 'Poppins';
 font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-top: 100px; color: #BB1D33;">
- &ensp;Hubungi Kami coba push
+ &ensp;Hubungi Kami
     </div>
 <hr style="width: 1000px;height: 0px;left: 175px;top: 214px;border: 3px solid #BB1D33;">
 </div>

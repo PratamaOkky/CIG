@@ -26,21 +26,10 @@ class Pegawai extends Model
         'no_tk',
         'email',
         'tgl_masuk',
-        'gaji_id'
     ];
-
-    public function gaji()
-    {
-        return $this->belongsTo(Gaji::class, 'gaji_id');
-    }
 
     public function gender()
     {
         return $this->belongsTo(Gender::class, 'gender_id');
-    }
-
-    public function level()
-    {
-        return $this->belongsTo(Level::class, 'level_id');
     }
 }

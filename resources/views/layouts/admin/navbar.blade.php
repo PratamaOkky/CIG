@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
 
-                @if (auth()->user()->id_level == 1 || auth()->user()->id_level == 2)
+                @if (auth()->user()->level_id == 1 || auth()->user()->level_id == 2)
 
                 <li class="nav-item">
                     <a class="nav-link active" href="{{route('pegawai.index')}}">Data User</a>

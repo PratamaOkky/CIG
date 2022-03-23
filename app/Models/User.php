@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,10 +15,11 @@ class User extends Authenticatable
 
     protected $table = 'tb_user';
 
-    protected $fillable = [
-        'nama', 'password', 'nip'
-    ];
+    // protected $fillable = [
+    //     'nama', 'nip', 'password', 'level_id'
+    // ];
 
+    protected $guarded = ['id'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -39,6 +41,22 @@ class User extends Authenticatable
 
     public function level()
     {
-        return $this->belongsTo('App\Models\Level');
+        return $this->belongsTo(Level::class, 'level_id');
+    }
+
+    public function gaji()
+    {
+        return $this->belongsTo(Gaji::class, 'gaji_id');
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class, 'gender_id');
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['tgl_masuk'])
+            ->translatedFormat('1, d F Y');
     }
 }

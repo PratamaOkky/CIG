@@ -25,9 +25,9 @@
             </div>
             <div class=col-md-4 py-5>
                  <img src="{{asset('assets/images/home-top.png')}}"style="width:343px;height:666px;padding-top: 150px;padding-bottom: 100px;">
-            </div>
+            </div> 
         </div>
-    </div>
+    </div>      
 </div>
 <div class="container" style="font-family: Poppins;">
         <div class="row g-0">
@@ -41,9 +41,8 @@
             <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
             </div>
             <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">   
             </div>
-            <div class="row" style="font-family: Poppins;">
             <div class="col-md-3"><h4 class="mb-4">Koordinasi</h4></div>
             <div class="col-md-3"><h3 class="mb-4">SOP, PSO & PROTAP</h3></div>
             <div class="col-md-3"><h3 class="mb-4">Pengawasan</h3></div>
@@ -79,7 +78,7 @@
             </div>
         <div class=col-md-4 py-5>
         <img src="{{asset('assets/images/home-bot.png')}}"style="width:100%;height:100%; padding-top: 100px">
-        </div>
+        </div> 
 
 </div>
 @endsection

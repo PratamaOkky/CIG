@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function index()
     {
@@ -21,13 +26,13 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
-            if (Auth::check() && Auth::user()->id_level == 1 || Auth::check() && Auth::user()->id_level == 2) {
-                return redirect('dashboard');
-            } elseif (Auth::check() && Auth::user()->id_level == 3) {
-                return redirect()->route('profile', encrypt(Auth()->user()->id));
+            if (Auth::check() && Auth::user()->level_id == 1 || Auth::check() && Auth::user()->level_id == 2) {
+                return redirect('dashboard')->with('success', 'Anda Berhasil Login');
+            } elseif (Auth::check() && Auth::user()->level_id == 3) {
+                return redirect()->route('profile', encrypt(Auth()->user()->id))->with('success', 'Anda Berhasil Login');
             }
         }
-        return back()->with('loginError', 'Login Failed');
+        return back()->with('error', 'Maaf Anda Gagal Login');
     }
 
     public function logout(Request $request)

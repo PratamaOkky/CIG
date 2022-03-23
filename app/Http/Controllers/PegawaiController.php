@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gaji;
-use App\Models\Gender;
+use App\Models\User;
 use App\Models\Level;
+use App\Models\Gender;
 use App\Models\Pegawai;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
 class PegawaiController extends Controller
@@ -20,11 +20,21 @@ class PegawaiController extends Controller
     public function index(Pegawai $pegawai)
     {
         $level = Level::all();
-        $gaji = Gaji::all();
         $gender = Gender::all();
+
         $peg = Pegawai::count();
-        $pegawai = Pegawai::with('gender', 'gaji', 'level')->get();
-        return view('admin.pegawai.index', ['pegawai'=>$pegawai, 'peg'=>$peg, 'gender'=>$gender, 'gaji'=>$gaji, 'level'=>$level]);
+        $pegawai = Pegawai::with('gender')->get();
+
+        $users = User::count();
+        $user = User::with('level')->get();
+        return view('admin.pegawai.index', [
+            'pegawai'=>$pegawai,
+            'peg'=>$peg,
+            'gender'=>$gender,
+            'levels'=>$level,
+            'user' =>$user,
+            'user' =>$users
+        ]);
     }
 
     /**
@@ -60,7 +70,6 @@ class PegawaiController extends Controller
             'no_tk' => ['required'],
             'email' => ['required', 'email', 'unique:tb_pegawai'],
             'tgl_masuk' => ['required'],
-            'gaji_id' => ['required']
         ]);
 
         $pegawai = new Pegawai();
@@ -78,12 +87,10 @@ class PegawaiController extends Controller
         $pegawai->no_tk = $request->no_tk;
         $pegawai->email = $request->email;
         $pegawai->tgl_masuk = $request->tgl_masuk;
-        $pegawai->gaji_id = $request->gaji_id;
-        $pegawai->level_id = 3;
 
         $pegawai->save($validate);
 
-        return redirect()->back()->with('success', 'Berhasil Menambahkan Pegawai');
+        return redirect()->back()->with('success', 'Berhasil Menambah Data Pegawai');
     }
 
     /**
@@ -132,7 +139,6 @@ class PegawaiController extends Controller
             'no_tk' => ['required'],
             'email' => ['required'],
             'tgl_masuk' => ['required'],
-            'gaji_id' => ['required']
         ]);
 
         $dec = Crypt::decryptString($id);
@@ -152,7 +158,6 @@ class PegawaiController extends Controller
         $pegawai->no_tk = $request->no_tk;
         $pegawai->email = $request->email;
         $pegawai->tgl_masuk = $request->tgl_masuk;
-        $pegawai->gaji_id = $request->gaji_id;
 
         $pegawai->update();
 
@@ -172,6 +177,6 @@ class PegawaiController extends Controller
 
         $pegawai->delete();
 
-        return redirect()->back()->with('success', 'Berhasil Hapus Data');
+        return redirect()->back()->with('success', 'Berhasil Hapus Data Pegawai');
     }
 }
