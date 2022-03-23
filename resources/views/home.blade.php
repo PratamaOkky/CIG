@@ -27,9 +27,9 @@
             </div>
             <div class=col-md-4 py-5>
                  <img src="{{asset('assets/images/home-top.png')}}"style="width:343px;height:666px;padding-top: 150px;padding-bottom: 100px;">
-            </div>
+            </div> 
         </div>
-    </div>
+    </div>      
 </div>
 <div class="container">
 <div class="container" style="font-family: Poppins;">
@@ -44,12 +44,14 @@
             <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
             </div>
             <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">   
             </div>
+
             <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
             <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
             <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
             <div class="row" style="font-family: Poppins;">
+
             <div class="col-md-3"><h4 class="mb-4">Koordinasi</h4></div>
             <div class="col-md-3"><h3 class="mb-4">SOP, PSO & PROTAP</h3></div>
             <div class="col-md-3"><h3 class="mb-4">Pengawasan</h3></div>
@@ -72,3 +74,25 @@
             </div>
         </div>
 </div>
+
+<div style="background-image: url('assets/images/bghome-bott.png'); position: left; width:100%;height:100%; ">
+    <div class="container">
+        <img src="{{asset('assets/images/ic-home-bot.png')}}"style="width: 336px; height: 310px; left: 155px; top: 830px;">
+    </div>
+</div>
+<div class="container">
+        <div class="row">
+            <div class=col-md-8 py-5>
+                <div style="color:#BB1D33; padding-top: 100px;
+                        text-align: left; font-family: Poppins; font-size: 35px; width: 500px ">
+                        Terima Kasih Atas Kepercayaannya
+                        <p style="font-size:14px; color:#350106">Lorem ipsum dolor sit amet,
+                         consectetur adipiscing elit. Vestibulum, tristique ut nisl, accumsan nunc, condimentum bibendum mattis consectetur.</p>
+                </div>
+            </div>
+        <div class=col-md-4 py-5>
+        <img src="{{asset('assets/images/home-bot.png')}}"style="width:100%;height:100%; padding-top: 100px">
+        </div> 
+
+</div>
+@endsection
