@@ -6,11 +6,6 @@
 
 <div class="section">
     <div class="container">
-        @if (session()->has('success'))
-                <div id="success" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
 
         <div class="row">
             <div class="col-md-7 col-12 mt-5">
@@ -66,6 +61,8 @@
         </div>
         {{-- Modal Tambah --}}
 
+
+        @include('sweetalert::alert')
     </div>
 </div>
 

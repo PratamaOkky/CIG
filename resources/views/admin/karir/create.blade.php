@@ -36,7 +36,6 @@
                             </div>
                         @enderror
                         <textarea class="form-control" id="detail" name="detail" value="{{ old('detail') }}" required autofocus></textarea>
-                        {{-- <trix-editor input="detail"></trix-editor> --}}
                     </div>
                     <div class="button mb-3">
                         <button type="submit" class="btn btn-danger btn-modal">Simpan</button>

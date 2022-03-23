@@ -26,7 +26,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active">Kontak</a>
+                    <a href="{{route('contact.index')}}" class="nav-link active">Kontak</a>
                 </li>
 
                 @endif

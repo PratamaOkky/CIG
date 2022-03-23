@@ -30,7 +30,7 @@
         }
     </style>
 
-    @include('layouts.auth.navbar')
+    @include('layouts.homepage.navbar')
 
     <div id="auth">
         @yield('auth')
