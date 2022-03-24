@@ -11,5 +11,5 @@ class Pelamar extends Model
 
     protected $table = 'tb_pelamar';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id_pelamar'];
 }

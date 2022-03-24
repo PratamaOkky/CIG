@@ -37,8 +37,9 @@
                     <div class="card-body">
                         <div class="box">
                             <h1 class="card-title">3</h1>
+                            <a href="{{route('pelamar.index')}}"><i class="bi bi-person-workspace"></i></a>
                         </div>
-                        <p class="card-text" style="margin-left: 26px">Pelamar</p>
+                        <p class="card-text" style="margin-left: 26px;">Pelamar</p>
                     </div>
                 </div>
             </div>

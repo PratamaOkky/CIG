@@ -15,6 +15,7 @@ class GajiImport implements ToModel
     public function model(array $row)
     {
         return new Gaji([
+            'nip' => $row[0],
             'gaji' => $row[1],
             'tunjangan_makan' => $row[2],
             'tunjangan_operasional' => $row[3],

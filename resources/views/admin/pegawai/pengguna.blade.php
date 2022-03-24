@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="box">
                             <h1 class="card-title">1</h1>
-                            @if (auth()->user()->level_id == 1)
+                            @if (auth()->user()->id_level == 1)
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
                             @endif
                         </div>
@@ -66,32 +66,28 @@
                 <tr>
                 <th>Nip</th>
                 <th>Nama</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Divisi</th>
-                <th>Jabatan</th>
+                {{-- <th></th> --}}
+                <th>Status</th>
                 <th></th>
                 </tr>
             </thead>
 
-            @foreach ($pegawai as $item)
+            @foreach ($user as $item)
 
             <tbody>
                 <tr>
                     <td>{{$item->nip}}</td>
                     <td>{{$item->nama}}</td>
-                    <td>{{$item->gender->name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->divisi}}</td>
-                    <td>{{$item->jabatan}}</td>
+                    {{-- <td></td> --}}
+                    <td>{{$item->level->level}}</td>
                     <td>
-                        <a href="{{route('pegawai.edit', encrypt($item->id))}}" class="btn btn-danger btn-sm border-0 d-inline" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}" style="margin-left: -80px; background-color: #bb1d33"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('pengguna.edit', encrypt($item->id))}}" class="badge badge-danger" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}" style="background-color: #bb1d33">Edit</a>
 
-                        <form action="{{route('pegawai.destroy', Crypt::encryptString($item->id))}}" method="POST">
+                        {{-- <form action="{{route('pengguna.destroy', Crypt::encryptString($item->id))}}" method="POST">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger d-inline border-0 btn-sm" style="background-color: #bb1d33; margin-top: -44px; margin-left: 15px" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o"></i></button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
             </tbody>

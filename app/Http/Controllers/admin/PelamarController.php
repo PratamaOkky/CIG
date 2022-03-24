@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
-use App\Imports\GajiImport;
-use Maatwebsite\Excel\Facades\Excel;
 
-class GajiController extends Controller
+class PelamarController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('admin.gaji.index');
+        $pelamar = Pelamar::all();
+        return view('admin.pelamar.index', ['pelamar'=>$pelamar]);
     }
 
     /**
@@ -83,16 +83,5 @@ class GajiController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function importgaji(Request $request)
-    {
-        $file = $request->file('gaji');
-        $namaFile = $file->getClientOriginalName();
-        $file->move('gaji', $namaFile);
-
-        Excel::import(new GajiImport, public_path('gaji/'. $namaFile));
-
-        return redirect()->back()->with('success', 'Gaji Berhail Di Upload!');
     }
 }

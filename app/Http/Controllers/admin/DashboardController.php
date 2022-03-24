@@ -17,8 +17,8 @@ class DashboardController extends Controller
     public function index()
     {
         $gender = Gender::all();
-        $user = User::with('gender')->get();
-        return view('dashboard', ['gender'=>$gender]);
+        $user = User::with('gender', 'gaji')->get();
+        return view('dashboard', ['gender'=>$gender, 'user'=>$user]);
     }
 
     /**

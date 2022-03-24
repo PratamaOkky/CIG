@@ -196,10 +196,10 @@ color: #FFFFFF;
 /* icon sosmed */
 </style>
 
-<nav class="navbar navbar-expand-lg ftco-navbar-light">
+<nav class="navbar sticky-top navbar-expand-lg ftco-navbar-light">
 		<div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
-            <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="40" height="50">
+            <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" alt="G" width="35" height="40">
             Garda Mitra Nasional
           </a>
 

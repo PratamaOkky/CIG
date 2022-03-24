@@ -27,28 +27,28 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'nama' =>  'required|max:255',
-            'nip' => 'required|unique:tb_user|max:255',
+            'nip' => 'required|unique:tb_user|max:100',
             'level_id' =>  'required',
             'password' => 'required|min:5|max:255',
-            'jabatan' => ['required'],
-            'divisi' => ['required'],
-            'ttl' => ['required'],
-            'gender_id' => ['required'],
-            'kewarganegaraan' => 'required',
-            'agama' => ['required'],
-            'alamat' => ['required'],
-            'npwp' => ['required'],
-            'no_kes' => ['required'],
-            'no_tk' => ['required'],
-            'email' => ['required', 'email', 'unique:tb_pegawai'],
-            'tgl_masuk' => ['required'],
+            'jabatan' => 'nullable',
+            'divisi' => 'nullable',
+            'ttl' => 'nullable',
+            'gender_id' => 'nullable',
+            'kewarganegaraan' => 'nullable',
+            'agama' => 'nullable',
+            'alamat' => 'nullable',
+            'npwp' => 'nullable',
+            'no_kes' => 'nullable',
+            'no_tk' => 'nullable',
+            'email' => 'nullable', 'email', 'unique:tb_pegawai',
+            'tgl_masuk' => 'nullable'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);
 
-        return redirect()->back()->with('success', 'Berhasil Menambahkan Pengguna');
+        return redirect()->route('pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna');
 
     }
 }
