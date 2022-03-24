@@ -46,17 +46,11 @@ class User extends Authenticatable
 
     public function gaji()
     {
-        return $this->belongsTo(Gaji::class, 'gaji_id');
+        return $this->hasOne(Gaji::class, 'nip');
     }
 
     public function gender()
     {
         return $this->belongsTo(Gender::class, 'gender_id');
-    }
-
-    public function getCreatedAtAttribute()
-    {
-        return Carbon::parse($this->attributes['tgl_masuk'])
-            ->translatedFormat('1, d F Y');
     }
 }

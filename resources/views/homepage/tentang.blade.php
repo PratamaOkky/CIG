@@ -9,9 +9,9 @@
         <div class="col-6"style="color:#BB1D33; padding-top: 200px;
                         text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Sejarah
                         <p style="font-size:14px;font-weight: 400; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010.
-                            Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi
-                            yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.
-                            yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama dan koordinasi yang baik dengan badan keamanan pemerintah dan aparat keamanan setempat (TNI/POLRI/APPEM) Membina hubungan baik dengan masyarakat.</p>
+                        Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi
+                        yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.
+                        yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama dan koordinasi yang baik dengan badan keamanan pemerintah dan aparat keamanan setempat (TNI/POLRI/APPEM) Membina hubungan baik dengan masyarakat.</p>
         </div>
     </div>
 </div>

@@ -14,11 +14,11 @@
                 @if (auth()->user()->level_id == 1 || auth()->user()->level_id == 2)
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('pegawai.index')}}">Data User</a>
+                    <a href="{{route('pegawai.index')}}" class="nav-link active">Data User</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('gaji')}}">Penggajian</a>
+                    <a href="{{route('upah.index')}}" class="nav-link active" >Penggajian</a>
                 </li>
 
                 <li class="nav-item">

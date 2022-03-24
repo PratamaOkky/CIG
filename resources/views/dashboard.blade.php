@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-6 col-12">
 
                 <table class="table table-striped table-borderless">
@@ -77,7 +77,7 @@
             </div>
 
         </div>
-        <a href="#" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
+        <a href="{{asset('gaji/' . auth()->user()->nip)}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
     </div>
 </div>
 

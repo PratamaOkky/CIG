@@ -3,12 +3,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="margin-left: 25%" id="exampleModalLabel">Tambah Pengguna</h5>
-                    @if (session()->has('success'))
+                <h5 class="modal-title" style="margin-left: 27%" id="exampleModalLabel">Tambah Pengguna</h5>
+                    {{-- @if (session()->has('success'))
                     <div id="success" role="alert">
                         {{ session('success') }}
                     </div>
-                    @endif
+                    @endif --}}
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -25,7 +25,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="gender_id" class="col-form-label">Gender</label>
                         <select class="form-select" aria-label="Default select example" name="gender_id">
                             <option selected>--- Pilih Jenis Kelamin ---</option>
@@ -35,7 +35,7 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="nip" class="col-form-label">Nip</label>
                         <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip') }}" placeholder="Input Nip">
@@ -45,7 +45,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="jabatan" class="col-form-label">Jabatan</label>
                         <input type="text" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan" value="{{ old('jabatan') }}" placeholder="Input Jabatan">
                         @error('jabatan')
@@ -53,8 +53,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="divisi" class="col-form-label">Divisi</label>
                         <input type="text" class="form-control @error('divisi') is-invalid @enderror" id="divisi" name="divisi" value="{{ old('divisi') }}" placeholder="Input Divisi">
                         @error('divisi')
@@ -62,8 +62,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="ttl" class="col-form-label">Tempat Lahir</label>
                         <input type="text" class="form-control @error('ttl') is-invalid @enderror" id="ttl" name="ttl" value="{{ old('ttl') }}" placeholder="Input Tempat Lahir">
                         @error('ttl')
@@ -71,8 +71,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="kewarganegaraan" class="col-form-label">Kewarganegaraan</label>
                         <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror" id="kewarganegaraan" name="kewarganegaraan" value="{{ old('kewarganegaraan') }}" placeholder="Input Kewarganegaraan">
                         @error('kewarganegaraan')
@@ -80,8 +80,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="agama" class="col-form-label">Agama</label>
                         <input type="text" class="form-control @error('agama') is-invalid @enderror" id="agama" name="agama" value="{{ old('agama') }}" placeholder="Input Agama">
                         @error('agama')
@@ -89,8 +89,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="alamat" class="col-form-label">Alamat</label>
                         <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat') }}" placeholder="Input Alamat">
                         @error('alamat')
@@ -98,8 +98,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="npwp" class="col-form-label">Npwp</label>
                         <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" placeholder="Input Npwp">
                         @error('npwp')
@@ -107,8 +107,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="no_kes" class="col-form-label">No BPJS Kesehatan</label>
                         <input type="text" class="form-control @error('no_kes') is-invalid @enderror" id="no_kes" name="no_kes" value="{{ old('no_kes') }}" placeholder="Input No. BPJS Kesehatan">
                         @error('no_kes')
@@ -116,8 +116,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="no_tk" class="col-form-label">No Tenaga Kerja</label>
                         <input type="text" class="form-control @error('no_tk') is-invalid @enderror" id="no_tk" name="no_tk" value="{{ old('no_tk') }}" placeholder="Input No. Tenaga Kerja">
                         @error('no_tk')
@@ -125,8 +125,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="email" class="col-form-label">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="Input email">
                         @error('email')
@@ -134,8 +134,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{-- <div class="mb-3">
                         <label for="tgl_masuk" class="col-form-label">Tanggal Masuk</label>
                         <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" id="tgl_masuk" name="tgl_masuk" value="{{ old('tgl_masuk') }}">
                         @error('tgl_masuk')
@@ -143,7 +143,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="level_id" class="col-form-label">Level</label>
                         <select class="form-select" id="level_id" name="level_id">

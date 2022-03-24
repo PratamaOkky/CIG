@@ -2,21 +2,38 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Level;
+use App\Models\Gender;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
-use App\Imports\GajiImport;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
-class GajiController extends Controller
+class UserController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('admin.gaji.index');
+        $level = Level::all();
+        $gender = Gender::all();
+
+        $peg = Pegawai::count();
+        $pegawai = Pegawai::with('gender')->get();
+
+        $users = User::count();
+        $user = User::with('level')->get();
+        return view('admin.pegawai.pengguna', [
+            'pegawai'=>$pegawai,
+            'peg'=>$peg,
+            'gender'=>$gender,
+            'levels'=>$level,
+            'user' =>$user,
+            'users' =>$users
+        ]);
     }
 
     /**
@@ -83,16 +100,5 @@ class GajiController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function importgaji(Request $request)
-    {
-        $file = $request->file('gaji');
-        $namaFile = $file->getClientOriginalName();
-        $file->move('gaji', $namaFile);
-
-        Excel::import(new GajiImport, public_path('gaji/'. $namaFile));
-
-        return redirect()->back()->with('success', 'Gaji Berhail Di Upload!');
     }
 }

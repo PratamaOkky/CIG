@@ -6,21 +6,13 @@ use App\Http\Controllers\admin\KarirController;
 use App\Http\Controllers\admin\PegawaiController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KontakController;
+use App\Http\Controllers\admin\PelamarController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\profile\ProfileController;
 use App\Http\Controllers\homepage\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -59,7 +51,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     Route::resource('pegawai', PegawaiController::class);
 
     // Data Gaji
-    Route::get('/gaji', [GajiController::class, 'index'])->name('gaji');
+    Route::resource('upah', GajiController::class);
     Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
 
     // Karir
@@ -67,6 +59,12 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 
     // Kontak
     Route::resource('contact', KontakController::class);
+
+    // Pelamar
+    Route::resource('pelamar', PelamarController::class);
+
+    // Pengguna
+    Route::resource('pengguna', UserController::class);
 
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');

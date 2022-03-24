@@ -34,7 +34,7 @@ class PegawaiController extends Controller
             'gender'=>$gender,
             'levels'=>$level,
             'user' =>$user,
-            'user' =>$users
+            'users' =>$users
         ]);
     }
 
