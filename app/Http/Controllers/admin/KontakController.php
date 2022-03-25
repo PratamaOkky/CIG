@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pesan;
-use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 
 class KontakController extends Controller

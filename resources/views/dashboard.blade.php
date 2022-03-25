@@ -35,7 +35,7 @@
                         <td>Kelahiran : {{ auth()->user()->ttl }}</td>
                       </tr>
                       <tr>
-                        <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>
+                        <td>Jenis Kelamin : {{ auth()->user()->gender_id }}</td>
                       </tr>
                       <tr>
                         <td>Agama : {{ auth()->user()->agama }}</td>
@@ -75,9 +75,8 @@
                 </table>
 
             </div>
-
         </div>
-        <a href="{{asset('gaji/' . auth()->user()->nip)}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
+            <a href="{{route('download')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
     </div>
 </div>
 

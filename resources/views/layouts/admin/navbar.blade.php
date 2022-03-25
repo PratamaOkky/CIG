@@ -18,7 +18,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('upah.index')}}" class="nav-link active" >Penggajian</a>
+                    <a href="{{route('gaji.index')}}" class="nav-link active" >Penggajian</a>
                 </li>
 
                 <li class="nav-item">

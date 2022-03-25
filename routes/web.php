@@ -39,6 +39,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::group(['middleware' => ['auth', 'ceklevel:3']], function()
 {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/download-gaji', [ProfileController::class, 'download'])->name('download.gaji');
 });
 
 // Admin
@@ -51,8 +52,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     Route::resource('pegawai', PegawaiController::class);
 
     // Data Gaji
-    Route::resource('upah', GajiController::class);
+    Route::resource('gaji', GajiController::class);
     Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
+    Route::get('/download', [GajiController::class, 'download'])->name('download');
 
     // Karir
     Route::resource('karir', KarirController::class);

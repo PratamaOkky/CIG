@@ -41,16 +41,16 @@ class User extends Authenticatable
 
     public function level()
     {
-        return $this->belongsTo(Level::class, 'level_id');
+        return $this->belongsTo(Level::class);
     }
 
-    public function gaji()
+    public function gaji_id()
     {
-        return $this->hasOne(Gaji::class, 'nip');
+        return $this->hasOne(Gaji::class);
     }
 
-    public function gender()
+    public function gender_id()
     {
-        return $this->belongsTo(Gender::class, 'gender_id');
+        return $this->belongsTo(Gender::class);
     }
 }

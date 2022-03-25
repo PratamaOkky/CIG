@@ -162,7 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-
+        // PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -242,8 +243,10 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         // Sweet Alert
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
+        // PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class
     ],
 
 ];

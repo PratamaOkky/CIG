@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Gaji;
 
 class DashboardController extends Controller
 {
@@ -16,9 +17,10 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $gaji = Gaji::all();
         $gender = Gender::all();
-        $user = User::with('gender', 'gaji')->get();
-        return view('dashboard', ['gender'=>$gender, 'user'=>$user]);
+        $user = User::with('gender_id')->get();
+        return view('dashboard', ['gender'=>$gender, 'user'=>$user, 'gaji'=>$gaji]);
     }
 
     /**

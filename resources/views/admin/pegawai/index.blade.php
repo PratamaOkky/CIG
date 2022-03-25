@@ -64,13 +64,13 @@
         <table class="table table-borderless table-sm mt-5 ml-5" style="max-width: 92%; margin-bottom: 130px">
             <thead>
                 <tr>
-                <th>Nip</th>
-                <th>Nama</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Divisi</th>
-                <th>Jabatan</th>
-                <th></th>
+                    <th>Nip</th>
+                    <th>Nama</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Divisi</th>
+                    <th>Jabatan</th>
+                    <th></th>
                 </tr>
             </thead>
 

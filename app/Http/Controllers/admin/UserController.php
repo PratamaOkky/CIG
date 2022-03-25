@@ -26,6 +26,7 @@ class UserController extends Controller
 
         $users = User::count();
         $user = User::with('level')->get();
+        // dd($user);
         return view('admin.pegawai.pengguna', [
             'pegawai'=>$pegawai,
             'peg'=>$peg,

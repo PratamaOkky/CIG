@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Karir;
+use App\Models\Pelamar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,10 @@ class KarirController extends Controller
 
     public function index()
     {
+        $pelamar = Pelamar::count();
         $karirs = Karir::count();
         $karir = Karir::all();
-        return view('admin.karir.index', ['karirs'=>$karir, 'karir'=>$karirs]);
+        return view('admin.karir.index', ['karirs'=>$karir, 'karir'=>$karirs, 'pelamar'=>$pelamar]);
     }
 
     /**

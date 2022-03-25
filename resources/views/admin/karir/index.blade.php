@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="box">
-                            <h1 class="card-title">3</h1>
+                            <h1 class="card-title">{{$pelamar}}</h1>
                             <a href="{{route('pelamar.index')}}"><i class="bi bi-person-workspace"></i></a>
                         </div>
                         <p class="card-text" style="margin-left: 26px;">Pelamar</p>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-8">
 
-                    <div class="card-body" style="text-align: start; margin-left: -130px;">
+                    <div class="card-body" style="text-align: start; margin-left: -100px;">
                         <h5 class="card-title">{{$item->lowongan}}</h5>
                         <p class="card-text">{{$item->posisi}}</p>
 

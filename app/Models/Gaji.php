@@ -40,8 +40,8 @@ class Gaji extends Model
         'totalgaji',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'nip');
-    }
+    // public function id()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

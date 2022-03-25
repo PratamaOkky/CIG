@@ -4,11 +4,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" style="margin-left: 27%" id="exampleModalLabel">Tambah Pengguna</h5>
-                    {{-- @if (session()->has('success'))
-                    <div id="success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                    @endif --}}
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

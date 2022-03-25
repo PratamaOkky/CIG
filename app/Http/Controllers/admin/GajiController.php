@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Gaji;
+use App\Models\User;
 use App\Imports\GajiImport;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class GajiController extends Controller
@@ -89,10 +93,23 @@ class GajiController extends Controller
     {
         $file = $request->file('gaji');
         $namaFile = $file->getClientOriginalName();
-        $file->move('gaji', $namaFile);
+        $file->move('assets/gaji/', $namaFile);
 
-        Excel::import(new GajiImport, public_path('gaji/'. $namaFile));
+        Excel::import(new GajiImport, public_path('assets/gaji/'. $namaFile));
 
         return redirect()->back()->with('success', 'Gaji Berhail Di Upload!');
+    }
+
+    public function download()
+    {
+        $nip = Auth::user()->nip;
+        $gaji = Gaji::where('nip', $nip)->first();
+
+        // dd($gaji);
+        return view('admin.gaji.slip_gaji', ['gaji'=>$gaji, 'nip'=>$nip]);
+        // $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('a4', 'landscape');
+        // dd($pdf);
+
+        // return $pdf->download('invoice.pdf');
     }
 }

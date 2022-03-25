@@ -1,4 +1,4 @@
-{{-- @section('title', 'Dashboard')
+@section('title', 'Dashboard')
 
 @extends('layouts.admin.template')
 
@@ -10,7 +10,7 @@
             <h1 class="head">Selamat Datang</h1>
         </div>
 
-        <div class="card mb-5" style="max-width: 100%; border: none">
+        <div class="card mb-3" style="max-width: 100%; border: none">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="{{asset('assets/images/faces/1.jpg')}}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="row mb-3hp">
+        <div class="row mt-5">
             <div class="col-md-6 col-12">
 
                 <table class="table table-striped table-borderless">
@@ -35,7 +35,7 @@
                         <td>Kelahiran : {{ auth()->user()->ttl }}</td>
                       </tr>
                       <tr>
-                        <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>
+                        <td>Jenis Kelamin : {{ auth()->user()->gender_id }}</td>
                       </tr>
                       <tr>
                         <td>Agama : {{ auth()->user()->agama }}</td>
@@ -57,7 +57,7 @@
 
                     <tbody>
                         <tr>
-                          <td>Tahun Masuk : {{ auth()->user()->tgl_masuk }}</td>
+                          <td>Tahun Masuk : {{ date('d-m-Y'), strtotime( auth()->user()->tgl_masuk ) }}</td>
                         </tr>
                         <tr>
                           <td>NIP : {{ auth()->user()->nip }}</td>
@@ -75,13 +75,9 @@
                 </table>
 
             </div>
-
         </div>
-
-        <a href="#" class="btn btn-danger d-inline border-0" style="margin-left: 92%; background-color: #bb1d33">Slip Gaji</a>
+            <a href="{{route('download.gaji')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
     </div>
 </div>
 
-@endsection --}}
-
-@include('dashboard')
+@endsection
