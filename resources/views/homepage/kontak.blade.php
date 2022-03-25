@@ -14,13 +14,19 @@ font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-
         <form action="{{route('post')}}" method="POST" >
     @csrf
         <label>Nama</label>
-        <input type="text"  style="width: 75%" class="form-control" name="nama" value="{{ old('nama') }}">
+        <input type="text"  style="width: 380px;height: 43px;" class="form-control" name="nama" value="{{ old('nama') }}">
         <label>Email/Kontak</label>
-        <input type="text" style="width: 75%"class="form-control" name="email" value="{{ old('email') }}">
+        <input type="text" style="width: 380px;height: 43px;"class="form-control" name="email" value="{{ old('email') }}">
         <label>Subjek</label>
+
+        <input type="text" style="width: 380px;height: 43px;"class="form-control" name="subject" value="{{ old('subject') }}">
+        <label>Pesan Yang Ingin Disampaikan</label>
+        <textarea name="isi" style="width: 380px;height: 157px;" class="form-control" cols="30" rows="10">{{ old('isi') }}</textarea><br>
+
         <input type="text" style="width: 75%"class="form-control" name="subjek" value="{{ old('subject') }}">
         <label>Pesan Yang Ingin Disampaikan</label>
         <textarea name="isi" style="width: 75%" class="form-control" cols="30" rows="10">{{ old('isi') }}</textarea><br>
+
         <button type="submit" class="btn-red btn-danger" style="font">Kirim</button>
         </div>
         <div class="col-6" align="center">
