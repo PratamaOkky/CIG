@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-6" style="padding-top: 150px">
+        <div class="col-12 col-lg-6" style="padding-top: 150px">
         <img src="{{asset('assets/images/tentang.png')}}"style="width: 513px;height: 299px;left: 155px;top: 173px">
         </div>
-        <div class="col-6"style="color:#BB1D33; padding-top: 200px;
+        <div class="col-12 col-lg-6"style="color:#BB1D33; padding-top: 200px;
                         text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Sejarah
                         <p style="font-size:14px;font-weight: 400; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010.
                         Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi
@@ -15,23 +15,102 @@
         </div>
     </div>
 </div>
+
+<div class="container" style="padding-top: 150px;">
+<div class="row">
+
+	<div class="col-md-3 col-sm-6 mb-3">
+		<div class="card border-0">
+			<img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;" align=center>
+			<div class="card-body">
+				<div class="card-title"><h4 class="mb-4">Koordinasi</h4></div>
+                <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
+            </div>
+		</div>
+	</div>
+
+	<div class="col-md-3 col-sm-6 mb-3">
+		<div class="card border-0">
+        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+			<div class="card-body">
+				<div class="card-title"><h5 class="mb-4">SOP,PSO & PROTAP</h4></div>
+				<h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
+            </div>
+		</div>
+	</div> 
+    <div class="col-md-3 col-sm-6 mb-3">
+		<div class="card border-0">
+        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+			<div class="card-body">
+				<div class="card-title"><h4 class="mb-4">Pengawasan</h4></div>
+                <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
+           </div>
+		</div>
+	</div>
+
+	<div class="col-md-3 col-sm-6 mb-3">
+		<div class="card border-0">
+        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+			<div class="card-body">
+				<div class="card-title"><h4 class="mb-4">Pembinaan</h4></div>
+				<h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
+            </div>
+		</div>
+	</div>
+</div>
+<!-- <div class="container" style="font-family: Poppins; padding-top:100px;padding-bottom:60px">
+        <div class="row g-0">
+            <div class="col-md-3">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
+            </div>
+            <div class="col-md-3">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
+            </div>
+            <div class="col-md-3">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
+            </div>
+            <div class="col-md-3">
+            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">   
+            </div>
+            <div class="col-md-3"><h4 class="mb-4">Koordinasi</h4></div>
+            <div class="col-md-3"><h3 class="mb-4">SOP, PSO & PROTAP</h3></div>
+            <div class="col-md-3"><h3 class="mb-4">Pengawasan</h3></div>
+            <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
+            <div class="col-md-3">
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
+            </div>
+            <div class="col-md-3">
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
+            </div>
+            <div class="col-md-3">
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
+            </div>
+            <div class="col-md-3">
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
+            </div>
+        </div>
+</div>-->
 <div class="container">
     <div class="row">
-        <div class="col-1" style="padding-top: 150px">
+        <div class="col-2 col-lg-1" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-struktur.png')}}"style="width: 85px;height: 103px;left: 155px;top: 548px;">
         </div>
-        <div class="col-11"style="color:#BB1D33; padding-top: 175px;
-                        text-align: left; font-family: Poppins; font-weight: 700;font-size: 28px; width: 500px">&ensp;Struktur Organisasi
+        <div class="col-10 col-lg-11"style="color:#BB1D33; padding-top: 75px;
+                        text-align: left; font-family: Poppins; font-weight: 700;font-size: 28px; width: 500px">&ensp;Kata Pengantar Direktur
         </div>
     </div>
-</div>
+</div> 
 <div class="container"><center>
     <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-        <div class="col-10">
-        <img src="{{asset('assets/images/tentang.png')}}"style="width: 513px;height: 299px;left: 155px;top: 173px">
+        <div class="col-3">
+        <img src="{{asset('assets/images/tentang.png')}}"style="width: 299px ;height:513px;left: 155px;top: 173px">
         </div>
-        <div class="col-1"></div>
+        <div class="col-9 align-self-center">
+        <blockquote class="blockquote">
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+        </div>
     </div>
 </div>
 <div class="container"><center>
@@ -43,13 +122,23 @@
         <div class="col-1"></div>
     </div>
 </div>
-            <center><p style="padding-top: 10px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Visi Misi
-            <span style="color:#BB1D33">Strategi Sasaran</span> </p>
-            <center><p style="padding-top: 10px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 1000px;color:#BB1D33">VISI<br>
-            <div class="container" style="background: rgba(187, 29, 51, 0.03); border-radius: 0px 75px;color:#350106;font-family: Poppins;font-weight: 500; font-size: 35px; width: 1000px;">MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
-            </div>
 
 <div class="container">
+    <div class="row">
+        <div align="right" class="col-3" style="padding-top: 50px">
+        <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
+        </div>
+        <div class="col-9" style="color:#BB1D33; padding-top: 75px;
+                        text-align: left; font-family: Poppins;font-weight: 600; font-size: 28px;">Visi
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
+        MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
+        </div>
+        <div class="col-2"></div>
+    </div>
     <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
@@ -70,7 +159,7 @@
         </div>
         <div class="col-2"></div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
         </div>
@@ -89,8 +178,8 @@
         <div class="col-3"></div>
 
     </div>
-
-<div class="row">
+ -->
+<!-- <div class="row">
 <p style="padding-top: 90px;font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px
 align-items: center; justify-content: center; color:#BB1D33">Sasaran</p>
 <p align="left" style="font-size: 16px">Menciptakan suasana aman dengan cara menyelenggarakan sistem pengamanan dan keselamatan manusia baik pribadi
@@ -103,7 +192,7 @@ align-items: center; justify-content: center; color:#BB1D33">Sasaran</p>
 </li><li>Struktur biaya operasional yang lebih baik dan kompetitif
 </li><li>Security sebagai benteng perusahaan dari berbagai ancaman dan tindakan pelanggaran ketertiban selalu dibekali pengetahuan dan ketrampilan yang
 mampu bertindak dengan cepat dan akurat sesuai dengan petunjuk Instansi Pembina yaitu POLRI
-</li>
+</li> -->
 </div>
 </div>
 

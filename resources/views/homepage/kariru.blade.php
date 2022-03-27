@@ -6,11 +6,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6" style="padding-top: 150px">
+        <div class="col-12 col-lg-6" style="padding-top: 150px">
             <img src="{{asset('assets/images/karir.png')}}"style="width: 436px;height: 424px;left: 155px;top: 164px;">
         </div>
 
-        <div class="col-6"style="color:#BB1D33; padding-top: 200px; text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">
+        <div class="col-12 col-lg-6"style="color:#BB1D33; padding-top: 200px; text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">
             <img src="{{asset('assets/images/red.png')}}" style="width: 53px;height: 29px;left: 694px;top: 255px;">
             <p>Lowongan Kerja</p>
             <p style="font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 16px;line-height: 24px;color: #350106;">
@@ -33,7 +33,7 @@ bergabunglah Menjadi bagian dari kami</p>
                 <h5 class="card-title">{{$item->lowongan}}</h5>
                 <p class="card-text">{{$item->posisi}}</p>
 
-                <button type="submit" class="btn btn-danger border-0 d-inline" data-bs-target="#tambah" data-bs-toggle="modal" style="margin-left: 762px; margin-top: -65px; background-color: #BB1D33">Kirim CV</button>
+                <button type="submit" class="btn-red btn-danger border-0 d-inline" data-bs-target="#tambah" data-bs-toggle="modal" style="margin-left: 762px; margin-top: -65px; background-color: #BB1D33">Kirim CV</button>
 
             </div>
 
