@@ -94,7 +94,7 @@
 
             </div>
         </div>
-            <a href="{{route('download')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
+            <a href="{{route('download.gaji')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
     </div>
 </div>
 
