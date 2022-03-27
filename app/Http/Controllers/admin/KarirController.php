@@ -7,10 +7,8 @@ use App\Models\Karir;
 use App\Models\Pelamar;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Crypt;
-
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class KarirController extends Controller
 {
@@ -24,7 +22,13 @@ class KarirController extends Controller
         $pelamar = Pelamar::count();
         $karirs = Karir::count();
         $karir = Karir::all();
-        return view('admin.karir.index', ['karirs'=>$karir, 'karir'=>$karirs, 'pelamar'=>$pelamar]);
+        return view('admin.karir.index', [
+            'karir'=>$karir,
+            'karirs'=>$karirs,
+            'pelamar'=>$pelamar,
+
+            'karir' => Karir::filter(request(['search']))->paginate(10)
+        ]);
     }
 
     /**
@@ -45,19 +49,20 @@ class KarirController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'lowongan' => 'required',
             'posisi' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
+            'image' => 'file|image|max:2048'
         ]);
 
-        $karir = new Karir();
-        $karir->lowongan = $request->lowongan;
-        $karir->posisi = $request->posisi;
-        // $karir ['user'] = auth()->user()->id;
-        $karir ['detail'] = Str::limit(strip_tags($request->detail), 200);
+        $validatedData['detail'] = Str::limit(strip_tags($request->detail), 200);
 
-        $karir->save();
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('karir');
+        }
+
+        Karir::create($validatedData);
 
         return redirect()->back()->with('success', 'Berhasil Menambahkan Karir');
     }
@@ -97,15 +102,24 @@ class KarirController extends Controller
             'lowongan' => 'required',
             'posisi' => 'required',
             'detail' => 'required',
+            'image' => 'file|image|max:2048'
         ]);
 
         $dec = Crypt::decryptString($id);
-        $data = Karir::findOrFail($dec);
-        $data->lowongan = $request->lowongan;
-        $data->posisi = $request->posisi;
-        $data->detail = $request->detail;
+        $karir = Karir::findOrFail($dec);
 
-        $data->update();
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $karir['image'] = $request->file('image')->store('karir');
+        }
+
+        $karir->lowongan = $request->lowongan;
+        $karir->posisi = $request->posisi;
+        $karir['detail'] = Str::limit(strip_tags($request->detail), 200);
+
+        $karir->update();
 
         return redirect()->back()->with('success', 'Berhasil Ubah Karir');
     }
@@ -121,7 +135,11 @@ class KarirController extends Controller
         $dec = Crypt::decryptString($id);
         $karir = Karir::findOrFail($dec);
 
-        $karir->delete();
+        if ($karir->image) {
+            Storage::delete($karir->image);
+        }
+
+        Karir::destroy($karir->id);
 
         return redirect()->back()->with('success', 'Berhasil Hapus Karir');
     }

@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Data Pegawai
-    Route::resource('pegawai', PegawaiController::class);
+    // Route::resource('pegawai', PegawaiController::class);
 
     // Data Gaji
     Route::resource('gaji', GajiController::class);

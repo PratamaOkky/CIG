@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Level;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -32,23 +31,38 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255',
             'jabatan' => 'nullable',
             'divisi' => 'nullable',
+            'atasan' => 'nullable',
             'ttl' => 'nullable',
+            'nik' => 'nullable|unique:tb_user|max:100',
+            'awal_pkwt' => 'nullable',
+            'akhir_pkwt' => 'nullable',
+            'status_pajak' => 'nullable',
             'gender_id' => 'nullable',
             'kewarganegaraan' => 'nullable',
             'agama' => 'nullable',
             'alamat' => 'nullable',
-            'npwp' => 'nullable',
-            'no_kes' => 'nullable',
-            'no_tk' => 'nullable',
-            'email' => 'nullable', 'email', 'unique:tb_pegawai',
-            'tgl_masuk' => 'nullable'
+            'npwp' => 'nullable|unique:tb_user|max:100',
+            'no_kes' => 'nullable|unique:tb_user|max:100',
+            'no_tk' => 'nullable|unique:tb_user|max:100',
+            'email' => 'nullable|email|unique:tb_pegawai',
+            'instalasi' => 'nullable|unique:tb_pegawai',
+            'bank' => 'nullable',
+            'rek' => 'nullable|unique:tb_pegawai',
+            'tgl_masuk' => 'nullable',
+            'image' => 'file|image|max:2048'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('user');
+        }
 
-        return redirect()->route('pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna');
+        if (User::create($validatedData)) {
+            return redirect()->route('pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna');
+        }
+        return redirect()->route('pengguna.index')->with('error', 'Gagal Mengubah Data');
+
 
     }
 }

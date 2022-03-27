@@ -12,9 +12,9 @@
                 <div class="section-header mt-5 mb-5">
                     <h1 class="head">Konten Karir</h1>
                 </div>
-                <form class="d-flex">
-                    <span class="icon"><i class="fa fa-search"></i></span>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form action="{{route('karir.index')}}" class="d-block">
+                    <button type="submit" class="icon d-inline border-0" style="background: transparent"><i class="fa fa-search"></i></button>
+                    <input class="form-control me-2" type="text" placeholder="Search..." name="search" value="{{ request('search') }}">
                 </form>
             </div>
         </nav>
@@ -24,10 +24,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="box">
-                            <h1 class="card-title">{{$karir}}</h1>
+                            <h1 class="card-title">{{$karirs}}</h1>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
                         </div>
-                        <p class="card-text" style="margin-left: 18px">Karir</p>
+                        <p class="card-text" style="margin-left: 38px">Karir</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                             <h1 class="card-title">{{$pelamar}}</h1>
                             <a href="{{route('pelamar.index')}}"><i class="bi bi-person-workspace"></i></a>
                         </div>
-                        <p class="card-text" style="margin-left: 26px;">Pelamar</p>
+                        <p class="card-text" style="margin-left: 23%;">Pelamar</p>
                     </div>
                 </div>
             </div>
@@ -52,14 +52,21 @@
 
         {{-- Card --}}
         <div class="card" style="width: 940px; top: 60px; left: 30px;">
-            <div class="row g-0">
-                @foreach ($karirs as $item)
-                <div class="col-md-4">
-                    <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px">
-                </div>
+            <div class="row">
+                @foreach ($karir as $item)
+                @if ($item->image)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" alt="" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px">
+                    </div>
+                @else
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px">
+                    </div>
+                @endif
+
                 <div class="col-md-8">
 
-                    <div class="card-body" style="text-align: start; margin-left: -100px;">
+                    <div class="card-body" style="text-align: start; margin-left: -100px">
                         <h5 class="card-title">{{$item->lowongan}}</h5>
                         <p class="card-text">{{$item->posisi}}</p>
 
@@ -74,6 +81,9 @@
 
                 </div>
                 @endforeach
+                <div class="d-flex justify-content-center">
+                    {{ $karir->links() }}
+                </div>
             </div>
         </div>
         {{-- Card --}}
@@ -83,7 +93,25 @@
         @include('admin.karir.edit')
 
         @include('sweetalert::alert')
+
     </div>
 </div>
+
+
+<script>
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 
 @endsection

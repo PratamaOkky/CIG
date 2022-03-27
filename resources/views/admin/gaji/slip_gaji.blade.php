@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Slip</title>
+    <title>Slip Gaji</title>
   </head>
   <body>
 
@@ -20,18 +20,22 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-header" style="border: 1px black solid">
-                                    <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" width="35" height="40" alt="" style="margin-right: 44%;">Slip Gaji
+                                    <img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" width="35" height="40" alt="" style="margin-right: 40%;">Slip Gaji
                                 </div>
 
-                                <div class="card-body" style="border: 1px black solid; font-size: 12px">
+                                <div class="card-body" style="border: 1px black solid; font-size: 14px">
                                     <div class="row">
                                         <div class="col-6">
                                             <p class="card-text">NAMA : {{Auth::user()->nama}}</p>
                                             <p class="card-text">NIP : {{Auth::user()->nip}}</p>
                                             <p class="card-text">JABATAN : {{Auth::user()->jabatan}}</p>
                                             <p class="card-text">ATASAN LANGSUNG : {{Auth::user()->atasan}}</p>
+                                            <p class="card-text">NO.NPWP : {{ Auth::user()->npwp }}</p>
+                                            <p class="card-text">NO.REKENING : {{ Auth::user()->rek }}</p>
+                                            <p class="card-text">INSTALASI : {{ Auth::user()->instalasi }}</p>
+                                            <p class="card-text">NAMA BANK : {{ Auth::user()->bank }}</p>
 
-                                            <p style="margin-left: 25%; padding-top: 5%; font-weight: bold">PENDAPATAN</p>
+                                            <p class="card-text" style="margin-left: 23%; padding-top: 3%; font-weight: bold">PENDAPATAN</p>
 
                                             <p class="card-text" style="padding-top: 5%;">GAJI POKOK : {{$gaji->gaji}}</p>
                                             <p class="card-text">T.MAKAN & TRANSPORT : {{$gaji->tunjangan_makan}}</p>
@@ -48,14 +52,10 @@
 
                                         </div>
                                         <div class="col-6">
-                                            <p class="card-text">NO.NPWP : {{ Auth::user()->npwp }}</p>
-                                            <p class="card-text">NO.REKENING : -</p>
-                                            <p class="card-text">INSTALASI : ASIA 1</p>
-                                            <p class="card-text">NAMA BANK : BCA</p>
 
-                                            <p style="margin-left: 20%; padding-top: 5%; font-weight: bold">POTONGAN/ IURAN</p>
+                                            <p class="card-text" style="margin-left: 25%; padding-top: 8%; font-weight: bold">POTONGAN/ IURAN</p>
 
-                                            <p class="card-text" style="padding-top: 5%;">UANG JAMINAN : {{ $gaji->jaminan }}</p>
+                                            <p class="card-text" style="padding-top: 3%;">UANG JAMINAN : {{ $gaji->jaminan }}</p>
                                             <p class="card-text">KOREKSI (-) : {{ $gaji->koreksi_min }}</p>
                                             <p class="card-text">DIKSAR : {{ $gaji->diksar }}</p>
                                             <p class="card-text">KTA : {{ $gaji->kta }}</p>

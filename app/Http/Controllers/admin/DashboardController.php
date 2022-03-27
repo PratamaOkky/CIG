@@ -19,8 +19,12 @@ class DashboardController extends Controller
     {
         $gaji = Gaji::all();
         $gender = Gender::all();
-        $user = User::with('gender_id')->get();
-        return view('dashboard', ['gender'=>$gender, 'user'=>$user, 'gaji'=>$gaji]);
+        $user = User::with('gender')->get();
+        return view('dashboard', [
+            'gender'=>$gender,
+            'user'=>$user,
+            'gaji'=>$gaji
+        ]);
     }
 
     /**

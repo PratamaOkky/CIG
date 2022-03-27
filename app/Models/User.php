@@ -15,10 +15,6 @@ class User extends Authenticatable
 
     protected $table = 'tb_user';
 
-    // protected $fillable = [
-    //     'nama', 'nip', 'password', 'level_id'
-    // ];
-
     protected $guarded = ['id'];
     /**
      * The attributes that should be hidden for serialization.
@@ -44,13 +40,22 @@ class User extends Authenticatable
         return $this->belongsTo(Level::class);
     }
 
-    public function gaji_id()
+    public function gaji()
     {
         return $this->hasOne(Gaji::class);
     }
 
-    public function gender_id()
+    public function gender()
     {
         return $this->belongsTo(Gender::class);
+    }
+
+    public function scopeFilter($query, array $filter)
+    {
+        $query->when($filter['search'] ?? false, function($query, $search)
+        {
+            return $query->where('nama', 'like', '%' . $search . '%')
+                        ->orWhere('nip', 'like', '%' . $search . '%');
+        });
     }
 }
