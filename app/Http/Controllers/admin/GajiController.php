@@ -105,11 +105,9 @@ class GajiController extends Controller
         $nip = Auth::user()->nip;
         $gaji = Gaji::where('nip', $nip)->first();
 
-        // dd($gaji);
-        return view('admin.gaji.slip_gaji', ['gaji'=>$gaji, 'nip'=>$nip]);
-        // $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('a4', 'landscape');
-        // dd($pdf);
+        $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('legal', 'potrait');
 
-        // return $pdf->download('invoice.pdf');
+        return $pdf->download('invoice.pdf');
+        // return view('admin.gaji.slip_gaji', ['gaji'=>$gaji, 'nip'=>$nip]);
     }
 }

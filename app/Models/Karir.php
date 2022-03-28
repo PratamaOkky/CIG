@@ -15,5 +15,15 @@ class Karir extends Model
         'lowongan',
         'posisi',
         'detail',
+        'image'
     ];
+
+    public function scopeFilter($query, array $filter)
+    {
+        $query->when($filter['search'] ?? false, function($query, $search)
+        {
+            return $query->where('lowongan', 'like', '%' . $search . '%')
+                        ->orWhere('posisi', 'like', '%' . $search . '%');
+        });
+    }
 }

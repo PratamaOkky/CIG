@@ -12,12 +12,18 @@
 
         <div class="card mb-3" style="max-width: 100%; border: none">
             <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{asset('assets/images/faces/1.jpg')}}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
-                </div>
+                @if (auth()->user()->image)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . auth()->user()->image) }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
+                    </div>
+                @else
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images/faces/1.jpg') }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
+                    </div>
+                @endif
                 <div class="col-md-8">
                     <div class="card-body" align="left" style="margin-left: -250px;">
-                        <h2 class="card-title" style="font-size: 26px">{{ auth()->user()->nama }}</h2>
+                        <h2 class="card-title" style="font-size: 26px; font-weight: bold">{{ auth()->user()->nama }}</h2>
                         <p class="card-text">{{ auth()->user()->divisi }}</p>
                         <p class="card-text">{{ auth()->user()->nip }}</p>
                     </div>
@@ -35,7 +41,7 @@
                         <td>Kelahiran : {{ auth()->user()->ttl }}</td>
                       </tr>
                       <tr>
-                        <td>Jenis Kelamin : {{ auth()->user()->gender_id }}</td>
+                        <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>
                       </tr>
                       <tr>
                         <td>Agama : {{ auth()->user()->agama }}</td>
@@ -45,6 +51,12 @@
                       </tr>
                       <tr>
                         <td>Alamat : {{ auth()->user()->alamat }}</td>
+                      </tr>
+                      <tr>
+                        <td>Status Pajak : {{ auth()->user()->status_pajak }}</td>
+                      </tr>
+                      <tr>
+                        <td>Mulai PKWT : {{ auth()->user()->awal_pkwt }}</td>
                       </tr>
                     </tbody>
                 </table>
@@ -57,7 +69,10 @@
 
                     <tbody>
                         <tr>
-                          <td>Tahun Masuk : {{ date('d-m-Y'), strtotime( auth()->user()->tgl_masuk ) }}</td>
+                          <td>Tahun Masuk : {{ auth()->user()->tgl_masuk }}</td>
+                        </tr>
+                        <tr>
+                            <td>NIK : {{ auth()->user()->nik }}</td>
                         </tr>
                         <tr>
                           <td>NIP : {{ auth()->user()->nip }}</td>
@@ -71,12 +86,15 @@
                         <tr>
                           <td>BPJS Tenaga Kerja : {{ auth()->user()->no_tk }}</td>
                         </tr>
+                        <tr>
+                            <td>Akhir PKWT : {{ auth()->user()->akhir_pkwt }}</td>
+                        </tr>
                       </tbody>
                 </table>
 
             </div>
         </div>
-            <a href="{{route('download.gaji')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%">Slip Gaji</a>
+            <a href="{{route('download.gaji')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
     </div>
 </div>
 

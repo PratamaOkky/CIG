@@ -25,7 +25,7 @@ bergabunglah Menjadi bagian dari kami</p>
 <div class="card mb-5" style="width: 100%; height: 110px; top: 60px; background: transparent">
     <div class="row g-0">
         <div class="col-md-4">
-            <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 71px; width: 71px; margin-top: 20px; border-radius: 18px; margin-left: 29px">
+            <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid d-inline" alt="P" style="height: 71px; width: 71px; margin-top: 20px; border-radius: 18px; margin-left: 29px">
         </div>
         <div class="col-md-8">
 

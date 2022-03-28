@@ -29,7 +29,7 @@ class LoginController extends Controller
             if (Auth::check() && Auth::user()->level_id == 1 || Auth::check() && Auth::user()->level_id == 2) {
                 return redirect('dashboard')->with('success', 'Anda Berhasil Login');
             } elseif (Auth::check() && Auth::user()->level_id == 3) {
-                return redirect()->route('profile', encrypt(Auth()->user()->id))->with('success', 'Anda Berhasil Login');
+                return redirect()->route('dashboard', encrypt(Auth()->user()->id))->with('success', 'Anda Berhasil Login');
             }
         }
         return back()->with('error', 'Maaf Anda Gagal Login');

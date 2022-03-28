@@ -28,7 +28,7 @@ class PegawaiController extends Controller
 
         $users = User::count();
         $user = User::with('level')->get();
-        return view('admin.pegawai.index', [
+        return view('admin.pegawai.pengguna', [
             'pegawai'=>$pegawai,
             'peg'=>$peg,
             'gender'=>$gender,
