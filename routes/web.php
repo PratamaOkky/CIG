@@ -17,6 +17,9 @@ use App\Http\Controllers\homepage\HomeController;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
+// blog
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+
 // About
 Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
 

@@ -18,13 +18,17 @@ class HomeController extends Controller
     }
     // End Home
 
+     // artikel
+     public function blog()
+     {
+         return view('homepage.blog.blog');
+     } 
     // About
     public function about()
     {
         return view('homepage.tentang');
     }
     // End About
-
     // Layanan
     public function layanan()
     {

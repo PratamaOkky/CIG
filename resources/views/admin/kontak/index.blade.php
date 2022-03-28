@@ -4,38 +4,40 @@
 
 @section('content')
 
-<div class="section" style="margin-bottom: 25%">
-    <div class="section-body">
-        <div class="card mb-5">
-            <div class="container">
-                <p style="text-align: left; margin-top: 90px; font-size: 35pt; font-weight: bold; color: #bb1d33">Customer Service</p>
 
-                <div class="container">
-                    <img src="{{asset('assets/images/kontak.png')}}" style="margin-left: 700px; margin-top: -100px" height="449" width="303" alt="">
-                    <h1 style="margin-left: 400px; margin-top: -400px">{{ $msg }}</h1>
-                    <p style="margin-left: 400px; margin-top: -10px">Pesan</p>
-                </div>
-
-                <div class="col-sm-10">
-                    <div class="row g-0">
+<div class="container">
+    <div class="row" style="font-family: 'Poppins';
+font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-top: 50px; color: #BB1D33;">
+ &ensp;Costumer Service
+    </div>
+</div>
+<div class="container">
+    <div class="row"style="padding-top: 20px; padding-bottom: 250px;">
+        <div class="col-12 col-lg-6" style="margin-top: 50px">
+        <div class="row g-0">
                         @foreach ($pesan as $item)
                         <div class="col-12 col-sm-4 col-md-3">
-                            <div class="card mb-4" style="border-radius: 15px; border: 1px black solid">
-                                <div class="card-body" style="background-color: #f4f4f4; border-radius: 15px">
+                            <div class="card mb-4" style="border-radius: 15px; border: 1px black solid;margin-right: 5px;">
+                                <div class="card-body" style="background-color: transparent; border-radius: 15px;">
                                     <p class="mb-3">{{ $item->nama }}</p>
-                                    <p style="text-align: left; font-size: 12px">{{ \Illuminate\Support\str::limit($item->isi, 150, '...') }}</p>
+                                    <p style="text-align: center; font-size: 12px">{{ \Illuminate\Support\str::limit($item->subject, 10, '...') }}</p>
                                 </div>
                             </div>
-                            <a href="{{route('contact.index', encrypt($item->id_pesan))}}" class="btn btn-danger d-inline border-0" style="background-color: #bb1d33" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id_pesan }}">Lebih Detail</a>
+                            <a href="{{route('contact.index', encrypt($item->id_pesan))}}" class="btn btn-danger d-inline border-0" style="background-color: #bb1d33; margin-left:10px" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id_pesan }}">Lebih Detail</a>
                         </div>
                         @endforeach
-                    </div>
-                </div>
             </div>
         </div>
+        <div class="col-12 col-lg-6">
+        <img src="{{asset('assets/images/kontak.png')}}" style="width: 303px;height: 449px;margin-left: 200px;top: 305px;">
+        <h1 style="margin-left: 200px; margin-top: -400px">{{ $msg }}</h1>
+                    <p style="margin-left: 180px; margin-top: -10px">Pesan</p>
+        </div>
     </div>
-
+</form>
 </div>
+
+
 
 @include('admin.kontak.detail')
 

@@ -15,82 +15,8 @@
         </div>
     </div>
 </div>
-
+<!-- kata pengantar -->
 <div class="container" style="padding-top: 150px;">
-<div class="row">
-
-	<div class="col-md-3 col-sm-6 mb-3">
-		<div class="card border-0">
-			<img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;" align=center>
-			<div class="card-body">
-				<div class="card-title"><h4 class="mb-4">Koordinasi</h4></div>
-                <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
-            </div>
-		</div>
-	</div>
-
-	<div class="col-md-3 col-sm-6 mb-3">
-		<div class="card border-0">
-        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
-			<div class="card-body">
-				<div class="card-title"><h5 class="mb-4">SOP,PSO & PROTAP</h4></div>
-				<h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
-            </div>
-		</div>
-	</div> 
-    <div class="col-md-3 col-sm-6 mb-3">
-		<div class="card border-0">
-        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
-			<div class="card-body">
-				<div class="card-title"><h4 class="mb-4">Pengawasan</h4></div>
-                <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
-           </div>
-		</div>
-	</div>
-
-	<div class="col-md-3 col-sm-6 mb-3">
-		<div class="card border-0">
-        <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
-			<div class="card-body">
-				<div class="card-title"><h4 class="mb-4">Pembinaan</h4></div>
-				<h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
-            </div>
-		</div>
-	</div>
-</div>
-<!-- <div class="container" style="font-family: Poppins; padding-top:100px;padding-bottom:60px">
-        <div class="row g-0">
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">   
-            </div>
-            <div class="col-md-3"><h4 class="mb-4">Koordinasi</h4></div>
-            <div class="col-md-3"><h3 class="mb-4">SOP, PSO & PROTAP</h3></div>
-            <div class="col-md-3"><h3 class="mb-4">Pengawasan</h3></div>
-            <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
-            </div>
-        </div>
-</div>-->
-<div class="container">
     <div class="row">
         <div class="col-2 col-lg-1" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-struktur.png')}}"style="width: 85px;height: 103px;left: 155px;top: 548px;">
@@ -113,6 +39,7 @@
         </div>
     </div>
 </div>
+<!-- /kata pengantar -->
 <div class="container"><center>
     <div class="row" style="padding-top: 50px;">
     <div class="col-1"></div>
@@ -123,42 +50,94 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div align="right" class="col-3" style="padding-top: 50px">
-        <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
-        </div>
-        <div class="col-9" style="color:#BB1D33; padding-top: 75px;
+<!-- visi misi -->
+    <div class="container">
+        <div class="row">
+                <div align="right" class="col-3" style="padding-top: 50px">
+                    <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
+                </div>
+                <div class="col-9" style="color:#BB1D33; padding-top: 75px;
                         text-align: left; font-family: Poppins;font-weight: 600; font-size: 28px;">Visi
+                </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-3"></div>
-        <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
-        MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
+                MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
+            </div>
+            <div class="col-2">
+            </div>
         </div>
-        <div class="col-2"></div>
-    </div>
-    <div class="row">
-        <div align="right" class="col-3" style="padding-top: 50px">
-        <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
-        </div>
-        <div class="col-9" style="color:#BB1D33; padding-top: 75px;
+        <div class="row">
+            <div align="right" class="col-3" style="padding-top: 50px">
+                <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
+            </div>
+            <div class="col-9" style="color:#BB1D33; padding-top: 75px;
                         text-align: left; font-family: Poppins;font-weight: 600; font-size: 28px;">Misi
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
+                <ol>Mewujudkan  keamanan  dan  ketertiban  di  lingkungan  kerja  dalam  rangka  mendukung sistem PAM SWAKARSA</ol>
+                <ol>Memberikan rasa aman dan nyaman</ol>
+                <ol>Memberikan jasa pengamanan secara profesional</ol>
+                <ol>Menjamin keselamatan dan keamanan bagi personil, material, dan kegiatan di  lingkungan kerja</ol>
+                <ol>Mencegah, meniadakan serta mengatasi masalah keamanan yang dilakukan oleh  pihak eksternal maupun internal yang akan mengganggu dan merugikan.</ol>
+                <ol>Memberikan saran dan masukan ke pengguna jasa demi lancarnya kegiatan usaha  mitra.</ol>
+            </div>
+            <div class="col-2">
+            </div>
         </div>
     </div>
+<!-- /visi misi -->
+<!-- 4 card pelayanan -->
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
-        <ol>Mewujudkan  keamanan  dan  ketertiban  di  lingkungan  kerja  dalam  rangka  mendukung sistem PAM SWAKARSA</ol>
-        <ol>Memberikan rasa aman dan nyaman</ol>
-        <ol>Memberikan jasa pengamanan secara profesional</ol>
-        <ol>Menjamin keselamatan dan keamanan bagi personil, material, dan kegiatan di  lingkungan kerja</ol>
-        <ol>Mencegah, meniadakan serta mengatasi masalah keamanan yang dilakukan oleh  pihak eksternal maupun internal yang akan mengganggu dan merugikan.</ol>
-        <ol>Memberikan saran dan masukan ke pengguna jasa demi lancarnya kegiatan usaha  mitra.</ol>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card border-0">
+                <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;" align=center>
+                    <div class="card-body">
+                        <div class="card-title"><h4 class="mb-4">Koordinasi</h4>
+                        </div>
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
+                    </div>
+            </div>
         </div>
-        <div class="col-2"></div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card border-0">
+                <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+                <div class="card-body">
+                    <div class="card-title"><h5 class="mb-4">SOP,PSO & PROTAP</h4></div>
+            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card border-0">
+                <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+                <div class="card-body">
+                    <div class="card-title"><h4 class="mb-4">Pengawasan</h4>
+                    </div>
+                        <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card border-0">
+                <img src="{{asset('assets/images/ic-home.png')}}" class="card-img-top" alt="..."style="width: 87px;height: 107px;">
+                <div class="card-body">
+                    <div class="card-title"><h4 class="mb-4">Pembinaan</h4>
+                    </div>
+                    <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
+                </div>
+            </div>
+        </div>
     </div>
+<!-- /4 card pelayanan -->
     <!-- <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
         <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
