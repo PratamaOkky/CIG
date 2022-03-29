@@ -10,7 +10,7 @@ font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-
 </div>
 <div class="container">
     <div class="row"style="padding-top: 50px;padding-bottom: 50px;">
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
         <form action="{{route('post')}}" method="POST" >
     @csrf
         <label>Nama</label>
@@ -23,13 +23,9 @@ font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-
         <label>Pesan Yang Ingin Disampaikan</label>
         <textarea name="isi" style="width: 380px;height: 157px;" class="form-control" cols="30" rows="10">{{ old('isi') }}</textarea><br>
 
-        <input type="text" style="width: 75%"class="form-control" name="subjek" value="{{ old('subject') }}">
-        <label>Pesan Yang Ingin Disampaikan</label>
-        <textarea name="isi" style="width: 75%" class="form-control" cols="30" rows="10">{{ old('isi') }}</textarea><br>
-
         <button type="submit" class="btn-red btn-danger" style="font">Kirim</button>
         </div>
-        <div class="col-6" align="center">
+        <div class="col-12 col-lg-6" align="center">
         <img src="{{asset('assets/images/kontak.png')}}" style="width: 303px;height: 449px;left: 769px;top: 305px;">
         </div>
     </div>

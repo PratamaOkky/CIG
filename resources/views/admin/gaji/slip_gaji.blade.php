@@ -25,49 +25,49 @@
 
                                 <div class="card-body" style="border: 1px black solid; font-size: 14px">
                                     <div class="row">
-                                        <div class="col-6 mb-3">
-                                            <p class="card-text mb-4 mt-2">NAMA : {{Auth::user()->nama}}</p>
-                                            <p class="card-text mb-4">NIP : {{Auth::user()->nip}}</p>
-                                            <p class="card-text mb-4">JABATAN : {{Auth::user()->jabatan}}</p>
-                                            <p class="card-text mb-4">ATASAN LANGSUNG : {{Auth::user()->atasan}}</p>
+                                        <div class="col-6">
+                                            <p class="card-text">NAMA : {{Auth::user()->nama}}</p>
+                                            <p class="card-text">NIP : {{Auth::user()->nip}}</p>
+                                            <p class="card-text">JABATAN : {{Auth::user()->jabatan}}</p>
+                                            <p class="card-text">ATASAN LANGSUNG : {{Auth::user()->atasan}}</p>
+                                            <p class="card-text">NO.NPWP : {{ Auth::user()->npwp }}</p>
+                                            <p class="card-text">NO.REKENING : {{ Auth::user()->rek }}</p>
+                                            <p class="card-text">INSTALASI : {{ Auth::user()->instalasi }}</p>
+                                            <p class="card-text">NAMA BANK : {{ Auth::user()->bank }}</p>
 
-                                            <p class="card-text mb-4" style="margin-left: 10%; padding-top: 3%; font-weight: bold">PENDAPATAN</p>
+                                            <p class="card-text" style="margin-left: 23%; padding-top: 3%; font-weight: bold">PENDAPATAN</p>
 
-                                            <p class="card-text mb-4" style="padding-top: 3%;">GAJI POKOK : {{$gaji->gaji}}</p>
-                                            <p class="card-text mb-4">T.MAKAN & TRANSPORT : {{$gaji->tunjangan_makan}}</p>
-                                            <p class="card-text mb-4">T.OPERASIONAL : {{$gaji->tunjangan_operasional}}</p>
-                                            <p class="card-text mb-4">T.JABATAN : {{$gaji->tunjangan_operasional}}</p>
-                                            <p class="card-text mb-4">LEMBUR NASIONAL : {{$gaji->lembur_nasional}}</p>
-                                            <p class="card-text mb-4">LEMBUR BIASA : {{$gaji->lembur_biasa}}</p>
-                                            <p class="card-text mb-4">KOREKSI : {{$gaji->koreksi}}</p>
-                                            <p class="card-text mb-4">BPJS KES (PERUSAHAAN) : {{$gaji->bpjs_kesehatan_perusahaan}}</p>
-                                            <p class="card-text mb-4">BPJS TK (PERUSAHAAN) : {{$gaji->bpjs_tenagakerja_perusahaan}}</p>
-                                            <p class="card-text mb-4">KOREKSI PLUS (+) : {{$gaji->koreksi_plus}}</p>
-                                            <p class="card-text mb-4">BONUS : {{$gaji->bonus}}</p>
-                                            <p class="card-text mb-4" style="font-weight: bold">TOTAL PENGHASILAN : {{$gaji->total_plus}}</p>
+                                            <p class="card-text" style="padding-top: 5%;">GAJI POKOK : {{$gaji->gaji}}</p>
+                                            <p class="card-text">T.MAKAN & TRANSPORT : {{$gaji->tunjangan_makan}}</p>
+                                            <p class="card-text">T.OPERASIONAL : {{$gaji->tunjangan_operasional}}</p>
+                                            <p class="card-text">T.JABATAN : {{$gaji->tunjangan_jabatan}}</p>
+                                            <p class="card-text">LEMBUR NASIONAL : {{$gaji->lembur_nasional}}</p>
+                                            <p class="card-text">LEMBUR BIASA : {{$gaji->lembur_biasa}}</p>
+                                            <p class="card-text">KOREKSI : {{$gaji->koreksi}}</p>
+                                            <p class="card-text">BPJS KES (PERUSAHAAN) : {{$gaji->bpjs_kesehatan_perusahaan}}</p>
+                                            <p class="card-text">BPJS TK (PERUSAHAAN) : {{$gaji->bpjs_tenagakerja_perusahaan}}</p>
+                                            <p class="card-text">KOREKSI PLUS (+) : {{$gaji->koreksi_plus}}</p>
+                                            <p class="card-text">BONUS : {{$gaji->bonus}}</p>
+                                            <p class="card-text" style="font-weight: bold">TOTAL PENGHASILAN : {{$gaji->total_plus}}</p>
 
                                         </div>
-                                        <div class="col-6" style="margin-left: 55%; margin-top: -90%">
-                                            <p class="card-text mb-4">NO.NPWP : {{ Auth::user()->npwp }}</p>
-                                            <p class="card-text mb-4">NO.REKENING : {{ Auth::user()->rek }}</p>
-                                            <p class="card-text mb-4">INSTALASI : {{ Auth::user()->instalasi }}</p>
-                                            <p class="card-text mb-4">NAMA BANK : {{ Auth::user()->bank }}</p>
+                                        <div class="col-6">
 
-                                            <p class="card-text mb-4" style="margin-left: 5%; padding-top: 3%; font-weight: bold">POTONGAN/ IURAN</p>
+                                            <p class="card-text" style="margin-left: 25%; padding-top: 8%; font-weight: bold">POTONGAN/ IURAN</p>
 
-                                            <p class="card-text mb-4" style="padding-top: 3%;">UANG JAMINAN : {{ $gaji->jaminan }}</p>
-                                            <p class="card-text mb-4">KOREKSI (-) : {{ $gaji->koreksi_min }}</p>
-                                            <p class="card-text mb-4">DIKSAR : {{ $gaji->diksar }}</p>
-                                            <p class="card-text mb-4">KTA : {{ $gaji->kta }}</p>
-                                            <p class="card-text mb-4">PPH 21 : {{ $gaji->pph21 }}</p>
-                                            <p class="card-text mb-4">BPJS KES (KARYAWAN) : {{ $gaji->bpjs_kes_karyawan }}</p>
-                                            <p class="card-text mb-4">BPJS TK (KARYAWAN) : {{ $gaji->bpjs_tenagakerja_karyawan }}</p>
-                                            <p class="card-text mb-4">BPJS KES (PERUSAHAAN) : {{ $gaji->bpjskes_perusahaan }}</p>
-                                            <p class="card-text mb-4">BPJS TK (PERUSAHAAN) : {{ $gaji->bpjstk_perusahaan }}</p>
+                                            <p class="card-text" style="padding-top: 3%;">UANG JAMINAN : {{ $gaji->jaminan }}</p>
+                                            <p class="card-text">KOREKSI (-) : {{ $gaji->koreksi_min }}</p>
+                                            <p class="card-text">DIKSAR : {{ $gaji->diksar }}</p>
+                                            <p class="card-text">KTA : {{ $gaji->kta }}</p>
+                                            <p class="card-text">PPH 21 : {{ $gaji->pph21 }}</p>
+                                            <p class="card-text">BPJS KES (KARYAWAN) : {{ $gaji->bpjs_kes_karyawan }}</p>
+                                            <p class="card-text">BPJS TK (KARYAWAN) : {{ $gaji->bpjs_tenagakerja_karyawan }}</p>
+                                            <p class="card-text">BPJS KES (PERUSAHAAN) : {{ $gaji->bpjskes_perusahaan }}</p>
+                                            <p class="card-text">BPJS TK (PERUSAHAAN) : {{ $gaji->bpjstk_perusahaan }}</p>
 
-                                            <p class="card-text mb-4" style="font-weight: bold">TOTAL PENGURANGAN : {{ $gaji->potongan }}</p>
+                                            <p class="card-text" style="font-weight: bold">TOTAL PENGURANGAN : {{ $gaji->potongan }}</p>
 
-                                            <p class="card-text mb-4" style="font-weight: bold">TOTAL GAJI : {{ $gaji->totalgaji }}</p>
+                                            <p class="card-text" style="font-weight: bold">TOTAL GAJI : {{ $gaji->totalgaji }}</p>
                                         </div>
 
                                     </div>
