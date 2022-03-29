@@ -113,9 +113,19 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="ttl" class="col-form-label">Tempat/ Tgl Lahir</label>
+                        <label for="ttl" class="col-form-label">Tempat Lahir</label>
                         <input type="text" class="form-control @error('ttl') is-invalid @enderror" id="ttl" name="ttl" value="{{ old('ttl', $item->ttl) }}" placeholder="Input Tempat Lahir">
                         @error('ttl')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tgl_lahir" class="col-form-label">Tanggal Lahir</label>
+                        <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $item->tgl_lahir) }}" placeholder="Input Tempat Lahir">
+                        @error('tgl_lahir')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

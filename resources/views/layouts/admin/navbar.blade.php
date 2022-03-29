@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
 
-                    @if (auth()->user()->level_id == 1 || auth()->user()->level_id == 2)
+                    @if (auth()->user()->level_id == 1)
 
                     <li class="nav-item">
                         <a href="{{route('pengguna.index')}}" class="nav-link active">Data User</a>

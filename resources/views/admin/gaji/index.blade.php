@@ -1,4 +1,4 @@
-@section('title', 'Halaman Gaji')
+@section('title', 'Gaji')
 
 @extends('layouts.admin.template')
 
@@ -43,17 +43,17 @@
                     <form action="{{route('importgaji')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
-                        <div class="mb-3">
-                            <input type="file" class="form-control @error('gaji') is-invalid @enderror" name="gaji" id="gaji" required autofocus value="{{ old('gaji')}}">
-                            @error('gaji')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="button mb-3">
-                            <button type="submit" class="btn btn-danger btn-modal" style="background-color: #BB1D33">Simpan</button>
-                        </div>
+                            <div class="mb-3">
+                                <input type="file" class="form-control @error('gaji') is-invalid @enderror" name="gaji" id="gaji" required autofocus value="{{ old('gaji')}}">
+                                @error('gaji')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="button mb-3">
+                                <button type="submit" class="btn btn-danger btn-modal" style="background-color: #BB1D33">Simpan</button>
+                            </div>
                         </div>
                     </form>
                 </div>

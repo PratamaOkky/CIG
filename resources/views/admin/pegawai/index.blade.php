@@ -40,7 +40,7 @@
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
                             @endif
                         </div>
-                        <p class="card-text" style="margin-left: 3%">Super Admin</p>
+                        <p class="card-text" style="margin-left: 3%">Admin</p>
                     </div>
                 </div>
             </div>

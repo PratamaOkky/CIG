@@ -24,7 +24,7 @@
                 <div class="col-md-8">
                     <div class="card-body" align="left" style="margin-left: -250px;">
                         <h2 class="card-title" style="font-size: 26px; font-weight: bold">{{ auth()->user()->nama }}</h2>
-                        <p class="card-text">{{ auth()->user()->divisi }}</p>
+                        <p class="card-text">{{ auth()->user()->jabatan }}</p>
                         <p class="card-text">{{ auth()->user()->nip }}</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 
                     <tbody>
                       <tr>
-                        <td>Kelahiran : {{ auth()->user()->ttl }}</td>
+                        <td>Kelahiran : {{ auth()->user()->ttl }} , {{ auth()->user()->tgl_lahir }}</td>
                       </tr>
                       <tr>
                         <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>

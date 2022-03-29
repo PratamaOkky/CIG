@@ -38,21 +38,11 @@ Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// User
-// Route::group(['middleware' => ['auth', 'ceklevel:3']], function()
-// {
-//     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-//     Route::get('/download-gaji', [ProfileController::class, 'download'])->name('download.gaji');
-// });
-
 // Admin
-Route::group(['middleware' => ['auth']], function ()
+Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 {
     // Dashboard Admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    // Data Pegawai
-    // Route::resource('pegawai', PegawaiController::class);
 
     // Data Gaji
     Route::resource('gaji', GajiController::class);

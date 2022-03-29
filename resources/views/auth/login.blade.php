@@ -15,7 +15,7 @@
 
 @endif
 
-<div class="container" style="margin-top: 100px">
+<div class="container" style="margin-top: 170px">
     <div class="row match-height">
         <div class="col-12">
             <div class="card-group">
@@ -48,13 +48,6 @@
                                     <input type="password" name="password" class="form-control form-control" placeholder="Password" autofocus required>
                                     <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
                                 </div>
-
-                                {{-- <div class="form-check form-check-lg d-flex align-items-end">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                        Keep me logged in
-                                    </label>
-                                </div> --}}
 
                                 <div class="form-group position-relative">
                                     <button type="submit" class="btn btn-danger" style="margin-left: 418px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>

@@ -33,6 +33,7 @@ class RegisterController extends Controller
             'divisi' => 'nullable',
             'atasan' => 'nullable',
             'ttl' => 'nullable',
+            'tgl_lahir' => 'nullable',
             'nik' => 'nullable|unique:tb_user|max:100',
             'awal_pkwt' => 'nullable',
             'akhir_pkwt' => 'nullable',

@@ -26,13 +26,13 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
-            if (Auth::check() && Auth::user()->level_id == 1 || Auth::check() && Auth::user()->level_id == 2) {
+            if (Auth::check() && Auth::user()->level_id == 1) {
                 return redirect('dashboard')->with('success', 'Anda Berhasil Login');
-            } elseif (Auth::check() && Auth::user()->level_id == 3) {
+            } else {
                 return redirect()->route('dashboard', encrypt(Auth()->user()->id))->with('success', 'Anda Berhasil Login');
             }
         }
-        return back()->with('error', 'Maaf Anda Gagal Login');
+        return back()->with('error', 'NIP atau Password Salah');
     }
 
     public function logout(Request $request)

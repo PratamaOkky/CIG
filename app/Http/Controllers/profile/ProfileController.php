@@ -29,10 +29,9 @@ class ProfileController extends Controller
     public function download()
     {
         $nip = Auth::user()->nip;
-        $gaji = Gaji::where('nip', $nip)->first();
+        $gaji = Gaji::firstWhere('nip', $nip);
 
-        // return view('admin.gaji.slip_gaji', ['gaji'=>$gaji, 'nip'=>$nip]);
-        $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('a4', 'potrait');
+        $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('legal', 'potrait');
 
         return $pdf->download('invoice.pdf');
     }
