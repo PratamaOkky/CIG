@@ -19,7 +19,7 @@
                     <div class="card mb-4" style="border-radius: 15px; border: 1px black solid;margin-right: 5px;">
                         <div class="card-body" style="background-color: transparent; border-radius: 15px;">
                             <p class="mb-3">{{ $item->nama }}</p>
-                            <p style="text-align: center; font-size: 12px">{{ \Illuminate\Support\str::limit($item->subject, 10, '...') }}</p>
+                            <p style="text-align: center; font-size: 12px">{{ \Illuminate\Support\str::limit($item->subject, 20, '...') }}</p>
                         </div>
                     </div>
                     <a href="{{route('contact.index', encrypt($item->id_pesan))}}" class="btn btn-danger d-inline border-0" style="background-color: #bb1d33; margin-left:10px" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id_pesan }}">Lebih Detail</a>

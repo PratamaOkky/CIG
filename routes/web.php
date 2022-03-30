@@ -3,14 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\GajiController;
 use App\Http\Controllers\admin\KarirController;
-use App\Http\Controllers\admin\PegawaiController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KontakController;
 use App\Http\Controllers\admin\PelamarController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\ArtikelController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\profile\ProfileController;
 use App\Http\Controllers\homepage\HomeController;
 
 
@@ -60,6 +59,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 
     // Pengguna
     Route::resource('pengguna', UserController::class);
+
+    // Artikel
+    Route::resource('artikel', ArtikelController::class);
 
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');

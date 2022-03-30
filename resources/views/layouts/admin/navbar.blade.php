@@ -19,6 +19,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{route('artikel.index')}}" class="nav-link active">Artikel</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{route('gaji.index')}}" class="nav-link active" >Penggajian</a>
                     </li>
 
