@@ -10,11 +10,14 @@
         "dompdf/dompdf": "^1.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kylekatarnls/laravel-carbon-2": "^1.0.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
-        "realrashid/sweet-alert": "^5.0"
+        "nesbot/carbon": "^2.57",
+        "realrashid/sweet-alert": "^5.0",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

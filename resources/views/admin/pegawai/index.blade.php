@@ -11,10 +11,10 @@
                 <div class="section-header mt-5 mb-5 ml-0">
                     <h1 class="head">Data Pegawai</h1>
                 </div>
-                <form action="{{route('pengguna.index')}}" class="d-block">
+                {{-- <form action="{{route('pengguna.index')}}" class="d-block">
                     <button type="submit" class="icon d-inline border-0" style="background: transparent"><i class="fa fa-search"></i></button>
                     <input class="form-control me-2" type="text" placeholder="Search..." name="search" value="{{ request('search') }}">
-                </form>
+                </form> --}}
             </div>
         </nav>
 
@@ -50,7 +50,7 @@
 
         </div>
 
-        <table class="table table-borderless table-sm mt-5 ml-5" style="max-width: 92%; margin-bottom: 50px">
+        {{-- <table id="myTable" class="table table-borderless table-sm mt-5 ml-5" style="max-width: 92%; margin-bottom: 50px">
             <thead>
                 <tr>
                 <th>Nip</th>
@@ -79,12 +79,47 @@
                 </tr>
             </tbody>
             @endforeach
-        </table>
+        </table> --}}
 
-        <div class="d-flex justify-content-center">
-            {{ $user->links() }}
-        </div>
+        {{-- <div class="d-flex justify-content-center">
+        </div> --}}
     </div>
+</div>
+
+<div class="container mt-5" style="width: 80%">
+    <table id="table_id" class="table table-stripped table-sm">
+        <thead class="text-center">
+            <tr>
+                <th>Foto</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($user as $item)
+            <tr>
+                <td><img src="{{asset('storage/' . $item->image)}}" class="img-thumbnail rounded-circle" width="40"></td>
+                <td>{{$item->nip}}</td>
+                <td>{{$item->nama}}</td>
+                <td>{{$item->jabatan}}</td>
+                <td>{{$item->level->level}}</td>
+                <td>
+                    <a href="{{route('pengguna.edit', Crypt::encryptString($item->id))}}" class="text-success" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}"><i class="fa fa-edit h4"></i></a>
+
+                    <form action="{{route('pengguna.destroy', Crypt::encryptString($item->id))}}" method="POST" style="margin-top: -38%; margin-left: 30%">
+                        @method('delete')
+                        @csrf
+                        <button class="text-danger delete d-inline border-0 ml-2" style="background: transparent" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o h4"></i></button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
 </div>
 
 @include('admin.pegawai.edit')
@@ -92,22 +127,6 @@
 @include('admin.pegawai.register')
 
 @include('sweetalert::alert')
-
-<script>
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
-
-        imgPreview.style.display = 'block';
-
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-</script>
 
 
 @endsection

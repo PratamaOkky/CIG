@@ -51,42 +51,72 @@
         </div>
 
         {{-- Card --}}
-        <div class="card" style="width: 940px; top: 60px; left: 30px;">
-            <div class="row">
+        {{-- <div class="card border" style="width: 100%; top: 60px; background: transparent">
+            <div class="row g-0">
                 @foreach ($karir as $item)
                 @if ($item->image)
                     <div class="col-md-4">
-                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" alt="" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" width="60" style="margin-top: 12.5px; border-radius: 18px">
                     </div>
                 @else
                     <div class="col-md-4">
-                        <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" style="height: 80px; width: 80px; margin-top: 7px; border-radius: 18px">
+                        <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" width="60" style="margin-top: 7px; border-radius: 18px">
                     </div>
                 @endif
 
                 <div class="col-md-8">
 
-                    <div class="card-body" style="text-align: start; margin-left: -100px">
+                    <div class="card-body" style="text-align: start; margin-left: -165px">
                         <h5 class="card-title">{{$item->lowongan}}</h5>
                         <p class="card-text">{{$item->posisi}}</p>
 
-                        <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 500px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
+                        <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 550px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
 
                         <form action="{{route('karir.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-secondary border-0" style="margin-left: 600px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
+                            <button class="btn btn-secondary border-0" style="margin-left: 650px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
                         </form>
                     </div>
 
                 </div>
                 @endforeach
-                <div class="d-flex justify-content-center">
-                    {{ $karir->links() }}
+            </div>
+        </div> --}}
+        {{-- Card --}}
+
+        @foreach ($karir as $item)
+        <div class="card mb-3 text-start border" style="width: 100%; height: 110px; top: 60px; background: transparent">
+            <div class="row g-0">
+                @if ($item->image)
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" width="60" style="margin-top: 18px; margin-left: 40%; border-radius: 18px">
+                    </div>
+                @else
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" width="60" style="margin-top: 17px; border-radius: 18px">
+                    </div>
+                @endif
+                <div class="col-md-8">
+
+                    <div class="card-body" style="margin-left: -165px; margin-top: 8px;">
+                        <h5 class="card-title">{{$item->lowongan}}</h5>
+                        <p class="card-text">{{$item->posisi}}</p>
+
+                        <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 550px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
+
+                        <form action="{{route('karir.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-secondary border-0" style="margin-left: 650px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
+                        </form>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-        {{-- Card --}}
+        @endforeach
 
         @include('admin.karir.create')
 

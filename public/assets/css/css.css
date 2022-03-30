@@ -65,13 +65,11 @@ body
     border-radius: 26px;
 }
 
-tr, th
+/* tr, th
 {
-    border: none !important;
     text-align: center;
     font-size: 14px;
-    width: 10%;
-}
+} */
 
 .btn-modal
 {

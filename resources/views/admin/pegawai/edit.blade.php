@@ -124,7 +124,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_lahir" class="col-form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $item->tgl_lahir) }}" placeholder="Input Tempat Lahir">
+                        <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $user[0]->tgl_lahir) }}">
                         @error('tgl_lahir')
                             <div class="invalid-feedback">
                                 {{ $message }}

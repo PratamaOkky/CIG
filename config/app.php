@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'PT. Garda Mitra Nasional'),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,8 @@ return [
         // Sweet Alert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -246,7 +248,9 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
         // PDF
-        'PDF' => Barryvdh\DomPDF\Facade::class
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'DataTables' => \Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

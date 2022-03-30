@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" style="margin-left: 27%" id="exampleModalLabel">Tambah Pengguna</h5>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
 
             <div class="modal-body">
@@ -210,7 +210,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bank" class="col-form-label">bank</label>
+                        <label for="bank" class="col-form-label">Nama Bank</label>
                         <input type="text" class="form-control @error('bank') is-invalid @enderror" id="bank" name="bank" value="{{ old('bank') }}" placeholder="Input bank">
                         @error('bank')
                             <div class="invalid-feedback">
@@ -220,7 +220,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="rek" class="col-form-label">rek</label>
+                        <label for="rek" class="col-form-label">No. Rekening</label>
                         <input type="text" class="form-control @error('rek') is-invalid @enderror" id="rek" name="rek" value="{{ old('rek') }}" placeholder="Input rek">
                         @error('rek')
                             <div class="invalid-feedback">
@@ -231,7 +231,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_masuk" class="col-form-label">Tanggal Masuk</label>
-                        <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" id="tgl_masuk" name="tgl_masuk" value="{{ old('tgl_masuk') }}">
+		                <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control @error('tgl_masuk') is-invalid @enderror" autofocus value="{{ old('tgl_masuk') }}">
                         @error('tgl_masuk')
                             <div class="invalid-feedback">
                                 {{ $message }}

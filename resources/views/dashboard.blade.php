@@ -31,14 +31,19 @@
             </div>
         </div>
 
-        <div class="row mt-5">
+        @php
+            use Carbon\Carbon;
+            $date = Carbon::today()->format('d-m-y');
+        @endphp
+
+        <div class="row mt-5 text-center">
             <div class="col-md-6 col-12">
 
                 <table class="table table-striped table-borderless">
 
                     <tbody>
                       <tr>
-                        <td>Kelahiran : {{ auth()->user()->ttl }} , {{ auth()->user()->tgl_lahir }}</td>
+                        <td>Kelahiran : {{ auth()->user()->ttl }} , {{ date('d F Y', strtotime(auth()->user()->tgl_lahir)) }}</td>
                       </tr>
                       <tr>
                         <td>Jenis Kelamin : {{ auth()->user()->gender->name }}</td>
@@ -56,7 +61,7 @@
                         <td>Status Pajak : {{ auth()->user()->status_pajak }}</td>
                       </tr>
                       <tr>
-                        <td>Mulai PKWT : {{ auth()->user()->awal_pkwt }}</td>
+                        <td>Mulai PKWT : {{ date('d F Y', strtotime(auth()->user()->awal_pkwt)) }}</td>
                       </tr>
                     </tbody>
                 </table>
@@ -69,7 +74,7 @@
 
                     <tbody>
                         <tr>
-                          <td>Tahun Masuk : {{ auth()->user()->tgl_masuk }}</td>
+                          <td>Tahun Masuk : {{ date('d F Y', strtotime(auth()->user()->tgl_masuk)) }}</td>
                         </tr>
                         <tr>
                             <td>NIK : {{ auth()->user()->nik }}</td>
@@ -87,7 +92,7 @@
                           <td>BPJS Tenaga Kerja : {{ auth()->user()->no_tk }}</td>
                         </tr>
                         <tr>
-                            <td>Akhir PKWT : {{ auth()->user()->akhir_pkwt }}</td>
+                            <td>Akhir PKWT : {{ date('d F Y', strtotime(auth()->user()->akhir_pkwt)) }}</td>
                         </tr>
                       </tbody>
                 </table>

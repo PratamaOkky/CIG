@@ -33,10 +33,10 @@ class RegisterController extends Controller
             'divisi' => 'nullable',
             'atasan' => 'nullable',
             'ttl' => 'nullable',
-            'tgl_lahir' => 'nullable',
+            'tgl_lahir' => 'nullable|date:d-m-Y',
             'nik' => 'nullable|unique:tb_user|max:100',
-            'awal_pkwt' => 'nullable',
-            'akhir_pkwt' => 'nullable',
+            'awal_pkwt' => 'nullable|date:d-m-Y',
+            'akhir_pkwt' => 'nullable|date:d-m-Y',
             'status_pajak' => 'nullable',
             'gender_id' => 'nullable',
             'kewarganegaraan' => 'nullable',
@@ -46,9 +46,9 @@ class RegisterController extends Controller
             'no_kes' => 'nullable|unique:tb_user|max:100',
             'no_tk' => 'nullable|unique:tb_user|max:100',
             'email' => 'nullable|email|unique:tb_pegawai',
-            'instalasi' => 'nullable|unique:tb_pegawai',
+            'instalasi' => 'nullable',
             'bank' => 'nullable',
-            'rek' => 'nullable|unique:tb_pegawai',
+            'rek' => 'nullable',
             'tgl_masuk' => 'nullable',
             'image' => 'file|image|max:2048'
         ]);
@@ -62,7 +62,7 @@ class RegisterController extends Controller
         if (User::create($validatedData)) {
             return redirect()->route('pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna');
         }
-        return redirect()->route('pengguna.index')->with('error', 'Gagal Mengubah Data');
+        return redirect()->route('pengguna.index')->with('error', 'Gagal Menambah Data');
 
 
     }

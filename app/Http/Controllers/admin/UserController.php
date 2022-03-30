@@ -7,6 +7,7 @@ use App\Models\Level;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Rules\oldMatchPassword;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Crypt;
@@ -27,14 +28,12 @@ class UserController extends Controller
         $users = User::count();
         $user = User::with('level')->get();
 
-        // dd($user);
-
         return view('admin.pegawai.index', [
             'gender' => $gender,
             'levels' => $level,
             'user' => $user,
             'users' => $users,
-            'user' => User::filter(request(['search']))->paginate(20),
+            'user' => User::filter(request(['search']))->get(),
         ]);
     }
 
@@ -94,6 +93,7 @@ class UserController extends Controller
             'nama' =>  'required|max:255',
             'nip' => 'required',
             'level_id' =>  'required',
+            'old_password' =>  ['required', new oldMatchPassword],
             'password' => 'required|min:5|max:255',
             'jabatan' => 'nullable',
             'divisi' => 'nullable',
