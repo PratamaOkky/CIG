@@ -11,5 +11,18 @@ class Artikel extends Model
 
     protected $table = 'tb_artikel';
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'judul',
+        'isi',
+        'gambar'
+    ];
+
+    public function scopeFilter($query, array $filter)
+    {
+        $query->when($filter['search'] ?? false, function($query, $search)
+        {
+            return $query->where('judul', 'like', '%' . $search . '%')
+                        ->orWhere('isi', 'like', '%' . $search . '%');
+        });
+    }
 }

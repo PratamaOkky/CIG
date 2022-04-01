@@ -78,7 +78,7 @@
             Galerry Garda Mitra Nasional
                 <p style="font-size:14px;font-weight: 400;">Berikut merupakan dokumentasi dari kegiatan kami yang bisa disaksikan melalui youtube kami.
                 </p>
-                <a href="{{route('blog')}}" class="btn-red btn-danger">Lebih Detail &emsp;<i class="fa fa-arrow-circle-right"></i> </a>&emsp;&emsp;
+                <a href="{{route('layanan')}}" class="btn-red btn-danger">Lebih Detail &emsp;<i class="fa fa-arrow-circle-right"></i> </a>&emsp;&emsp; 
             </div>
         </div>
 </div>
