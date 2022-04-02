@@ -32,7 +32,6 @@
                 </div>
             </div>
 
-
         <div class="garis"></div>
 
         <div class="rectangle"></div>
@@ -59,11 +58,6 @@
                         <a href="{{route('artikel.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 550px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
 
                         <form action="{{route('artikel.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
-                            @method('delete')
-                            @csrf
-                            <button class="btn btn-secondary border-0" style="margin-left: 650px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
-                        </form>
-
                     </div>
 
                 </div>
@@ -76,11 +70,11 @@
         <div class="card mb-3 text-start border" style="width: 100%; height: 110px; top: 60px; background: transparent">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ asset('assets/images/samples/error-404.png') }}" class="img-fluid" width="150" style="margin-left: 40%; border-radius: 18px">
+                    <img src="{{ asset('assets/images/samples/error-404.png') }}" class="img-fluid" alt="P" width="150" style="margin-left: 40%; border-radius: 18px">
                 </div>
                 <div class="col-md-8">
 
-                    <div class="card-body" style="margin-left: -100px; margin-top: 23px;">
+                    <div class="card-body" style="margin-left: -50px; margin-top: 22px;">
                         <h5 class="card-title">Belum Ada Artikel</h5>
                     </div>
 

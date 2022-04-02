@@ -55,41 +55,5 @@
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
-{{-- <div class="container">
-
-</div> --}}
-<!-- <div class="container" style="font-family: Poppins; padding-top:100px;padding-bottom:60px">
-        <div class="row g-0">
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3">
-            <img src="{{asset('assets/images/ic-home.png')}}"style="width: 113px; height: 134px; left: 155px; top: 830px;">
-            </div>
-            <div class="col-md-3"><h4 class="mb-4">Koordinasi</h4></div>
-            <div class="col-md-3"><h3 class="mb-4">SOP, PSO & PROTAP</h3></div>
-            <div class="col-md-3"><h3 class="mb-4">Pengawasan</h3></div>
-            <div class="col-md-3"><h3 class="mb-4">Pembinaan</h3></div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan koordinasi secara rutin degan apparat managemen dan warga setempat</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Menjalankan fungsi pengamanan dan pelayanan serta melaksanakan SOP, PSO dan Protap secara Konsisten serta melakuka evaluasi dan sharing knowladge</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan Pengawasan secara berjenjang dan berkelanjutan terhadap pelaksanaan tugas personel di lokasi penjagaan</h5>
-            </div>
-            <div class="col-md-3">
-            <h5 class="mb-4" style="font-size: 14px;width: 215px;line-height: 21px;">Melakukan pemeliharaan dan peningkatan kemampuan secara berlanjut serta selalu mengikuti perkembangan sesuai kebutuhan</h5>
-            </div>
-        </div>
-</div> -->
-
 
 @endsection

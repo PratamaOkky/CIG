@@ -23,12 +23,14 @@ class HomeController extends Controller
      {
          return view('homepage.blog.blog');
      }
+
     // About
     public function about()
     {
         return view('homepage.tentang');
     }
     // End About
+
     // Layanan
     public function layanan()
     {

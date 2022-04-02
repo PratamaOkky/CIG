@@ -15,11 +15,13 @@ class ArtikelController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $artikels = Artikel::count();
@@ -27,8 +29,7 @@ class ArtikelController extends Controller
         return view('admin.artikel.index', [
             'artikel'=>$artikel,
             'artikels'=>$artikels,
-
-            // 'artikel' => Artikel::filter(request(['search']))->paginate(10)
+            'artikel' => Artikel::filter(request(['search']))->paginate(10)
         ]);
     }
 
@@ -70,10 +71,10 @@ class ArtikelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_artikel)
     {
         //
     }
@@ -81,10 +82,10 @@ class ArtikelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_artikel)
     {
         //
     }
@@ -93,12 +94,12 @@ class ArtikelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_artikel)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'judul' => 'required',
             'isi' => 'required',
             'gambar' => 'file|image|max:2048'
@@ -125,10 +126,10 @@ class ArtikelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_artikel)
     {
         $dec = Crypt::decryptString($id);
         $artikel = Artikel::findOrFail($dec);

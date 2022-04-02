@@ -11,16 +11,16 @@ use App\Http\Controllers\admin\ArtikelController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\homepage\HomeController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
-// blog
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 // About
 Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
+
+// blog
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 // Layanan
 Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Karir
     Route::resource('karir', KarirController::class);
 
+     // artikel
+     Route::resource('artikel', ArtikelController::class);
+
     // Kontak
     Route::resource('contact', KontakController::class);
 
@@ -65,9 +68,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
-    // Artikel
-    Route::resource('artikel', ArtikelController::class);
 
 });
 
