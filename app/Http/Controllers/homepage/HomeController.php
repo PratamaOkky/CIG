@@ -18,17 +18,28 @@ class HomeController extends Controller
     }
     // End Home
 
-     // artikel
-     public function blog()
-     {
-         return view('homepage.blog.blog');
-     } 
+  
+
+ 
     // About
     public function about()
     {
         return view('homepage.tentang');
     }
     // End About
+
+    public function blog()
+    {
+       
+        return view('homepage.blog', [
+            'artikel'=>$artikel,
+            'artikels'=>$artikels,
+
+            'artikel' => Artikel::filter(request(['search']))->paginate(10)
+        ]);
+    }
+
+
     // Layanan
     public function layanan()
     {

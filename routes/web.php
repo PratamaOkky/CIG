@@ -16,11 +16,12 @@ use App\Http\Controllers\homepage\HomeController;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
-// blog
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 // About
 Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
+
+// blog
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 // Layanan
 Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
@@ -51,6 +52,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Karir
     Route::resource('karir', KarirController::class);
 
+     // artikel
+     Route::resource('artikel', ArtikelController::class);
+
     // Kontak
     Route::resource('contact', KontakController::class);
 
@@ -60,8 +64,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Pengguna
     Route::resource('pengguna', UserController::class);
 
-    // Artikel
-    Route::resource('artikel', ArtikelController::class);
 
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');

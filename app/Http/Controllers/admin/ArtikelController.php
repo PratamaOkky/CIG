@@ -4,19 +4,28 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artikel;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class ArtikelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('admin.artikel.index');
+        $artikels = Artikel::count();
+        $artikel = Artikel::all();
+        return view('admin.artikel.index', [
+            'artikel'=>$artikel,
+            'artikels'=>$artikels,
+
+            'artikel' => Artikel::filter(request(['search']))->paginate(10)
+        ]);
     }
 
     /**
@@ -37,17 +46,19 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $validatedData = $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'file|image'
+            'gambar' => 'file|gambar|max:2048'
         ]);
 
+        $validatedData['isi'] = Str::limit(strip_tags($request->isi), 200);
+
         if ($request->file('gambar')) {
-            $validateData['gambar'] = $request->file('gambar')->store('artikel');
+            $validatedData['gambar'] = $request->file('gambar')->store('artikel');
         }
 
-        Artikel::create($validateData);
+        Artikel::create($validatedData);
 
         return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
     }
@@ -55,10 +66,10 @@ class ArtikelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_artikel)
     {
         //
     }
@@ -66,10 +77,10 @@ class ArtikelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_artikel)
     {
         //
     }
@@ -78,41 +89,52 @@ class ArtikelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_artikel)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'file|image'
+            'gambar' => 'file|gambar|max:2048'
         ]);
 
-        if ($request->gambar) {
-            Storage::delete($request->oldGambar);
+        $dec = Crypt::decryptString($id_artikel);
+        $artikel = Artikel::findOrFail($dec);
+
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $artikel['gambar'] = $request->file('gambar')->store('artikel');
         }
 
-        Artikel::where('id', $id)
-                ->update($validateData);
+        $artikel->judul = $request->judul;
+        $artikel['isi'] = Str::limit(strip_tags($request->isi), 200);
 
-        return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
+        $artikel->update();
+
+        return redirect()->back()->with('success', 'Berhasil Ubah Karir');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_artikel)
     {
-        $artikel = Artikel::find($id);
+        $dec = Crypt::decryptString($id_artikel);
+        $artikel = Artikel::findOrFail($dec);
 
         if ($artikel->gambar) {
-            Storage::delete($artikel->oldGambar);
+            Storage::delete($artikel->gambar);
         }
 
-        Artikel::where('id', $id)->delete();
+        Karir::destroy($artikel->id_artikel);
+
+        return redirect()->back()->with('success', 'Berhasil Hapus Artikel');
     }
 }
