@@ -27,9 +27,9 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-12 col-lg-6">
-            <img src="{{asset('assets/images/kontak.png')}}" style="width: 303px;height: 449px;margin-left: 200px;top: 305px;">
-            <h1 style="margin-left: 200px; margin-top: -400px">{{ $msg }}</h1>
+        <div class="col-12 col-lg-6 mb-5">
+            <img src="{{asset('assets/images/kontak.png')}}" style="width: 303px; height: 449px; margin-left: 200px; margin-top: -80px;">
+            <h1 style="margin-left: 192px; margin-top: -400px">{{ $msg }}</h1>
             <p style="margin-left: 180px; margin-top: -10px">Pesan</p>
         </div>
     </div>

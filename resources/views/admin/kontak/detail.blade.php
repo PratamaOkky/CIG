@@ -10,8 +10,6 @@
 
             <form>
                 <div class="modal-body">
-                    {{-- <label for="id_pesan"></label>
-                    <input type="hidden" name="id_pesan" id="id_pesan" value="{{$data->id_pesan}}"> --}}
                 <div class="mb-3">
                     <label for="nama" class="col-form-label">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" value="{{ $data->nama }}">

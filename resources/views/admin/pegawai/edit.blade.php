@@ -25,8 +25,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">Nip</label>
-                        <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip', $item->nip) }}" placeholder="Input Nip">
+                        <label for="nip" class="col-form-label">NIP</label>
+                        <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip', $item->nip) }}" placeholder="Input NIP">
                         @error('nip')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -49,16 +49,6 @@
                     </div>
 
                     @endif
-
-                    <div class="mb-3">
-                        <label for="password" class="col-form-label">Password</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password', Str::limit($item->password, 10)) }}" placeholder="Input Password">
-                        @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
 
                     <div class="mb-3">
                         <label for="gender_id" class="col-form-label">Gender</label>
@@ -124,7 +114,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_lahir" class="col-form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $user[0]->tgl_lahir) }}">
+                        <input type="text" class="form-control @error('tgl_lahir') is-invalid @enderror" id="flatpickr" name="tgl_lahir" value="{{ old('tgl_lahir', $item->tgl_lahir) }}" placeholder="Input Tempat Lahir">
                         @error('tgl_lahir')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -163,8 +153,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="npwp" class="col-form-label">Npwp</label>
-                        <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp', $item->npwp) }}" placeholder="Input Npwp">
+                        <label for="npwp" class="col-form-label">NPWP</label>
+                        <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp', $item->npwp) }}" placeholder="Input NPWP">
                         @error('npwp')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -203,8 +193,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="instalasi" class="col-form-label">instalasi</label>
-                        <input type="text" class="form-control @error('instalasi') is-invalid @enderror" id="instalasi" name="instalasi" value="{{ old('instalasi', $item->instalasi) }}" placeholder="Input instalasi">
+                        <label for="instalasi" class="col-form-label">Instalasi</label>
+                        <input type="text" class="form-control @error('instalasi') is-invalid @enderror" id="instalasi" name="instalasi" value="{{ old('instalasi', $item->instalasi) }}" placeholder="Input Instalasi">
                         @error('instalasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -234,7 +224,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_masuk" class="col-form-label">Tanggal Masuk</label>
-                        <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" id="tgl_masuk" name="tgl_masuk" value="{{ old('tgl_masuk', $item->tgl_masuk) }}">
+                        <input type="text" class="form-control @error('tgl_masuk') is-invalid @enderror" id="flatpickr" name="tgl_masuk" value="{{ old('tgl_masuk', $item->tgl_masuk) }}">
                         @error('tgl_masuk')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -244,7 +234,7 @@
 
                     <div class="mb-3">
                         <label for="awal_pkwt" class="col-form-label">Mulai PKWT</label>
-                        <input type="date" class="form-control @error('awal_pkwt') is-invalid @enderror" id="awal_pkwt" name="awal_pkwt" value="{{ old('awal_pkwt', $item->awal_pkwt) }}">
+                        <input type="text" class="form-control @error('awal_pkwt') is-invalid @enderror" id="flatpickr" name="awal_pkwt" value="{{ old('awal_pkwt', $item->awal_pkwt) }}">
                         @error('awal_pkwt')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -254,7 +244,7 @@
 
                     <div class="mb-3">
                         <label for="akhir_pkwt" class="col-form-label">Akhir PKWT</label>
-                        <input type="date" class="form-control @error('akhir_pkwt') is-invalid @enderror" id="akhir_pkwt" name="akhir_pkwt" value="{{ old('akhir_pkwt', $item->akhir_pkwt) }}">
+                        <input type="text" class="form-control @error('akhir_pkwt') is-invalid @enderror" id="flatpickr" name="akhir_pkwt" value="{{ old('akhir_pkwt', $item->akhir_pkwt) }}">
                         @error('akhir_pkwt')
                             <div class="invalid-feedback">
                                 {{ $message }}

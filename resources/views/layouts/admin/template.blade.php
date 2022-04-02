@@ -15,7 +15,10 @@
 
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
         <link rel="stylesheet" href="{{asset('assets/css/css.css')}}">
+
 
         <title>@yield('title')</title>
 
@@ -53,6 +56,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
         <script>
             function previewImage() {
                 const image = document.querySelector('#image');
@@ -72,7 +77,10 @@
                 $('#table_id').DataTable();
             } );
 
-
+            flatpickr('#flatpickr', {
+                altInput: true,
+                altFormat: "d F Y",
+            })
         </script>
     </body>
 </html>

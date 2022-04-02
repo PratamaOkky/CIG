@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Gaji;
 use App\Models\User;
 use App\Models\Gender;
 use Illuminate\Http\Request;
+use App\Rules\oldMatchPassword;
 use App\Http\Controllers\Controller;
-use App\Models\Gaji;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class DashboardController extends Controller
 {
@@ -23,73 +26,37 @@ class DashboardController extends Controller
         return view('dashboard', [
             'gender'=>$gender,
             'user'=>$user,
-            'gaji'=>$gaji
+            'gaji'=>$gaji,
+            'active' => 'dashboard'
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function editPassword($id)
     {
-        //
+        $dec = Crypt::decryptString($id);
+        $user = User::find($dec);
+
+        return view('dashboard', [
+            'user' => $user
+    ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updatePassword(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'old_password' =>  ['required', new oldMatchPassword],
+            'password' => 'required|min:8|confirmed',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $dec = decrypt($id);
+        $user = User::find($dec);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $user->password = Hash::make($request->password);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if ($user->save()) {
+            return redirect()->route('dashboard', encrypt($user->id))->with('success', 'Berhasil Merubah Password');
+        } else {
+            return redirect()->back()->with('message-danger', 'Gagal Merubah Password');
+        }
     }
 }

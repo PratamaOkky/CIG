@@ -75,7 +75,13 @@ class KarirController extends Controller
      */
     public function show($id)
     {
-        //
+        $dec = Crypt::decryptString($id);
+        $karir = Karir::find($dec);
+
+        return view('homepage.kariru',
+        [
+            'karirs' => $karir
+        ]);
     }
 
     /**

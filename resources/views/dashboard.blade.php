@@ -26,6 +26,10 @@
                         <h2 class="card-title" style="font-size: 26px; font-weight: bold">{{ auth()->user()->nama }}</h2>
                         <p class="card-text">{{ auth()->user()->jabatan }}</p>
                         <p class="card-text">{{ auth()->user()->nip }}</p>
+
+                        <form action="{{route('edit.password', Crypt::encryptString(auth()->user()->id))}}" style="margin-top: -135px; margin-left: 25%">
+                            <a href="#" data-bs-target="#edit-{{auth()->user()->id}}" data-bs-toggle="modal" class="text-danger h4"><i class="fa fa-edit"></i></a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -36,7 +40,7 @@
             $date = Carbon::today()->format('d-m-y');
         @endphp
 
-        <div class="row mt-5 text-center">
+        <div class="row mt-5 mb-3 text-center">
             <div class="col-md-6 col-12">
 
                 <table class="table table-striped table-borderless">
@@ -99,8 +103,12 @@
 
             </div>
         </div>
-            <a href="{{route('download')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
+        <a href="{{route('download')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
     </div>
 </div>
+
+@include('admin.pegawai.editpassword')
+
+@include('sweetalert::alert')
 
 @endsection

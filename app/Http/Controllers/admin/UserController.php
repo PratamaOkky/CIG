@@ -7,9 +7,6 @@ use App\Models\Level;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Rules\oldMatchPassword;
-use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,14 +23,13 @@ class UserController extends Controller
         $gender = Gender::all();
 
         $users = User::count();
-        $user = User::with('level')->get();
+        $user = User::with('level')->orderBy('level_id', 'asc')->get();
 
         return view('admin.pegawai.index', [
             'gender' => $gender,
             'levels' => $level,
             'user' => $user,
             'users' => $users,
-            'user' => User::filter(request(['search']))->get(),
         ]);
     }
 
@@ -93,8 +89,6 @@ class UserController extends Controller
             'nama' =>  'required|max:255',
             'nip' => 'required',
             'level_id' =>  'required',
-            'old_password' =>  ['required', new oldMatchPassword],
-            'password' => 'required|min:5|max:255',
             'jabatan' => 'nullable',
             'divisi' => 'nullable',
             'atasan' => 'nullable',
@@ -132,10 +126,10 @@ class UserController extends Controller
         $user['nama'] = $request->nama;
         $user['nip'] = $request->nip;
         $user['level_id'] = $request->level_id;
-        $user['password'] = Hash::make($request->password);
         $user['nik'] = $request->nik;
         $user['jabatan'] = $request->jabatan;
         $user['divisi'] = $request->divisi;
+        $user['tgl_lahir'] = $request->tgl_lahir;
         $user['atasan'] = $request->atasan;
         $user['ttl'] = $request->ttl;
         $user['gender_id'] = $request->gender_id;

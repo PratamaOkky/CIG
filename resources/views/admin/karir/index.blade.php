@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="section">
+<div class="section" style="margin-bottom: 7.8%">
     <div class="container">
 
         <nav class="navbar navbar-light">
@@ -50,40 +50,7 @@
 
         </div>
 
-        {{-- Card --}}
-        {{-- <div class="card border" style="width: 100%; top: 60px; background: transparent">
-            <div class="row g-0">
-                @foreach ($karir as $item)
-                @if ($item->image)
-                    <div class="col-md-4">
-                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" width="60" style="margin-top: 12.5px; border-radius: 18px">
-                    </div>
-                @else
-                    <div class="col-md-4">
-                        <img src="{{ asset('assets/images/faces/1.jpg') }}" class="img-fluid" alt="P" width="60" style="margin-top: 7px; border-radius: 18px">
-                    </div>
-                @endif
-
-                <div class="col-md-8">
-
-                    <div class="card-body" style="text-align: start; margin-left: -165px">
-                        <h5 class="card-title">{{$item->lowongan}}</h5>
-                        <p class="card-text">{{$item->posisi}}</p>
-
-                        <a href="{{route('karir.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 550px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
-
-                        <form action="{{route('karir.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
-                            @method('delete')
-                            @csrf
-                            <button class="btn btn-secondary border-0" style="margin-left: 650px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
-                        </form>
-                    </div>
-
-                </div>
-                @endforeach
-            </div>
-        </div> --}}
-        {{-- Card --}}
+        @if ($karir->count())
 
         @foreach ($karir as $item)
         <div class="card mb-3 text-start border" style="width: 100%; height: 110px; top: 60px; background: transparent">
@@ -116,7 +83,16 @@
                 </div>
             </div>
         </div>
+
         @endforeach
+
+        @else
+
+        <div class="card" style="height: 110px; top: 60px; background: transparent; margin-bottom: 9.5%">
+            <h2 class="card-title mt-5">Oopss.. Belum Ada Karir</h2>
+        </div>
+
+        @endif
 
         @include('admin.karir.create')
 

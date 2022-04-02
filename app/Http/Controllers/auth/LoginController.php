@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\auth;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Gender;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -27,9 +29,9 @@ class LoginController extends Controller
 
         if (Auth::attempt(['nip' => $request->nip, 'password' => $request->password])) {
             if (Auth::check() && Auth::user()->level_id == 1) {
-                return redirect('dashboard')->with('success', 'Anda Berhasil Login');
+                return redirect('dashboard')->with('success', 'Berhasil Login');
             } else {
-                return redirect()->route('dashboard', encrypt(Auth()->user()->id))->with('success', 'Anda Berhasil Login');
+                return redirect()->route('dashboard', encrypt(Auth()->user()->id))->with('success', 'Berhasil Login');
             }
         }
         return back()->with('error', 'NIP atau Password Salah');

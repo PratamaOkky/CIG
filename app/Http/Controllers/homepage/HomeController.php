@@ -22,7 +22,7 @@ class HomeController extends Controller
      public function blog()
      {
          return view('homepage.blog.blog');
-     } 
+     }
     // About
     public function about()
     {
@@ -37,7 +37,7 @@ class HomeController extends Controller
     // End Layanan
 
     // Karir
-    public function career(Request $request)
+    public function career()
     {
         $karir = Karir::OrderBy('created_at', 'asc')->get();
         return view('homepage.kariru', ['karirs'=>$karir]);

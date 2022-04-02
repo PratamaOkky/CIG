@@ -1,36 +1,31 @@
 @section('title', 'Garda Mitra Nasional')
+
 @extends('layouts.homepage.template')
+
 @section('content')
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="{{asset('assets/galerry/1.png')}}" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('assets/galerry/2.jpg')}}" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('assets/galerry/2.png')}}" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<div class="container">
-    <div class="row" style="font-family: 'Poppins';
-font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-top: 100px; color: #BB1D33;">
- &ensp;Galerry Dan Kegiatan kami
-    </div>
-<hr style="width: 1000px;height: 0px;left: 175px;top: 214px;border: 3px solid #BB1D33;">
-</div>
 
+{{-- Card --}}
+@foreach ($artikel as $item)
+<div class="card mb-3" style="width: 100%; height: 110px; top: 60px; background: transparent">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ asset('storage/' . $item->gambar) }}" class="img-fluid d-inline" alt="P" width="70" height="70" style="margin-top: 12px; border-radius: 18px; margin-left: 29px">
+        </div>
+        <div class="col-md-8">
 
+            <div class="card-body" style="margin-left: -250px; margin-top: 8px;">
+                <h5 class="card-title">{{$item->judul}}</h5>
+                <p class="card-text">{{$item->isi}}</p>
+
+                {{-- <button type="submit" class="btn-red btn-danger border-0 d-inline" data-bs-target="#tambah" data-bs-toggle="modal" style="margin-left: 762px; margin-top: -65px; background-color: #BB1D33">Kirim CV</button> --}}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@endforeach
+{{-- Card --}}
 
 @endsection

@@ -63,7 +63,5 @@ class RegisterController extends Controller
             return redirect()->route('pengguna.index')->with('success', 'Berhasil Menambahkan Pengguna');
         }
         return redirect()->route('pengguna.index')->with('error', 'Gagal Menambah Data');
-
-
     }
 }

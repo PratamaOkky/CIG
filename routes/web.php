@@ -11,7 +11,7 @@ use App\Http\Controllers\admin\ArtikelController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\homepage\HomeController;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 {
     // Dashboard Admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pengguna/editpassword/{id}', [DashboardController::class, 'editPassword'])->name('edit.password');
+    Route::patch('/pengguna/editpassword/{id}', [DashboardController::class, 'updatePassword'])->name('update.password');
 
     // Data Gaji
     Route::resource('gaji', GajiController::class);
@@ -60,12 +62,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Pengguna
     Route::resource('pengguna', UserController::class);
 
-    // Artikel
-    Route::resource('artikel', ArtikelController::class);
-
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+    // Artikel
+    Route::resource('artikel', ArtikelController::class);
+
 });
 
 // Logout

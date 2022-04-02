@@ -37,7 +37,7 @@ body
 
 .box
 {
-    margin-top: 20px;
+    margin-top: -10px;
     width: 50px;
     height: 50px;
     background: #bb1d33;
@@ -60,7 +60,7 @@ body
     width: 996px;
     height: 73px;
     left: 185px;
-    top: 300px;
+    top: 270px;
     background: rgba(187, 29, 51, 0.1);
     border-radius: 26px;
 }

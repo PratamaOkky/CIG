@@ -4,8 +4,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" style="margin-left: 27%" id="exampleModalLabel">Tambah Pengguna</h5>
-
-                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
             </div>
 
             <div class="modal-body">
@@ -22,8 +20,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">Nip</label>
-                        <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip') }}" placeholder="Input Nip">
+                        <label for="nip" class="col-form-label">NIP</label>
+                        <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip') }}" placeholder="Input NIP">
                         @error('nip')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -81,7 +79,7 @@
 
                     <div class="mb-3">
                         <label for="jabatan" class="col-form-label">Jabatan</label>
-                        <input type="text" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan" value="{{ old('jabatan') }}" placeholder="Input Jabatan">
+                        <input type="text" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan" value="{{ old('Jabatan') }}" placeholder="Input Jabatan">
                         @error('jabatan')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -121,7 +119,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_lahir" class="col-form-label">Tanggal Lahir</label>
-                        <input type="date" class="form-control @error('ttl') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}" placeholder="Input Tempat Lahir">
+                        <input type="text" class="form-control @error('ttl') is-invalid @enderror" id="flatpickr" name="tgl_lahir" value="{{ old('tgl_lahir') }}" placeholder="Input Tanggal Lahir">
                         @error('tgl_lahir')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -160,8 +158,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="npwp" class="col-form-label">Npwp</label>
-                        <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" placeholder="Input Npwp">
+                        <label for="npwp" class="col-form-label">NPWP</label>
+                        <input type="text" class="form-control @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" placeholder="Input NPWP">
                         @error('npwp')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -200,8 +198,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="instalasi" class="col-form-label">instalasi</label>
-                        <input type="text" class="form-control @error('instalasi') is-invalid @enderror" id="instalasi" name="instalasi" value="{{ old('instalasi') }}" placeholder="Input instalasi">
+                        <label for="instalasi" class="col-form-label">Instalasi</label>
+                        <input type="text" class="form-control @error('instalasi') is-invalid @enderror" id="instalasi" name="instalasi" value="{{ old('instalasi') }}" placeholder="Input Instalasi">
                         @error('instalasi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -211,7 +209,7 @@
 
                     <div class="mb-3">
                         <label for="bank" class="col-form-label">Nama Bank</label>
-                        <input type="text" class="form-control @error('bank') is-invalid @enderror" id="bank" name="bank" value="{{ old('bank') }}" placeholder="Input bank">
+                        <input type="text" class="form-control @error('bank') is-invalid @enderror" id="bank" name="bank" value="{{ old('bank') }}" placeholder="Input Bank">
                         @error('bank')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -221,7 +219,7 @@
 
                     <div class="mb-3">
                         <label for="rek" class="col-form-label">No. Rekening</label>
-                        <input type="text" class="form-control @error('rek') is-invalid @enderror" id="rek" name="rek" value="{{ old('rek') }}" placeholder="Input rek">
+                        <input type="text" class="form-control @error('rek') is-invalid @enderror" id="rek" name="rek" value="{{ old('rek') }}" placeholder="Input Rekening">
                         @error('rek')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -231,7 +229,7 @@
 
                     <div class="mb-3">
                         <label for="tgl_masuk" class="col-form-label">Tanggal Masuk</label>
-		                <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control @error('tgl_masuk') is-invalid @enderror" autofocus value="{{ old('tgl_masuk') }}">
+		                <input type="text" id="flatpickr" name="tgl_masuk" class="form-control @error('tgl_masuk') is-invalid @enderror" autofocus value="{{ old('tgl_masuk') }}" placeholder="Input Tanggal Masuk">
                         @error('tgl_masuk')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -241,7 +239,7 @@
 
                     <div class="mb-3">
                         <label for="awal_pkwt" class="col-form-label">Mulai PKWT</label>
-                        <input type="date" class="form-control @error('awal_pkwt') is-invalid @enderror" id="awal_pkwt" name="awal_pkwt" value="{{ old('awal_pkwt') }}">
+                        <input type="text" class="form-control @error('awal_pkwt') is-invalid @enderror" id="flatpickr" placeholder="Input Mulai PKWT" name="awal_pkwt" value="{{ old('awal_pkwt') }}">
                         @error('awal_pkwt')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -251,7 +249,7 @@
 
                     <div class="mb-3">
                         <label for="akhir_pkwt" class="col-form-label">Akhir PKWT</label>
-                        <input type="date" class="form-control @error('akhir_pkwt') is-invalid @enderror" id="akhir_pkwt" name="akhir_pkwt" value="{{ old('akhir_pkwt') }}">
+                        <input type="text" class="form-control @error('akhir_pkwt') is-invalid @enderror" id="flatpickr" placeholder="Input Akhir PKWT" name="akhir_pkwt" value="{{ old('akhir_pkwt') }}">
                         @error('akhir_pkwt')
                             <div class="invalid-feedback">
                                 {{ $message }}
