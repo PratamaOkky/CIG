@@ -97,7 +97,7 @@ class ArtikelController extends Controller
      * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_artikel)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'judul' => 'required',
@@ -129,7 +129,7 @@ class ArtikelController extends Controller
      * @param  int  $id_artikel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_artikel)
+    public function destroy($id)
     {
         $dec = Crypt::decryptString($id);
         $artikel = Artikel::findOrFail($dec);
