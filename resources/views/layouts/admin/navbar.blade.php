@@ -22,8 +22,18 @@
                     <a href="{{route('artikel.index')}}" class="nav-link @if (Request::segment(1) == 'artikel') active @endif">Artikel</a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('gaji.index')}}" class="nav-link @if (Request::segment(1) == 'gaji') active @endif">Penggajian</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Penggajian
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="nav-item ml-4">
+                            <a href="{{route('gaji.index')}}" class="nav-link @if (Request::segment(1) == 'gaji') active @endif">Upload Gaji</a>
+                        </li>
+                        <li class="nav-item ml-4">
+                            <a href="{{route('data-gaji')}}" class="nav-link @if (Request::segment(1) == 'gaji') active @endif">Data Gaji</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">

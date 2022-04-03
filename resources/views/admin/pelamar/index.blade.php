@@ -60,4 +60,14 @@
     </div>
 </div>
 
+@push('page-scripts')
+
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    });
+</script>
+
+@endpush
+
 @endsection

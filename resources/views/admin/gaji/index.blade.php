@@ -1,4 +1,4 @@
-@section('title', 'Gaji')
+@section('title', 'Upload Gaji')
 
 @extends('layouts.admin.template')
 

@@ -58,7 +58,7 @@
                     <th>Nama</th>
                     <th>Jabatan</th>
                     <th>Status</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,9 +70,9 @@
                     <td>{{$item->jabatan}}</td>
                     <td>{{$item->level->level}}</td>
                     <td>
-                        <a href="{{route('pengguna.edit', Crypt::encryptString($item->id))}}" class="text-success" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}"><i class="fa fa-edit h4"></i></a>
+                        <a href="{{route('pengguna.edit', Crypt::encryptString($item->id))}}" class="text-success mt-5" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}"><i class="fa fa-edit h4"></i></a>
 
-                        <form action="{{route('pengguna.destroy', Crypt::encryptString($item->id))}}" method="POST" style="margin-top: -38%; margin-left: 30%">
+                        <form action="{{route('pengguna.destroy', Crypt::encryptString($item->id))}}" method="POST" style="margin-top: -26.2%; margin-left: 20%">
                             @method('delete')
                             @csrf
                             <button class="text-danger delete d-inline border-0 ml-2" style="background: transparent" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o h4"></i></button>
@@ -81,16 +81,43 @@
                 </tr>
                 @endforeach
             </tbody>
-
         </table>
     </div>
 </div>
-
 
 @include('admin.pegawai.edit')
 
 @include('admin.pegawai.register')
 
 @include('sweetalert::alert')
+
+@push('page-scripts')
+
+<script>
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    });
+
+    flatpickr('#flatpickr', {
+        altInput: true,
+        altFormat: "d F Y",
+    })
+</script>
+
+@endpush
 
 @endsection

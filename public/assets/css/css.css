@@ -71,6 +71,10 @@ body
     font-size: 14px;
 } */
 
+li{
+    margin-left: 50px;
+}
+
 .btn-modal
 {
     width: 100%;

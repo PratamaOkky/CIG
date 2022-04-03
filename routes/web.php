@@ -1,16 +1,18 @@
 <?php
 
+use App\Models\User;
+use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\GajiController;
-use App\Http\Controllers\admin\KarirController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\KontakController;
-use App\Http\Controllers\admin\PelamarController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\ArtikelController;
-use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\admin\KarirController;
+use App\Http\Controllers\admin\KontakController;
+use App\Http\Controllers\admin\ArtikelController;
+use App\Http\Controllers\admin\PelamarController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\homepage\HomeController;
+use App\Http\Controllers\admin\DashboardController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
@@ -47,6 +49,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 
     // Data Gaji
     Route::resource('gaji', GajiController::class);
+    Route::get('/data-gaji', [GajiController::class, 'dataGaji'])->name('data-gaji');
+    Route::delete('/select-gaji', [GajiController::class, 'deleteSelected'])->name('select.gaji');
     Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
     Route::get('/download', [GajiController::class, 'download'])->name('download');
 
@@ -73,4 +77,3 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
 
 // Logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-

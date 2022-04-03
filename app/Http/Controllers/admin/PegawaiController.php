@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Level;
 use App\Models\Gender;
 use App\Models\Pegawai;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Gaji;
-use App\Models\User;
 use App\Imports\GajiImport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Crypt;
 
 class GajiController extends Controller
 {
@@ -21,6 +21,12 @@ class GajiController extends Controller
     public function index()
     {
         return view('admin.gaji.index');
+    }
+
+    public function dataGaji()
+    {
+        $gaji = Gaji::all();
+        return view('admin.gaji.data_gaji', compact('gaji'));
     }
 
     /**
@@ -86,7 +92,12 @@ class GajiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dec = Crypt::decryptString($id);
+        $gaji = Gaji::find($dec);
+
+        Gaji::destroy($gaji->id);
+
+        return redirect()->back()->with('success', 'Gaji Berhasil Dihapus');
     }
 
     public function importgaji(Request $request)
@@ -108,5 +119,13 @@ class GajiController extends Controller
         $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('legal', 'potrait');
 
         return $pdf->download('invoice.pdf');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $gaji = $request->id;
+
+        Gaji::whereIn('id', $gaji)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
 }
