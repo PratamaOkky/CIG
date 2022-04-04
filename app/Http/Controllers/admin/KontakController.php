@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Pesan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class KontakController extends Controller
 {
@@ -15,10 +16,13 @@ class KontakController extends Controller
 
     public function index(Pesan $pesan)
     {
-        $pesan = Pesan::all();
-        $msg = Pesan::count();
+        if (Auth::user()->level_id == 1) {
 
-        return view('admin.kontak.index', ['msg'=>$msg, 'pesan'=>$pesan]);
+            $pesan = Pesan::all();
+            $msg = Pesan::count();
+
+            return view('admin.kontak.index', ['msg'=>$msg, 'pesan'=>$pesan]);
+        }
     }
 
     /**

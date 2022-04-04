@@ -7,6 +7,7 @@ use App\Models\Level;
 use App\Models\Gender;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,18 +20,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $level = Level::all();
-        $gender = Gender::all();
+        if (Auth::user()->level_id == 1) {
+            $level = Level::all();
+            $gender = Gender::all();
 
-        $users = User::count();
-        $user = User::with('level')->orderBy('level_id', 'asc')->get();
+            $users = User::count();
+            $user = User::with('level')->orderBy('level_id', 'asc')->get();
 
-        return view('admin.pegawai.index', [
-            'gender' => $gender,
-            'levels' => $level,
-            'user' => $user,
-            'users' => $users,
-        ]);
+            return view('admin.pegawai.index', [
+                'gender' => $gender,
+                'levels' => $level,
+                'user' => $user,
+                'users' => $users,
+            ]);
+        }
     }
 
     /**
@@ -85,72 +88,75 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama' =>  'required|max:255',
-            'nip' => 'required',
-            'level_id' =>  'required',
-            'jabatan' => 'nullable',
-            'divisi' => 'nullable',
-            'atasan' => 'nullable',
-            'ttl' => 'nullable',
-            'tgl_lahir' => 'nullable',
-            'nik' => 'nullable',
-            'awal_pkwt' => 'nullable',
-            'akhir_pkwt' => 'nullable',
-            'status_pajak' => 'nullable',
-            'gender_id' => 'nullable',
-            'kewarganegaraan' => 'nullable',
-            'agama' => 'nullable',
-            'alamat' => 'nullable',
-            'npwp' => 'nullable',
-            'no_kes' => 'nullable',
-            'no_tk' => 'nullable',
-            'email' => 'nullable|email',
-            'instalasi' => 'nullable',
-            'bank' => 'nullable',
-            'rek' => 'nullable',
-            'tgl_masuk' => 'nullable',
-            'image' => 'file|image|max:2048'
-        ]);
+        if (Auth::user()->level_id == 1) {
 
-        $dec = Crypt::decryptString($id);
-        $user = User::findOrFail($dec);
+            $request->validate([
+                'nama' =>  'required|max:255',
+                'nip' => 'required',
+                'level_id' =>  'required',
+                'jabatan' => 'nullable',
+                'divisi' => 'nullable',
+                'atasan' => 'nullable',
+                'ttl' => 'nullable',
+                'tgl_lahir' => 'nullable',
+                'nik' => 'nullable',
+                'awal_pkwt' => 'nullable',
+                'akhir_pkwt' => 'nullable',
+                'status_pajak' => 'nullable',
+                'gender_id' => 'nullable',
+                'kewarganegaraan' => 'nullable',
+                'agama' => 'nullable',
+                'alamat' => 'nullable',
+                'npwp' => 'nullable',
+                'no_kes' => 'nullable',
+                'no_tk' => 'nullable',
+                'email' => 'nullable|email',
+                'instalasi' => 'nullable',
+                'bank' => 'nullable',
+                'rek' => 'nullable',
+                'tgl_masuk' => 'nullable',
+                'image' => 'file|image|max:2048'
+            ]);
 
-        if ($request->file('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+            $dec = Crypt::decryptString($id);
+            $user = User::findOrFail($dec);
+
+            if ($request->file('image')) {
+                if ($request->oldImage) {
+                    Storage::delete($request->oldImage);
+                }
+                $user['image'] = $request->file('image')->store('user');
             }
-            $user['image'] = $request->file('image')->store('user');
+
+            $user['nama'] = $request->nama;
+            $user['nip'] = $request->nip;
+            $user['level_id'] = $request->level_id;
+            $user['nik'] = $request->nik;
+            $user['jabatan'] = $request->jabatan;
+            $user['divisi'] = $request->divisi;
+            $user['tgl_lahir'] = $request->tgl_lahir;
+            $user['atasan'] = $request->atasan;
+            $user['ttl'] = $request->ttl;
+            $user['gender_id'] = $request->gender_id;
+            $user['kewarganegaraan'] = $request->kewarganegaraan;
+            $user['agama'] = $request->agama;
+            $user['alamat'] = $request->alamat;
+            $user['npwp'] = $request->npwp;
+            $user['no_kes'] = $request->no_kes;
+            $user['no_tk'] = $request->no_tk;
+            $user['email'] = $request->email;
+            $user['tgl_masuk'] = $request->tgl_masuk;
+            $user['awal_pkwt'] = $request->awal_pkwt;
+            $user['akhir_pkwt'] = $request->akhir_pkwt;
+            $user['status_pajak'] = $request->status_pajak;
+            $user['instalasi'] = $request->instalasi;
+            $user['bank'] = $request->bank;
+            $user['rek'] = $request->rek;
+
+            $user->update();
+
+            return redirect()->back()->with('success', 'Berhasil Mengubah Data Pegawai');
         }
-
-        $user['nama'] = $request->nama;
-        $user['nip'] = $request->nip;
-        $user['level_id'] = $request->level_id;
-        $user['nik'] = $request->nik;
-        $user['jabatan'] = $request->jabatan;
-        $user['divisi'] = $request->divisi;
-        $user['tgl_lahir'] = $request->tgl_lahir;
-        $user['atasan'] = $request->atasan;
-        $user['ttl'] = $request->ttl;
-        $user['gender_id'] = $request->gender_id;
-        $user['kewarganegaraan'] = $request->kewarganegaraan;
-        $user['agama'] = $request->agama;
-        $user['alamat'] = $request->alamat;
-        $user['npwp'] = $request->npwp;
-        $user['no_kes'] = $request->no_kes;
-        $user['no_tk'] = $request->no_tk;
-        $user['email'] = $request->email;
-        $user['tgl_masuk'] = $request->tgl_masuk;
-        $user['awal_pkwt'] = $request->awal_pkwt;
-        $user['akhir_pkwt'] = $request->akhir_pkwt;
-        $user['status_pajak'] = $request->status_pajak;
-        $user['instalasi'] = $request->instalasi;
-        $user['bank'] = $request->bank;
-        $user['rek'] = $request->rek;
-
-        $user->update();
-
-        return redirect()->back()->with('success', 'Berhasil Mengubah Data Pegawai');
     }
 
     /**
@@ -161,15 +167,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $dec = Crypt::decryptString($id);
-        $user = User::findOrFail($dec);
+        if (Auth::user()->level_id == 1) {
 
-        if ($user->image) {
-            Storage::delete($user->image);
+            $dec = Crypt::decryptString($id);
+            $user = User::findOrFail($dec);
+
+            if ($user->image) {
+                Storage::delete($user->image);
+            }
+
+            User::destroy($user->id);
+
+            return redirect()->back()->with('success', 'Pegawai Berhasil Dihapus');
         }
-
-        User::destroy($user->id);
-
-        return redirect()->back()->with('success', 'Pegawai Berhasil Dihapus');
     }
 }

@@ -14,11 +14,11 @@
             <div class="row g-0">
                 @if (auth()->user()->image)
                     <div class="col-md-4">
-                        <img src="{{ asset('storage/' . auth()->user()->image) }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
+                        <img src="{{ asset('storage/' . auth()->user()->image) }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px; border-radius: 20%" class="img-fluid" alt="...">
                     </div>
                 @else
                     <div class="col-md-4">
-                        <img src="{{ asset('assets/images/faces/1.jpg') }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid rounded" alt="...">
+                        <img src="{{ asset('assets/images/faces/1.jpg') }}" style="width: 100px; height: 100; margin-top: 19px; margin-left: -230px" class="img-fluid" alt="...">
                     </div>
                 @endif
                 <div class="col-md-8">

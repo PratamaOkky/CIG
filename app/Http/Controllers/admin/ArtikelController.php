@@ -6,6 +6,7 @@ use App\Models\Artikel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,13 +25,16 @@ class ArtikelController extends Controller
 
     public function index()
     {
-        $artikels = Artikel::count();
-        $artikel = Artikel::all();
-        return view('admin.artikel.index', [
-            'artikel'=>$artikel,
-            'artikels'=>$artikels,
-            'artikel' => Artikel::filter(request(['search']))->paginate(10)
-        ]);
+        if (Auth::user()->level_id == 1) {
+
+            $artikels = Artikel::count();
+            $artikel = Artikel::all();
+            return view('admin.artikel.index', [
+                'artikel'=>$artikel,
+                'artikels'=>$artikels,
+                'artikel' => Artikel::filter(request(['search']))->paginate(10)
+            ]);
+        }
     }
 
     /**
@@ -51,21 +55,23 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
-            'gambar' => 'file|image|max:2048'
-        ]);
+        if (Auth::user()->level_id == 1) {
+            $validatedData = $request->validate([
+                'judul' => 'required',
+                'isi' => 'required',
+                'gambar' => 'file|image|max:2048'
+            ]);
 
-        $validatedData['isi'] = Str::limit(strip_tags($request->isi), 200);
+            $validatedData['isi'] = Str::limit(strip_tags($request->isi), 200);
 
-        if ($request->file('gambar')) {
-            $validatedData['gambar'] = $request->file('gambar')->store('artikel');
+            if ($request->file('gambar')) {
+                $validatedData['gambar'] = $request->file('gambar')->store('artikel');
+            }
+
+            Artikel::create($validatedData);
+
+            return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
         }
-
-        Artikel::create($validatedData);
-
-        return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
     }
 
     /**
@@ -99,28 +105,31 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'judul' => 'required',
-            'isi' => 'required',
-            'gambar' => 'file|image|max:2048'
-        ]);
+        if (Auth::user()->level_id == 1) {
 
-        $dec = Crypt::decryptString($id);
-        $artikel = Artikel::findOrFail($dec);
+            $request->validate([
+                'judul' => 'required',
+                'isi' => 'required',
+                'gambar' => 'file|image|max:2048'
+            ]);
 
-        if ($request->file('gambar')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+            $dec = Crypt::decryptString($id);
+            $artikel = Artikel::findOrFail($dec);
+
+            if ($request->file('gambar')) {
+                if ($request->oldImage) {
+                    Storage::delete($request->oldImage);
+                }
+                $artikel['gambar'] = $request->file('gambar')->store('artikel');
             }
-            $artikel['gambar'] = $request->file('gambar')->store('artikel');
+
+            $artikel->judul = $request->judul;
+            $artikel['isi'] = Str::limit(strip_tags($request->isi), 200);
+
+            $artikel->update();
+
+            return redirect()->back()->with('success', 'Berhasil Mengubah Artikel');
         }
-
-        $artikel->judul = $request->judul;
-        $artikel['isi'] = Str::limit(strip_tags($request->isi), 200);
-
-        $artikel->update();
-
-        return redirect()->back()->with('success', 'Berhasil Mengubah Artikel');
     }
 
     /**
@@ -131,15 +140,18 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        $dec = Crypt::decryptString($id);
-        $artikel = Artikel::findOrFail($dec);
+        if (Auth::user()->level_id == 1) {
 
-        if ($artikel->gambar) {
-            Storage::delete($artikel->gambar);
+            $dec = Crypt::decryptString($id);
+            $artikel = Artikel::findOrFail($dec);
+
+            if ($artikel->gambar) {
+                Storage::delete($artikel->gambar);
+            }
+
+            Artikel::destroy($artikel->id);
+
+            return redirect()->back()->with('success', 'Berhasil Hapus Artikel');
         }
-
-        Artikel::destroy($artikel->id);
-
-        return redirect()->back()->with('success', 'Berhasil Hapus Artikel');
     }
 }
