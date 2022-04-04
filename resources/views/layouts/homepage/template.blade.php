@@ -1,4 +1,60 @@
-<style>
+<style media="screen">
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+}
+.wrapper > img{
+    width: 100%;
+	display: block;
+	margin-left: 1px;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+.img{
+    width: 100%;
+	display: block;
+
+margin-left: 100px;
+}
+.contain1{
+    width: 365px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 10px 25px 30px rgba(0,0,0,0.3);
+}
+    </style>
+<!-- <style>
 .slider {
     background-image: url('assets/images/ic-home-bot.png');
 	position: relative;
@@ -234,7 +290,7 @@
 		left: 0; opacity: 0;
 	}
 }
-    </style>
+    </style> -->
 
 <!doctype html>
 <html lang="en">
