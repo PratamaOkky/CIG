@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Pelamar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,8 +18,11 @@ class PelamarController extends Controller
 
     public function index()
     {
-        $pelamar = Pelamar::all();
-        return view('admin.pelamar.index', ['pelamar'=>$pelamar]);
+        if (Auth::user()->level_id == 1) {
+
+            $pelamar = Pelamar::all();
+            return view('admin.pelamar.index', ['pelamar'=>$pelamar]);
+        }
     }
 
     /**
@@ -84,15 +88,18 @@ class PelamarController extends Controller
      */
     public function destroy($id)
     {
-        $dec = Crypt::decryptString($id);
-        $pelamar = Pelamar::findOrFail($dec);
+        if (Auth::user()->level_id == 1) {
 
-        if ($pelamar->cv) {
-            Storage::delete($pelamar->cv);
+            $dec = Crypt::decryptString($id);
+            $pelamar = Pelamar::findOrFail($dec);
+
+            if ($pelamar->cv) {
+                Storage::delete($pelamar->cv);
+            }
+
+            Pelamar::destroy($pelamar->id);
+
+            return redirect()->back()->with('success', 'Pegawai Berhasil Dihapus');
         }
-
-        Pelamar::destroy($pelamar->id);
-
-        return redirect()->back()->with('success', 'Pegawai Berhasil Dihapus');
     }
 }

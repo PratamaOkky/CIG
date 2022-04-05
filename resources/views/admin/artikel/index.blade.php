@@ -58,6 +58,10 @@
                         <a href="{{route('artikel.edit', Crypt::encryptString($item->id))}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}" style="margin-left: 550px; margin-top: -115px; background-color: #BB1D33">Ubah</a>
 
                         <form action="{{route('artikel.destroy', Crypt::encryptString($item->id))}}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-secondary border-0" style="margin-left: 650px; margin-top: -163px;" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
+                        </form>
                     </div>
 
                 </div>

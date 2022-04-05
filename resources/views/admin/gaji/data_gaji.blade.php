@@ -14,49 +14,33 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <table id="table_id" class="table table-stripped table-sm text-center">
-            <thead>
-                <tr>
-                    <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll"></th>
-                    <th class="text-center">NIP</th>
-                    <th class="text-center">Gaji</th>
-                    <th class="text-center">Total Gaji</th>
-                    <th class="text-center"> Action <br> <button href="#" class="btn btn-danger btn-sm mb-3 d-none" id="deleteAll" onclick="return confirm('Yakin Hapus Semua Data?')">Delete Selected</button></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($gaji as $item)
-                <tr>
-                    <td><input type="checkbox" name="id" class="checkBoxClass" value="{{$item->id}}"></td>
-                    <td>{{$item->nip}}</td>
-                    <td>{{$item->gaji}}</td>
-                    <td>{{$item->totalgaji}}</td>
-                    <td>
-                        <form action="{{route('gaji.destroy', Crypt::encryptString($item->id))}}" method="POST">
-                            @method('delete')
-                            @csrf
-                            <button class="text-danger delete d-inline border-0 ml-2" style="background: transparent" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o h4"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="table-gaji" class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll"></th>
+                        <th class="text-center">NIP</th>
+                        <th class="text-center">Gaji</th>
+                        <th class="text-center">Total Gaji</th>
+                        <th class="text-center"> Action <br> <button href="#" class="btn btn-danger btn-sm mb-3 d-none" id="deleteAll">Delete Selected</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
 @include('sweetalert::alert')
 
 @push('page-scripts')
-
-<script>
-
-    $(document).ready( function () {
-        $('#table_id').DataTable();
-    });
-
-</script>
 
 <script>
 
@@ -67,6 +51,56 @@
     });
 
     $(function () {
+
+        var table =  $('#table-gaji').DataTable({
+                     processing:true,
+                     serversideL: true,
+                     info:true,
+                     ajax:"{{ route('all.gaji') }}",
+                     "pageLength":5,
+                     "aLengthMenu":[[5,10,25,50,-1],[5,10,25,50,"All"]],
+                     columns:[
+                         {data:'checkbox', name:'checkbox', orderable:false, searchable:false},
+                         {data:'nip', name:'nip'},
+                         {data:'gaji', name:'gaji'},
+                         {data:'totalgaji', name:'totalgaji'},
+                         {data:'actions', name:'actions', orderable:false, searchable:false},
+                     ],
+                     order: [[0, 'asc']]
+                });
+
+        $(document).on('click', '#delete', function (data){
+            var id = $(this).data('id');
+            var url = '<?= route("delete.gaji") ?>';
+
+            swal.fire({
+                title: 'Are You Sure?',
+                html: 'You Want to <b>Delete</b> This Data',
+                showCancelButton: true,
+                showCloseButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Yes, Delete',
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#556ee6',
+                width:300,
+                allowOutSideClick: false
+            }).then(function (result) {
+                if (result.value) {
+                    $.post(url, {id:id}, function(data){
+                        if (data.code == 1) {
+                            $('#table-gaji').DataTable().ajax.reload(null, false);
+                            Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                    )
+                        } else {
+                            toastr.error(data.msg);
+                        }
+                    }, 'json');
+                }
+            })
+        });
 
         $(document).on('click','input[name="checkAll"]', function(){
                   if(this.checked){
@@ -100,28 +134,41 @@
                }
            }
 
-           $('#deleteAll').click(function (e) {
-            e.preventDefault();
-            var all = [];
+           $(document).on('click','#deleteAll', function(){
+               var id = [];
+               $('input[name="id"]:checked').each(function(){
+                   id.push($(this).data('id'));
+               });
 
-            $("input:checkbox[name=id]:checked").each(function () {
-                all.push($(this).val());
-            });
-
-            $.ajax({
-                url:"{{route('select.gaji')}}",
-                type:"DELETE",
-                data:{
-                    _token:$("input[name=_token]").val(),
-                    id:all,
-                },
-                success:function(response){
-                    $.each(all, function (key, val) {
-                        $("#id"+val).remove();
-                    })
-                }
-            });
-        })
+               var url = '{{ route("select.gaji") }}';
+               if(id.length > 0){
+                   swal.fire({
+                       title:'Are you sure?',
+                       html:'You want to delete <b>('+id.length+')</b> data',
+                       showCancelButton:true,
+                       showCloseButton:true,
+                       confirmButtonText:'Yes, Delete',
+                       cancelButtonText:'Cancel',
+                       confirmButtonColor:'#556ee6',
+                       cancelButtonColor:'#d33',
+                       width:300,
+                       allowOutsideClick:false
+                   }).then(function(result){
+                       if(result.value){
+                           $.post(url,{id:id},function(data){
+                              if(data.code == 1){
+                                  $('#table-gaji').DataTable().ajax.reload(null, true);
+                                  Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                    )
+                              }
+                           },'json');
+                       }
+                   })
+               }
+           });
 
     });
 </script>

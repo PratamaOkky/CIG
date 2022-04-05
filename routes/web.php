@@ -48,11 +48,16 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     Route::patch('/pengguna/editpassword/{id}', [DashboardController::class, 'updatePassword'])->name('update.password');
 
     // Data Gaji
-    Route::resource('gaji', GajiController::class);
-    Route::get('/data-gaji', [GajiController::class, 'dataGaji'])->name('data-gaji');
-    Route::delete('/select-gaji', [GajiController::class, 'deleteSelected'])->name('select.gaji');
-    Route::post('/importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
-    Route::get('/download', [GajiController::class, 'download'])->name('download');
+    Route::controller(GajiController::class)->group(function ()
+    {
+        Route::get('/gaji', 'index')->name('gaji.index');
+        Route::get('/data-gaji', 'dataGaji')->name('data.gaji');
+        Route::get('/all-gaji', 'getAllGaji')->name('all.gaji');
+        Route::post('/delete-gaji', 'deleteGaji')->name('delete.gaji');
+        Route::post('/select-gaji', 'deleteSelected')->name('select.gaji');
+        Route::post('/importgaji', 'importgaji')->name('importgaji');
+        Route::get('/download', 'download')->name('download');
+    });
 
     // Karir
     Route::resource('karir', KarirController::class);
