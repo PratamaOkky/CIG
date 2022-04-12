@@ -21,7 +21,7 @@ class HomeController extends Controller
      // artikel
      public function blog()
      {
-         return view('homepage.blog.blog');
+         return view('homepage.blog');
      }
 
     // About

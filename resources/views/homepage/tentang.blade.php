@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12 col-lg-6" style="padding-top: 150px">
+        <div class="col-12 col-md-6 col-lg-6" style="padding-top: 150px">
         <img src="{{asset('assets/images/tentang.png')}}"style="width: 513px;height: 299px;left: 155px;top: 173px">
         </div>
-        <div class="col-12 col-lg-6"style="color:#BB1D33; padding-top: 200px;
-                        text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px; width: 500px">Sejarah
+        <div class="col-12 col-md-6 col-lg-6"style="color:#BB1D33; padding-top: 200px;
+                        text-align: left; font-family: Poppins;font-weight: 700; font-size: 35px;">Sejarah
                         <p style="font-size:14px;font-weight: 400; color:#350106">Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010.
                         Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi
                         yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.
@@ -29,7 +29,7 @@
 <div class="container"><center>
     <div class="row" style="padding-top: 50px;">
         <div class="col-3">
-        <img src="{{asset('assets/images/tentang.png')}}"style="width: 299px ;height:513px;left: 155px;top: 173px">
+        <img src="{{asset('assets/galerry/direktur.png')}}"style="width: 299px ;height:513px;left: 155px;top: 173px">
         </div>
         <div class="col-9 align-self-center">
         <blockquote class="blockquote">

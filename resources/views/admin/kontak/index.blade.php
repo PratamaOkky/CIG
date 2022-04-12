@@ -15,7 +15,7 @@
         <div class="col-12 col-lg-6" style="margin-top: 50px">
             <div class="row g-0">
                 @foreach ($pesan as $item)
-                <div class="col-12 col-sm-4 col-md-3">
+                <div class="col-12 col-sm-4 col-md-3" style=" padding-top: 15px;">
                     <div class="card mb-4" style="border-radius: 15px; border: 1px black solid;margin-right: 5px;">
                         <div class="card-body" style="background-color: transparent; border-radius: 15px;">
                             <p class="mb-3">{{ $item->nama }}</p>
