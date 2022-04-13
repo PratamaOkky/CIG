@@ -205,7 +205,6 @@ color: #FFFFFF;
 .btn-red:hover {
   background: 	#BB1D33;
 }
-
 .navbar-toggler{
     width: 47px;
     height: 34px;

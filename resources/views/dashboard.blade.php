@@ -39,13 +39,14 @@
             use Carbon\Carbon;
             $date = Carbon::today()->format('d-m-y');
         @endphp
-
-        <div class="row mt-5 mb-3 text-center">
-            <div class="col-md-6 col-12">
+      </div>
+      <div class="container">
+        <div class="row mt-5 mb-3">
+            <div class="col-12 col-lg-6">
 
                 <table class="table table-striped table-borderless">
 
-                    <tbody>
+                    <tbody style="width: 100px">
                       <tr>
                         <td>Kelahiran : {{ auth()->user()->ttl }} , {{ date('d F Y', strtotime(auth()->user()->tgl_lahir)) }}</td>
                       </tr>
@@ -72,7 +73,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
 
                 <table class="table table-striped table-borderless">
 
@@ -103,8 +104,9 @@
 
             </div>
         </div>
+      </div>  
         <a href="{{route('download')}}" class="btn btn-danger d-inline border-0" style="margin-left: 92.2%; background-color: #bb1d33">Slip Gaji</a>
-    </div>
+
 </div>
 
 @include('admin.pegawai.editpassword')

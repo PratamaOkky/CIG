@@ -36,7 +36,7 @@
                                             <p class="card-text mb-4" style="padding-top: 3%;">GAJI POKOK : {{$gaji->gaji}}</p>
                                             <p class="card-text mb-4">T.MAKAN & TRANSPORT : {{$gaji->tunjangan_makan}}</p>
                                             <p class="card-text mb-4">T.OPERASIONAL : {{$gaji->tunjangan_operasional}}</p>
-                                            <p class="card-text mb-4">T.JABATAN : {{$gaji->tunjangan_operasional}}</p>
+                                            <p class="card-text mb-4">T.JABATAN : {{$gaji->tunjangan_jabatan}}</p>
                                             <p class="card-text mb-4">LEMBUR NASIONAL : {{$gaji->lembur_nasional}}</p>
                                             <p class="card-text mb-4">LEMBUR BIASA : {{$gaji->lembur_biasa}}</p>
                                             <p class="card-text mb-4">KOREKSI : {{$gaji->koreksi}}</p>
