@@ -2,38 +2,44 @@
 .wrapper{
     width: 100%;
     display: flex;
-    animation: slide 16s infinite;
+    animation: slide 20s infinite;
 }
 .wrapper > img{
     width: 100%;
 	display: block;
-	margin-left: 1px;
+	
 }
 
 @keyframes slide{
     0%{
         transform: translateX(0);
     }
-    25%{
+    20%{
         transform: translateX(0);
     }
-    30%{
+    35%{
         transform: translateX(-100%);
     }
-    50%{
+    40%{
         transform: translateX(-100%);
     }
-    55%{
+    45%{
         transform: translateX(-200%);
     }
-    75%{
+    60%{
         transform: translateX(-200%);
+    }
+    65%{
+        transform: translateX(-300%);
     }
     80%{
         transform: translateX(-300%);
     }
+    85%{
+        transform: translateX(-400%);
+    }
     100%{
-        transform: translateX(-300%);
+        transform: translateX(-400%);
     }
 }
 .img{
@@ -57,6 +63,7 @@ margin-left: 100px;
 }
 .contain1{
     width: 365px;
+    height: 200px;
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
@@ -86,6 +93,20 @@ margin-left: 100px;
 	 min-width: 120px;
      min-height: 387px;
   }
+  .rectangle {
+  height: 50px;
+  width: 500px;
+
+  border-radius: 0px 75px;
+  border-color : #BB1D33;
+}
+	 
+.cardla{
+border: 1px solid #BB1D33;
+box-sizing: border-box;
+box-shadow: 0px 0px 4px 1px rgba(187, 29, 51, 0.2);
+border-radius: 0px 25px;
+}
 </style>
 
 <!doctype html>

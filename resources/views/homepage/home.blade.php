@@ -73,11 +73,12 @@
                 <img src="{{asset('assets/galerry/2.png')}}">
                 </div> -->
             <div class="contain1">
-                <div class="wrapper" style="width: 100%;height: auto;">
+                <div class="wrapper" style="width: 100%;height: 100%;">
                 <img  src="{{asset('assets/galerry/BCA.jpg')}}">
                 <img  src="{{asset('assets/galerry/citraplatindo.jpg')}}">
-                <img  src="{{asset('assets/galerry/BCA.jpg')}}">
-                <img  src="{{asset('assets/galerry/BCA.jpg')}}">
+                <img  src="{{asset('assets/galerry/fieris.png')}}">
+                <img  src="{{asset('assets/galerry/mpp.png')}}">
+                <img  src="{{asset('assets/galerry/mss.jpg')}}">
                 </div>
             </div>   
         </div>

@@ -6,7 +6,7 @@
 font-style: normal;font-weight: 700; font-size: 35px;line-height: 52px; padding-top: 100px; color: #BB1D33;">
  &ensp;Hubungi Kami
     </div>
-<hr style="width: 1000px;height: 0px;left: 175px;top: 214px;border: 3px solid #BB1D33;">
+<hr style="border: 3px solid #BB1D33;">
 </div>
 <div class="container">
     <div class="row"style="padding-top: 50px;padding-bottom: 50px;">
