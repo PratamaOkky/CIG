@@ -34,6 +34,7 @@
         <div class="col-9 align-self-center">
         <blockquote class="blockquote">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p>   </p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
         </div>
@@ -51,7 +52,7 @@
 </div>
 
 <!-- visi misi -->
-    <div class="container">
+    <div class="container"style="padding-bottom: 50px;">
         <div class="row">
                 <div align="right" class="col-3" style="padding-top: 50px">
                     <img src="{{asset('assets/images/ic-misi.png')}}"style="width: 61px; height: 74px; left: 246px; top: 1399px;">
@@ -64,7 +65,7 @@
             <div class="col-3">
             </div>
             <div class="col-7" align="left" style="font-size: 16px font-weight: 400;">
-                MENJADI PERUSAHAAN JASA PENGAMANAN NASIONAL  DAN SEBAGAI MITRA STRATEGIS YANG TERPERCAYA
+                Menjadi perusahaan jasa pengamanan Nasional dan sebagai mitra strategis yang terpercaya
             </div>
             <div class="col-2">
             </div>
@@ -94,6 +95,7 @@
     </div>
 <!-- /visi misi -->
 <!-- 4 card pelayanan -->
+<div class="container">
     <div class="row">
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="card border-0">
@@ -137,6 +139,7 @@
             </div>
         </div>
     </div>
+</div>
 <!-- /4 card pelayanan -->
     <!-- <div class="row">
         <div align="right" class="col-3" style="padding-top: 50px">
