@@ -23,6 +23,7 @@ Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
 
 // blog
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
 // Layanan
 Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
