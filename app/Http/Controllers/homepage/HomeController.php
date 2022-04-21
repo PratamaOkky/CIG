@@ -5,6 +5,7 @@ namespace App\Http\Controllers\homepage;
 use App\Models\Karir;
 use App\Models\Pesan;
 use App\Models\Pelamar;
+use App\Models\Artikel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,9 +22,15 @@ class HomeController extends Controller
      // artikel
      public function blog()
      {
-         return view('homepage.blog');
+         $data= Artikel::paginate(3);
+        return view('homepage.blog.index', ['data'=> $data]);
      }
 
+     public function detail()
+     {
+        $artikel = Artikel::all();
+        return view('homepage.blog.detail', ['artikel'=>$artikel]);
+     }
     // About
     public function about()
     {
