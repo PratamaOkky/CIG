@@ -13,48 +13,34 @@ use Illuminate\Support\Facades\Crypt;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $gaji = Gaji::all();
-        $gender = Gender::all();
-        $user = User::with('gender')->get();
         return view('dashboard', [
-            'gender'=>$gender,
-            'user'=>$user,
-            'gaji'=>$gaji,
+            'user' => User::get(),
+            'genders' => Gender::all(),
+            'gaji' => Gaji::all(),
             'active' => 'dashboard'
         ]);
     }
 
-    public function editPassword($id)
+    public function editPassword(User $user)
     {
-        $dec = Crypt::decryptString($id);
-        $user = User::find($dec);
-
         return view('dashboard', [
-            'user' => $user
-    ]);
+            'users' => User::find($user)
+        ]);
     }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request, User $user)
     {
         $request->validate([
             'old_password' =>  ['required', new oldMatchPassword],
-            'password' => 'required|min:8|confirmed',
+            'password' => ['required', 'min:8', 'confirmed'],
         ]);
 
-        $dec = decrypt($id);
-        $user = User::find($dec);
+        $request['password'] = Hash::make($request->password);
 
-        $user->password = Hash::make($request->password);
-
-        if ($user->save()) {
-            return redirect()->route('dashboard', encrypt($user->id))->with('success', 'Berhasil Merubah Password');
+        if (User::create($user)) {
+            return redirect()->route('dashboard', $user->nip)->with('success', 'Berhasil Merubah Password');
         } else {
             return redirect()->back()->with('message-danger', 'Gagal Merubah Password');
         }

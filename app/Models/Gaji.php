@@ -9,21 +9,21 @@ class Gaji extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_gaji';
+    protected $table = 'wages';
 
     // protected $guarder = ['id'];
 
     protected $fillable = [
         'nip',
         'gaji',
-        'tunjangan_makan',
-        'tunjangan_operasional',
-        'tunjangan_jabatan',
-        'lembur_nasional',
-        'lembur_biasa',
+        't_makan',
+        't_operasional',
+        't_jabatan',
+        'lembur_nas',
+        'lembur_b',
         'koreksi',
-        'bpjs_kesehatan_perusahaan',
-        'bpjs_tenagakerja_perusahaan',
+        'bpjs_kes_perusahaan',
+        'bpjs_tk_perusahaan',
         'koreksi_plus',
         'bonus',
         'total_plus',
@@ -32,12 +32,12 @@ class Gaji extends Model
         'diksar',
         'kta',
         'pph21',
-        'bpjs_kes_karyawan',
-        'bpjs_tenagakerja_karyawan',
-        'bpjskes_perusahaan',
-        'bpjstk_perusahaan',
+        'bpjs_kes_kar',
+        'bpjs_tk_kar',
+        'bpjs_kes',
+        'bpjs_tk',
         'potongan',
-        'totalgaji',
+        'total',
     ];
 
     // public function id()

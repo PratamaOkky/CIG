@@ -9,10 +9,10 @@ class Gender extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_gender';
+    protected $table = 'genders';
 
     protected $fillable = [
-        'name',
+        'gender',
     ];
 
     public function pegawai()

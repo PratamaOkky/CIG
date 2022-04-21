@@ -9,9 +9,9 @@
             </div>
 
             <div class="modal-body">
-                <form method="POST" action="{{route('update.password', encrypt(auth()->user()->id))}}">
+                <form method="POST" action="{{route('update.password', auth()->user()->id)}}">
+                    @method('PUT')
                     @csrf
-                    @method('PATCH')
 
                     <div class="mb-3">
                         <label for="old_password" class="col-form-label">Password Lama</label>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="col-form-label">Password</label>
+                        <label for="password" class="col-form-label">Password Baru</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}" placeholder="Input Password Baru">
                         @error('password')
                             <div class="invalid-feedback">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="col-form-label">Password</label>
+                        <label for="password" class="col-form-label">Konfirmasi Password</label>
                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Konfirmasi Password Baru">
                         @error('password_confirmation')
                             <div class="invalid-feedback">

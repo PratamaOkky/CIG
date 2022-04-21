@@ -1,87 +1,89 @@
-@section('title', 'Data Pegawai')
+<x-app-layout title="Data Pegawai">
 
-@extends('layouts.admin.template')
+    @slot('styles')
+        <style>
+            .img
+            {
+                width: 45px;
+                height: 45px;
+            }
+        </style>
+    @endslot
 
-@section('content')
+    <div class="container py-5">
 
-<div class="section">
-    <div class="container">
-        <nav class="navbar navbar-light">
-            <div class="container">
-                <div class="section-header mt-5 mb-5 ml-0">
-                    <h1 class="head">Data Pegawai</h1>
-                </div>
-            </div>
-        </nav>
+        <h1 class="welcome mb-4">Data Pegawai</h1>
 
-        <div class="row">
+        <div class="row py-5 text-center">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card border-0 d-flex align-items-center justify-content-center">
                     <div class="card-body">
-                        <div class="box">
-                            <h1 class="card-title">{{ $users }}</h1>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#register"><i class="bi bi-plus-circle"></i></a>
+                        <div class="box ms-3">
+                            <h1 class="card-title py-2">
+                                {{ $user }}
+                            </h1>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#register"><i class="bi bi-plus-circle h6"></i></a>
                         </div>
-                            <p class="card-text" style="margin-left: 3.8%">Pengguna</p>
+                            <p class="card-text pt-2">Pengguna</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="card">
+                <div class="card border-0 d-flex align-items-center justify-content-center">
                     <div class="card-body">
                         <div class="box">
-                            <h1 class="card-title">1</h1>
-                            @if (auth()->user()->level_id == 1)
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
-                            @endif
+                            <h1 class="card-title py-2">
+                                {{ $user }}
+                            </h1>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle h6"></i></a>
                         </div>
-                        <p class="card-text" style="margin-left: 4%">Admin</p>
+                        <p class="card-text pt-2">Admin</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="garis"></div>
-        <div class="rectangle">
 
-        </div>
+        <div class="rectangle d-block ms-5"></div>
 
     </div>
 
-    <div class="container" style="width: 80%; margin-top: 6%">
-        <table id="table_id" class="table table-stripped table-sm">
-            <thead class="text-center">
-                <tr>
-                    <th>Foto</th>
-                    <th>NIP</th>
-                    <th>Nama</th>
-                    <th>Jabatan</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($user as $item)
-                <tr>
-                    <td><img src="{{asset('storage/' . $item->image)}}" class="img-thumbnail rounded-circle" width="40"></td>
-                    <td>{{$item->nip}}</td>
-                    <td>{{$item->nama}}</td>
-                    <td>{{$item->jabatan}}</td>
-                    <td>{{$item->level->level}}</td>
-                    <td>
-                        <a href="{{route('pengguna.edit', Crypt::encryptString($item->id))}}" class="text-success mt-5" data-bs-toggle="modal" data-bs-target="#edit-{{$item->id}}"><i class="fa fa-edit h4"></i></a>
-
-                        <form action="{{route('pengguna.destroy', Crypt::encryptString($item->id))}}" method="POST" style="margin-top: -26.2%; margin-left: 20%">
-                            @method('delete')
-                            @csrf
-                            <button class="text-danger delete d-inline border-0 ml-2" style="background: transparent" onclick="return confirm('Yakin Hapus Data?')"><i class="fa fa-trash-o h4"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="container table py-5 mb-5">
+        <div class="row">
+            <table id="table_id" class="table table-responsive table-striped table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>NIP</th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                    <tr>
+                        <td><img src="{{asset('storage/' . $user->image)}}" class="img rounded-circle"></td>
+                        <td><small>{{$user->nip}}</small></td>
+                        <td><small>{{$user->name}}</small></td>
+                        <td><small>{{$user->jabatan}}</small></td>
+                        <td><small>{{$user->level->level}}</small></td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <a href="#" class="btn text-warning h5" data-bs-target="#edit-{{ $user->id }}" data-bs-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+                            <form action="{{ route('user.destroy', $user) }}" method="POST" class="form-store">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="text-danger h6 border-0"><i class="bi bi-trash-fill"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -120,4 +122,4 @@
 
 @endpush
 
-@endsection
+</x-app-layout>

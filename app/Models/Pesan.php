@@ -9,12 +9,12 @@ class Pesan extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_pesan';
+    protected $table = 'contacts';
 
-    // protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     protected $fillable = [
-        'nama',
+        'name',
         'email',
         'subject',
         'isi'

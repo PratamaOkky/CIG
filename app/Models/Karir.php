@@ -9,7 +9,7 @@ class Karir extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_karir';
+    protected $table = 'karirs';
 
     protected $fillable = [
         'lowongan',

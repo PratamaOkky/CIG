@@ -3,155 +3,56 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Artikel;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\ArtikelRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ArtikelController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function index()
     {
-        if (Auth::user()->level_id == 1) {
-
-            $artikels = Artikel::count();
-            $artikel = Artikel::all();
-            return view('admin.artikel.index', [
-                'artikel'=>$artikel,
-                'artikels'=>$artikels,
-                'artikel' => Artikel::filter(request(['search']))->paginate(10)
-            ]);
-        }
+        return view('admin.artikel.index', [
+            'art' => Artikel::count(),
+            'artikels' => Artikel::all(),
+            'artikels' => Artikel::filter(request(['search']))->paginate(6)
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(ArtikelRequest $request, Artikel $artikel)
     {
-        //
+        Artikel::create([
+            'judul' => request('judul'),
+            'isi' => request('isi'),
+            'detail' => request('detail'),
+            'image' => request()->file('image')->store('artikel'),
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(ArtikelRequest $request, Artikel $artikel)
     {
-        if (Auth::user()->level_id == 1) {
-            $validatedData = $request->validate([
-                'judul' => 'required',
-                'isi' => 'required',
-                'gambar' => 'file|image|max:2048'
-            ]);
-
-            $validatedData['isi'] = Str::limit(strip_tags($request->isi), 200);
-
-            if ($request->file('gambar')) {
-                $validatedData['gambar'] = $request->file('gambar')->store('artikel');
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
             }
-
-            Artikel::create($validatedData);
-
-            return redirect()->back()->with('success', 'Berhasil Menambahkan Artikel');
+            $artikel['image'] = $request->file('image')->store('artikel');
         }
+
+        $artikel->update([
+            'judul' => request('judul'),
+            'isi' => request('isi'),
+            'detail' => request('detail'),
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil Ubah Artikel');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id_artikel
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id_artikel)
+    public function destroy(Artikel $artikel)
     {
-        //
-    }
+        Storage::delete($artikel->image);
+        $artikel->delete($artikel->id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id_artikel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_artikel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id_artikel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        if (Auth::user()->level_id == 1) {
-
-            $request->validate([
-                'judul' => 'required',
-                'isi' => 'required',
-                'gambar' => 'file|image|max:2048'
-            ]);
-
-            $dec = Crypt::decryptString($id);
-            $artikel = Artikel::findOrFail($dec);
-
-            if ($request->file('gambar')) {
-                if ($request->oldImage) {
-                    Storage::delete($request->oldImage);
-                }
-                $artikel['gambar'] = $request->file('gambar')->store('artikel');
-            }
-
-            $artikel->judul = $request->judul;
-            $artikel['isi'] = Str::limit(strip_tags($request->isi), 200);
-
-            $artikel->update();
-
-            return redirect()->back()->with('success', 'Berhasil Mengubah Artikel');
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id_artikel
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        if (Auth::user()->level_id == 1) {
-
-            $dec = Crypt::decryptString($id);
-            $artikel = Artikel::findOrFail($dec);
-
-            if ($artikel->gambar) {
-                Storage::delete($artikel->gambar);
-            }
-
-            Artikel::destroy($artikel->id);
-
-            return redirect()->back()->with('success', 'Berhasil Hapus Artikel');
-        }
+        return redirect()->route('artikel.index')->withSuccess('Berhasil Hapus Artikel');
     }
 }

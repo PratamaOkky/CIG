@@ -9,7 +9,7 @@ class Level extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_level';
+    protected $table = 'levels';
 
     protected $fillable = [
         'level'

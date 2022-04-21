@@ -2,183 +2,79 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\User;
-use App\Models\Level;
-use App\Models\Gender;
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
+use App\Models\{User, Level, Gender};
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        if (Auth::user()->level_id == 1) {
-            $level = Level::all();
-            $gender = Gender::all();
+        return view('admin.pegawai.index', [
+            'genders' => Gender::all(),
+            'levels' => Level::all(),
+            'user' => User::count(),
+            'users' => User::orderBy('level_id', 'asc')->get(),
+        ]);
+    }
 
-            $users = User::count();
-            $user = User::with('level')->orderBy('level_id', 'asc')->get();
-
-            return view('admin.pegawai.index', [
-                'gender' => $gender,
-                'levels' => $level,
-                'user' => $user,
-                'users' => $users,
-            ]);
+    public function store(UserRequest $request, User $user)
+    {
+        $user = $request->all();
+        if ($request->file('image')) {
+            $user['image'] = $request->file('image')->store('user');
         }
+        User::create($user);
+        return redirect()->back()->withSuccess('Berhasil Menambahkan Pengguna');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        if (Auth::user()->level_id == 1) {
-
-            $request->validate([
-                'nama' =>  'required|max:255',
-                'nip' => 'required',
-                'level_id' =>  'required',
-                'jabatan' => 'nullable',
-                'divisi' => 'nullable',
-                'atasan' => 'nullable',
-                'ttl' => 'nullable',
-                'tgl_lahir' => 'nullable',
-                'nik' => 'nullable',
-                'awal_pkwt' => 'nullable',
-                'akhir_pkwt' => 'nullable',
-                'status_pajak' => 'nullable',
-                'gender_id' => 'nullable',
-                'kewarganegaraan' => 'nullable',
-                'agama' => 'nullable',
-                'alamat' => 'nullable',
-                'npwp' => 'nullable',
-                'no_kes' => 'nullable',
-                'no_tk' => 'nullable',
-                'email' => 'nullable|email',
-                'instalasi' => 'nullable',
-                'bank' => 'nullable',
-                'rek' => 'nullable',
-                'tgl_masuk' => 'nullable',
-                'image' => 'file|image|max:2048'
-            ]);
-
-            $dec = Crypt::decryptString($id);
-            $user = User::findOrFail($dec);
-
-            if ($request->file('image')) {
-                if ($request->oldImage) {
-                    Storage::delete($request->oldImage);
-                }
-                $user['image'] = $request->file('image')->store('user');
-            }
-
-            $user['nama'] = $request->nama;
-            $user['nip'] = $request->nip;
-            $user['level_id'] = $request->level_id;
-            $user['nik'] = $request->nik;
-            $user['jabatan'] = $request->jabatan;
-            $user['divisi'] = $request->divisi;
-            $user['tgl_lahir'] = $request->tgl_lahir;
-            $user['atasan'] = $request->atasan;
-            $user['ttl'] = $request->ttl;
-            $user['gender_id'] = $request->gender_id;
-            $user['kewarganegaraan'] = $request->kewarganegaraan;
-            $user['agama'] = $request->agama;
-            $user['alamat'] = $request->alamat;
-            $user['npwp'] = $request->npwp;
-            $user['no_kes'] = $request->no_kes;
-            $user['no_tk'] = $request->no_tk;
-            $user['email'] = $request->email;
-            $user['tgl_masuk'] = $request->tgl_masuk;
-            $user['awal_pkwt'] = $request->awal_pkwt;
-            $user['akhir_pkwt'] = $request->akhir_pkwt;
-            $user['status_pajak'] = $request->status_pajak;
-            $user['instalasi'] = $request->instalasi;
-            $user['bank'] = $request->bank;
-            $user['rek'] = $request->rek;
-
-            $user->update();
-
-            return redirect()->back()->with('success', 'Berhasil Mengubah Data Pegawai');
+        if (request('image')) {
+            Storage::delete($user->image);
+            $image = request()->file('image')->store('user');
+        } elseif ($user->image) {
+            $image = $user->image;
+        } else {
+            $image = null;
         }
+
+        $user = User::findOrFail($user->id)->update([
+            'name' => request('name'),
+            'nip' => request('nip'),
+            'level_id' => request('level_id'),
+            'nik' => request('nik'),
+            'jabatan' => request('jabatan'),
+            'divisi' => request('divisi'),
+            'atasan' => request('atasan'),
+            'tempat_lahir' => request('tempat_lahir'),
+            'tgl_lahir' => request('tgl_lahir'),
+            'gender_id' => request('gender_id'),
+            'kewarganegaraan' => request('kewarganegaraan'),
+            'agama' => request('agama'),
+            'alamat' => request('alamat'),
+            'npwp' => request('npwp'),
+            'bpjs_kes' => request('bpjs_kes'),
+            'bpjs_tk' => request('bpjs_tk'),
+            'email' => request('email'),
+            'tgl_masuk' => request('tgl_masuk'),
+            'awal_pkwt' => request('awal_pkwt'),
+            'akhir_pkwt' => request('akhir_pkwt'),
+            'pajak' => request('pajak'),
+            'instalasi' => request('instalasi'),
+            'bank' => request('bank'),
+            'rekening' => request('rekening'),
+            'image' => $image
+        ]);
+        return redirect()->back()->withSuccess('Berhasil Update Data Pegawai');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        if (Auth::user()->level_id == 1) {
-
-            $dec = Crypt::decryptString($id);
-            $user = User::findOrFail($dec);
-
-            if ($user->image) {
-                Storage::delete($user->image);
-            }
-
-            User::destroy($user->id);
-
-            return redirect()->back()->with('success', 'Pegawai Berhasil Dihapus');
-        }
+        Storage::delete($user->image);
+        User::destroy($user->id);
+        return redirect()->back()->withSuccess('Berhasil Hapus Pegawai');
     }
 }

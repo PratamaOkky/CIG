@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\User;
-use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\GajiController;
 use App\Http\Controllers\admin\UserController;
@@ -16,7 +14,6 @@ use App\Http\Controllers\admin\DashboardController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('/');
-
 
 // About
 Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
@@ -40,12 +37,12 @@ Route::get('/login', [LoginController::class,'index'])->name('login')->middlewar
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Admin
-Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
+Route::group(['middleware' => ['auth']], function ()
 {
     // Dashboard Admin
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/pengguna/editpassword/{id}', [DashboardController::class, 'editPassword'])->name('edit.password');
-    Route::patch('/pengguna/editpassword/{id}', [DashboardController::class, 'updatePassword'])->name('update.password');
+    Route::get('/user/editpassword/{user:nip}', [DashboardController::class, 'editPassword'])->name('edit.password');
+    Route::patch('/user/editpassword/{user:nip}', [DashboardController::class, 'updatePassword']);
 
     // Data Gaji
     Route::controller(GajiController::class)->group(function ()
@@ -71,14 +68,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:1,2']], function ()
     // Pelamar
     Route::resource('pelamar', PelamarController::class);
 
-    // Pengguna
-    Route::resource('pengguna', UserController::class);
+    // user
+    Route::resource('user', UserController::class);
 
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+    // Logout
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-// Logout
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

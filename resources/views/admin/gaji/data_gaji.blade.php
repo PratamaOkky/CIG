@@ -1,42 +1,36 @@
-@section('title', 'Gaji')
+<x-app-layout title="Data Gaji">
 
-@extends('layouts.admin.template')
-
-@section('content')
-
-<div class="section">
     <div class="container">
-        <div class="card mt-5">
+        <div class="card mt-5 border-0">
             <div class="card-content">
                 <div class="card-body" style="text-align: justify">
-                    <h1 class="head mb-4">Data Gaji</h1>
+                    <h1 class="welcome mb-4">Data Gaji</h1>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio officia enim modi placeat. Quibusdam repellat nam ipsa velit qui. Animi asperiores ea ex quisquam dolorum recusandae laudantium sunt mollitia iure.</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <table id="table-gaji" class="table table-striped text-center">
-                <thead>
-                    <tr>
-                        <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll"></th>
-                        <th class="text-center">NIP</th>
-                        <th class="text-center">Gaji</th>
-                        <th class="text-center">Total Gaji</th>
-                        <th class="text-center"> Action <br> <button href="#" class="btn btn-danger btn-sm mb-3 d-none" id="deleteAll">Delete Selected</button></th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <table id="table-gaji" class="table table-responsive table-striped table-sm text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><input type="checkbox" name="checkAll" id="checkAll"></th>
+                            <th class="text-center">NIP</th>
+                            <th class="text-center">Gaji</th>
+                            <th class="text-center">Total Gaji</th>
+                            <th class="text-center"> Action <br> <button href="#" class="btn btn-danger btn-sm mb-3 d-none" id="deleteAll">Delete Selected</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 @include('sweetalert::alert')
 
@@ -44,11 +38,11 @@
 
 <script>
 
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    // $.ajaxSetup({
+    //     headers:{
+    //         'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
 
     $(function () {
 
@@ -63,7 +57,7 @@
                          {data:'checkbox', name:'checkbox', orderable:false, searchable:false},
                          {data:'nip', name:'nip'},
                          {data:'gaji', name:'gaji'},
-                         {data:'totalgaji', name:'totalgaji'},
+                         {data:'total', name:'total'},
                          {data:'actions', name:'actions', orderable:false, searchable:false},
                      ],
                      order: [[0, 'asc']]
@@ -175,4 +169,4 @@
 
 @endpush
 
-@endsection
+</x-app-layout>

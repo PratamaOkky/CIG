@@ -9,9 +9,13 @@ class Artikel extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_artikel';
+    protected $table = 'artikels';
 
     protected $guarded = ['id'];
+
+    protected $fillable = [
+        'judul', 'isi', 'image'
+    ];
 
     public function scopeFilter($query, array $filter)
     {
