@@ -11,12 +11,14 @@ class Gender extends Model
 
     protected $table = 'genders';
 
+    protected $with = ['user'];
+
     protected $fillable = [
         'gender',
     ];
 
-    public function pegawai()
+    public function user()
     {
-        return $this->hasMany(Pegawai::class);
+        return $this->hasMany(User::class);
     }
 }

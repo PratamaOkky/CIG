@@ -39,9 +39,4 @@ class Gaji extends Model
         'potongan',
         'total',
     ];
-
-    // public function id()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }
