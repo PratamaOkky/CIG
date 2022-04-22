@@ -17,6 +17,11 @@ body
 }
 /* Navbar */
 
+.card
+{
+    background: transparent;
+}
+
 /* Dashboard */
 .welcome
 {

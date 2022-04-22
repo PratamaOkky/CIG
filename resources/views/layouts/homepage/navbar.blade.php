@@ -221,7 +221,7 @@ color: #FFFFFF;
 
 
 </style>
- 
+
 <nav class="navbar navbar-expand-lg ftco-navbar-light" style="background: transparent !important;">
 		<div class="container">
         <a class="navbar-brand" href="{{route('/')}}">
@@ -229,12 +229,12 @@ color: #FFFFFF;
             Garda Mitra Nasional
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="line"></span> 
-        <span class="line"></span> 
+            <span class="line"></span>
+        <span class="line"></span>
         <span class="line" style="margin-bottom: 0;"></span>
   </button>
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav nav ml-auto">
+				<ul class="navbar-nav nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('tentang')}}">Tentang Kami</a></li>
 				          	<li class="nav-item"><a class="nav-link active" href="{{route('layanan')}}">Layanan</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{{ route('career')}}">Karir</a></li>
@@ -246,7 +246,7 @@ color: #FFFFFF;
 	</nav>
 
 
-<!-- 
+<!--
  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -271,6 +271,6 @@ color: #FFFFFF;
       </li>
       <li><a href="{{ route('login') }}" class="btn-red btn-danger">Login</a></li>
     </ul>
-    
+
   </div>
 </nav> -->

@@ -24,20 +24,20 @@
 
         {{-- Karir View --}}
 
-        @foreach ($karirs as $item)
+        @foreach ($karirs as $karir)
 
         <div class="card mb-3" style="width: 100%; height: 110px; top: 60px; background: transparent">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid d-inline" alt="P" width="70" height="70" style="margin-top: 12px; border-radius: 18px; margin-left: 29px">
+                    <img src="{{ asset('storage/' . $karir->image) }}" class="img-fluid d-inline" alt="P" width="70" height="70" style="margin-top: 12px; border-radius: 18px; margin-left: 29px">
                 </div>
                 <div class="col-md-8">
 
                     <div class="card-body" style="margin-left: -250px; margin-top: 8px;">
-                        <h5 class="card-title">{{$item->lowongan}}</h5>
-                        <p class="card-text">{{$item->posisi}}</p>
+                        <h5 class="card-title">{{$karir->lowongan}}</h5>
+                        <p class="card-text">{{$karir->posisi}}</p>
 
-                        <button type="submit" class="btn btn-secondary border-0 d-inline" data-bs-target="#detail-{{ $item->id }}" data-bs-toggle="modal" style="margin-left: 600px; margin-top: -65px">Lihat Detail</button>
+                        <button type="submit" class="btn btn-secondary border-0 d-inline" data-bs-target="#detail-{{ $karir->id }}" data-bs-toggle="modal" style="margin-left: 600px; margin-top: -65px">Lihat Detail</button>
 
                         <button type="submit" class="btn-red btn-danger border-0 d-inline" data-bs-target="#tambah" data-bs-toggle="modal" style="margin-left: 762px; margin-top: -65px; background-color: #BB1D33">Kirim CV</button>
 
@@ -144,12 +144,12 @@
 
 
     {{-- Detail --}}
-    @foreach ($karirs as $item)
-    <div class="modal fade" id="detail-{{$item->id}}">
+    @foreach ($karirs as $karir)
+    <div class="modal fade" id="detail-{{$karir->id}}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">{{$item->posisi}}</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">{{$karir->posisi}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -157,7 +157,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="detail" class="col-form-label">Detail</label>
-                            <p>{{ $item->detail }}</p>
+                            <p>{{ $karir->detail }}</p>
                         </div>
                     </div>
                 </form>

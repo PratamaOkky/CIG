@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Gaji;
 use App\Imports\GajiImport;
@@ -41,24 +41,16 @@ class GajiController extends Controller
                 ->make(true);
     }
 
-    // public function destroy($id)
-    // {
-    //     Gaji::destroy($gaji->id);
-    //     return redirect()->back()->with('success', 'Gaji Berhasil Dihapus');
-    // }
-
     public function deleteGaji(Request $request)
     {
-        $id = $request->id;
-        $gaji = Gaji::find($id)->delete();
+        $gaji_id = $request->id;
+        $gaji = Gaji::find($gaji_id)->delete();
 
-        dd($gaji);
-
-        // if ($gaji) {
-        //     return response()->json(['code'=>1, 'success'=>'Data Berhasil Dihapus']);
-        // }else {
-        //     return response()->json(['code'=>0, 'error'=>'Something Wrong!']);
-        // }
+        if ($gaji) {
+            return response()->json(['code'=>1, 'success'=>'Data Berhasil Dihapus']);
+        }else {
+            return response()->json(['code'=>0, 'error'=>'Something Wrong!']);
+        }
     }
 
     public function importgaji(Request $request)
@@ -72,21 +64,14 @@ class GajiController extends Controller
     {
         $nip = Auth::user()->nip;
         $gaji = Gaji::firstWhere('nip', $nip);
-
         $pdf = PDF::loadView('admin.gaji.slip_gaji', compact('gaji'))->setPaper('legal', 'potrait');
-
         return $pdf->download('invoice.pdf');
     }
 
     public function deleteSelected(Request $request)
     {
-        $gaji = $request->id;
-        Gaji::whereIn('id', $gaji)->delete();
-
-        if ($gaji) {
-            return response()->json(['code'=>1, 'success'=>'Data Berhasil Dihapus']);
-        }else {
-            return response()->json(['code'=>0, 'error'=>'Something Wrong!']);
-        }
+        $gaji_id = $request->id;
+        Gaji::whereIn('id', $gaji_id)->delete();
+        return response()->json(['code'=>1, 'success'=>'Data Berhasil Dihapus']);
     }
 }

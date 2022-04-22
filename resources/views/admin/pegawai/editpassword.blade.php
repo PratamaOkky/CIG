@@ -3,16 +3,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="margin-left: 32%" id="exampleModalLabel">Ubah Password</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ubah Password</h5>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
-                <form method="POST" action="{{route('update.password', auth()->user()->id)}}">
+                <form method="POST" action="{{route('edit', auth()->user()->id)}}">
                     @method('PUT')
                     @csrf
-
                     <div class="mb-3">
                         <label for="old_password" class="col-form-label">Password Lama</label>
                         <input type="password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" name="old_password" value="{{ old('old_password') }}" placeholder="Input Password Lama">

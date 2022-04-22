@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CekLevel
+class PreventBackHistory
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,11 @@ class CekLevel
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$level)
+    public function handle(Request $request, Closure $next)
     {
-        if (in_array($request->user()->level_id, $level)) {
-
-            return $next($request);
-        }
-        return redirect('/');
+        $response = $next($request);
+        return $response->header('Cache-Control','nocache,no-store,max-age=0,must-revalidate')
+                        ->header('Pragma','no-cache')
+                        ->header('Expires','Sun, 02 Jan 1990 00:00:00 GMT');
     }
 }

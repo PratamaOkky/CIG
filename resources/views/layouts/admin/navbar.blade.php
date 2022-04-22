@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
-        <a href="{{route('dashboard')}}" class="gmn mt-1"><img src="https://gmn511.com/_nuxt/img/logo1.e68f463.png" width="55" height="75" class="py-2 me-2">Garda Mitra Nasional</a>
+        @if ( auth()->user()->level_id ==1 )
+            <a href="{{route('admin.dashboard')}}" class="gmn mt-1"><img src="/assets/images/logo/gmn.png" width="55" height="75" class="py-2 me-2">Garda Mitra Nasional</a>
+        @elseif ( auth()->user()->level_id == 2 )
+            <a href="{{route('user.dashboard')}}" class="gmn mt-1"><img src="/assets/images/logo/gmn.png" width="55" height="75" class="py-2 me-2">Garda Mitra Nasional</a>
+        @endif
+
+        @if (auth()->user()->level_id == 1)
 
         <div class="d-flex me-3">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +44,22 @@
                     <a href="{{ route('contact.index') }}" class="nav-link active">Kontak</a>
                 </li>
 
-                <li class="nav-item">
-                    <form method="POST" action="{{route('logout')}}">
+                <li class="nav-item" style="list-style-type: none">
+                    <form method="POST" action="{{route('admin.logout')}}">
                         @csrf
                         <button class="btn logout">Keluar</button>
                     </form>
                 </li>
+
+                @elseif ( auth()->user()->level_id == 2)
+
+                <li class="nav-item" style="list-style-type: none">
+                    <form method="POST" action="{{route('user.logout')}}">
+                        @csrf
+                        <button class="btn logout">Keluar</button>
+                    </form>
+                </li>
+                @endif
             </ul>
         </div>
     </div>

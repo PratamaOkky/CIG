@@ -1,15 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Karir;
-use App\Models\Pelamar;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use App\Models\{Karir, Pelamar};
 use App\Http\Requests\KarirRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class KarirController extends Controller

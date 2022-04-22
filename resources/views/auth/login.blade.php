@@ -1,66 +1,79 @@
-@section('title', 'Login Page')
+<x-auth-layout>
 
-@extends('layouts.auth.template')
+    @slot('styles')
+        <style>
+            #card-login{
+                margin: -150px 0 -60px;
+            }
 
-@section('auth')
+            @media (min-width: 992px) {
+                .auth-line{
+                    border-left: 3px #bb1d33 solid;
+                    height:350px;
+                    width:0px;
+                    margin:-430px 720px;
+                    position: fixed;
+                }
 
+                #card-login{
+                    margin: 0;
+                }
+            }
+        </style>
+    @endslot
 
-@if (session()->has('loginErorr'))
-
-    <div class="alert alert-danger alert-dissmissable fade show" role="alert">
-        {{ session('loginError') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-        </button>
-    </div>
-
-@endif
-
-<div class="container" style="margin-top: 170px; margin-bottom: 6.4%">
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card-group">
-                <div class="card" style="border: none; background: none">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <h1 class="mb-5" style="color: #bb1d33">Garda Mitra Nasional</h1>
-                            <p>Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
-                        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0 d-flex align-items-center mt-5 py-5">
+                <div class="card-content" id="card-login">
+                    <div class="card-body mt-5">
+                        <h1 class="welcome mb-5 mt-5">Garda Mitra Nasional</h1>
+                        <p>Badan Usaha Jasa Pengamanan (BUJP) dan didirikan pada tanggal 5 November 2010. Memiliki personil pengamanan yang handal dan profesional Membangun hubungan dan komunikasi yang harmonis serta memberi solusi bagi pengguna jasa Mengembangkan kerja sama.</p>
                     </div>
                 </div>
-                <div style="border-left: 3px #bb1d33 solid; height:350px; width:0px; margin-top: -25px"></div>
-                <div class="card" style="border: none; background: none">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <h1 class="mb-4" style="color: #bb1d33">Silakan Masuk</h1>
-                            <form action="{{route('login')}}" method="POST" class="need-validation">
-                                @csrf
-                                <div class="form-group position-relative has-icon-left mb-4">
-                                    <label for="nip">NIP</label>
-                                    <input type="text" name="nip" class="form-control" @error('nip') is-invalid @enderror placeholder="Input NIP" value="{{ old('nip') }}" autofocus required>
-                                    <div class="form-control-icon"><i class="bi bi-person"></i></div>
-                                    @error('nip')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+            </div>
+        </div>
 
-                                <div class="form-group position-relative has-icon-left mb-4">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control form-control" placeholder="Input Password" autofocus required>
-                                    <div class="form-control-icon"><i class="bi bi-shield-lock"></i></div>
-                                </div>
+        <div class="col-md-6">
+            <div class="card border-0 d-flex align-items-center mt-5 py-5">
+                <div class="card-content mb-5" id="card-login">
+                    <div class="card-body mt-5">
+                        <h1 class="welcome mb-4 mt-5">Login</h1>
+                        <form action="{{route('login')}}" method="POST">
+                            @csrf
+                            <div class="form-group mb-4">
+                                <label for="nip">NIP</label>
+                                <input type="text" name="nip" class="form-control @error('nip') is-invalid @enderror"  placeholder="Input NIP" value="{{ old('nip') }}">
+                                @error('nip')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-                                <div class="form-group position-relative">
-                                    <button type="submit" class="btn btn-danger" style="margin-left: 418px; background-color: #960a19"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group mb-4">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Input Password">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-danger"> Masuk <i class="fa fa-arrow-circle-right"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="auth-line"></div>
 
-@endsection
+@include('sweetalert::alert')
+
+</x-auth-layout>

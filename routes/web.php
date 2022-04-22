@@ -1,67 +1,83 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\GajiController;
-use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\admin\KarirController;
-use App\Http\Controllers\admin\KontakController;
-use App\Http\Controllers\admin\ArtikelController;
-use App\Http\Controllers\admin\PelamarController;
-use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\homepage\HomeController;
-use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\Homepage\HomeController;
+use App\Http\Controllers\Auth\{LoginController, RegisterController};
+use App\Http\Controllers\Admin\GajiController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\KarirController;
+use App\Http\Controllers\Admin\KontakController;
+use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\PelamarController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\PegawaiController;
 
-// Home
-Route::get('/', [HomeController::class, 'index'])->name('/');
+// Auth
+Route::middleware(['guest', 'PreventBackHistory'])->group( function ()
+{
+    // Login
+    Route::get('login', [LoginController::class,'index'])->name('login');
+    Route::post('login', [LoginController::class, 'login']);
 
-// About
-Route::get('/tentang', [HomeController::class, 'about'])->name('tentang');
+    // Home
+    Route::get('/', [HomeController::class, 'index'])->name('/');
 
-// blog
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-Route::get('/detail/{id}', [HomeController::class, 'detail'])->name('detail');
+    // About
+    Route::get('tentang', [HomeController::class, 'about'])->name('tentang');
 
-// Layanan
-Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+    // blog
+    Route::get('blog', [HomeController::class, 'blog'])->name('blog');
+    Route::get('detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
-// Karir
-Route::get('/career', [HomeController::class, 'career'])->name('career');
-Route::post('/career', [HomeController::class, 'store'])->name('career.store');
+    // Layanan
+    Route::get('layanan', [HomeController::class, 'layanan'])->name('layanan');
 
-// Pesan
-Route::get('/kontak', [HomeController::class, 'indexKontak'])->name('kontak');
-Route::post('/post', [HomeController::class, 'postKontak'])->name('post');
+    // Karir
+    Route::get('career', [HomeController::class, 'career'])->name('career');
+    Route::post('career', [HomeController::class, 'store'])->name('career.store');
 
-// Login
-Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+    // Pesan
+    Route::get('kontak', [HomeController::class, 'indexKontak'])->name('kontak');
+    Route::post('post', [HomeController::class, 'postKontak'])->name('post');
+});
+
+
+// User
+Route::middleware(['auth', 'user', 'PreventBackHistory'])->group( function ()
+{
+    Route::get('user/dashboard', [PegawaiController::class, 'index'])->name('user.dashboard');
+
+    Route::get('user/editpassword/{user:nip}', [PegawaiController::class, 'editPassword'])->name('edit');
+    Route::put('user/editpassword/{user:nip}', [PegawaiController::class, 'updatePassword']);
+
+    Route::get('user/download', [PegawaiController::class, 'downloadGaji'])->name('user.download');
+
+    Route::post('user/logout', [PegawaiController::class, 'logout'])->name('user.logout');
+});
+
 
 // Admin
-Route::group(['middleware' => ['auth']], function ()
+Route::middleware(['auth', 'admin', 'PreventBackHistory'])->group( function ()
 {
     // Dashboard Admin
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/user/editpassword/{user:nip}', [DashboardController::class, 'editPassword'])->name('edit.password');
-    Route::patch('/user/editpassword/{user:nip}', [DashboardController::class, 'updatePassword']);
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Route::get('user/editpassword', [DashboardController::class, 'editPassword'])->name('edit.password');
+    // Route::patch('user/editpassword', [DashboardController::class, 'updatePassword']);
 
     // Data Gaji
-    Route::controller(GajiController::class)->group(function ()
-    {
-        Route::get('/gaji', 'index')->name('gaji.index');
-        Route::get('/data-gaji', 'dataGaji')->name('data.gaji');
-        Route::get('/all-gaji', 'getAllGaji')->name('all.gaji');
-        Route::post('/delete-gaji', 'deleteGaji')->name('delete.gaji');
-        Route::post('/select-gaji', 'deleteSelected')->name('select.gaji');
-        Route::post('/importgaji', 'importgaji')->name('importgaji');
-        Route::get('/download', 'download')->name('download');
-    });
+    Route::get('gaji', [GajiController::class, 'index'])->name('gaji.index');
+    Route::get('data-gaji', [GajiController::class, 'dataGaji'])->name('data.gaji');
+    Route::get('all-gaji', [GajiController::class, 'getAllGaji'])->name('all.gaji');
+    Route::post('delete-gaji', [GajiController::class, 'deleteGaji'])->name('delete.gaji');
+    Route::post('select-gaji', [GajiController::class, 'deleteSelected'])->name('select.gaji');
+    Route::post('importgaji', [GajiController::class, 'importgaji'])->name('importgaji');
+    Route::get('download', [GajiController::class, 'download'])->name('download');
 
     // Karir
     Route::resource('karir', KarirController::class);
 
-     // artikel
-     Route::resource('artikel', ArtikelController::class);
+        // artikel
+        Route::resource('artikel', ArtikelController::class);
 
     // Kontak
     Route::resource('contact', KontakController::class);
@@ -73,10 +89,9 @@ Route::group(['middleware' => ['auth']], function ()
     Route::resource('user', UserController::class);
 
     // Register
-    Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
-    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+    Route::get('register', [RegisterController::class, 'index'])->name('register');
+    Route::post('register', [RegisterController::class, 'register']);
 
     // Logout
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('admin.logout');
 });
-

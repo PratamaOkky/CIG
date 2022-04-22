@@ -162,12 +162,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        // PDF
-        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
+        * Package Service Providers...
+        */
+
+        // PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
          // Excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
@@ -175,6 +176,7 @@ return [
         // Sweet Alert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
+        // Data Table
         Yajra\DataTables\DataTablesServiceProvider::class,
 
         /*

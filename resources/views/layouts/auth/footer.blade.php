@@ -1,5 +1,5 @@
-<nav class="navbar navbar-light text-align-center" style="background-color: #350106">
-    <div class="container justify-content-center">
-        <p style="color: white;">Copyright &copy; PT GARDA MITRA NASIONAL</p>
+<footer class="footer fixed-bottom">
+    <div class="container py-1">
+            <p class="text-footer text-center mt-3">Copyright &copy; PT GARDA MITRA NASIONAL</p>
     </div>
-</nav>
+</footer>

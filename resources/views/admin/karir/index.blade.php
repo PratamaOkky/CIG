@@ -31,7 +31,7 @@
                 {
                     width: 996px;
                     height: 73px;
-                    margin-top: -75px;
+                    margin-top: -55px;
                     background: rgba(187, 29, 51, 0.1);
                     border-radius: 26px;
                 }
@@ -44,7 +44,7 @@
                     border-radius: 15px;
                 }
 
-               i .bi-plus-circle
+                i .bi-plus-circle, .bi-person-workspace
                 {
                     margin-left: 55px;
                     position: relative;
@@ -83,19 +83,37 @@
             </form>
         </nav>
 
-        <div class="col text-center">
-            <div class="card border-0 d-flex align-items-center justify-content-center">
-                <div class="card-body">
-                    <div class="boxs mb-2 mt-4">
-                        <h1 class="card-title py-2">
-                            {{ $total }}
-                        </h1>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle"></i></a>
+        <div class="row py-5 text-center">
+            <div class="col-md-6">
+                <div class="card border-0 d-flex align-items-center">
+                    <div class="card-body">
+                        <div class="box ms-3">
+                            <h1 class="card-title py-2">
+                                {{ $total }}
+                            </h1>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#tambah"><i class="bi bi-plus-circle h6"></i></a>
+                        </div>
+                            <p class="card-text pt-2 ms-3">Karir</p>
                     </div>
-                    <p class="card-text">karir</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-0 d-flex align-items-center">
+                    <div class="card-body">
+                        <div class="box ms-2">
+                            <h1 class="card-title py-2">
+                                {{ $pelamar }}
+                            </h1>
+                            <a href="{{ route('pelamar.index') }}"><i class="bi bi-person-workspace"></i></a>
+                        </div>
+                        <p class="card-text pt-2">Pelamar</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="garis"></div>
 
         <div class="block d-block ms-5"></div>
 

@@ -1,5 +1,14 @@
 <x-app-layout title="Dashboard">
 
+    @slot('styles')
+        <style>
+            td
+            {
+                border-radius: 50%;
+            }
+        </style>
+    @endslot
+
     <div class="container mt-3 py-3">
 
         <h1 class="welcome mt-4">Selamat Datang</h1>
@@ -20,10 +29,10 @@
         </div>
     </div>
 
-    <div class="container mt-5 py-3 text-center">
+    <div class="container text-center">
         <div class="row">
             <div class="col">
-                <table class="table table-striped table-borderless">
+                <table class="table table-striped table-borderless mt-3">
 
                     <tbody>
                         <tr>
@@ -52,7 +61,7 @@
             </div>
 
         <div class="col">
-            <table class="table table-striped table-borderless">
+            <table class="table table-striped table-borderless mt-3">
                 <tbody>
                         <tr>
                             <td>Tahun Masuk : {{ date('d F Y', strtotime(auth()->user()->tgl_masuk)) }}</td>
@@ -79,10 +88,13 @@
             </table>
             </div>
         </div>
-        <div class="col-md-1 ms-auto">
-            <a href="{{route('download')}}" class="btn btn-danger d-flex justify-content-center border-0 text-start">Slip Gaji</a>
-          </div>
+        <div class="row">
+            <div class="col-md-2 d-flex justify-content-end ms-auto">
+                <a href="{{route('download')}}" class="btn btn-danger mt-3 mb-5 border-0">Slip Gaji</a>
+            </div>
+        </div>
     </div>
+
 
 {{-- @include('admin.pegawai.editpassword') --}}
 

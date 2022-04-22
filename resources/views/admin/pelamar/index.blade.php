@@ -1,21 +1,12 @@
-@section('title', 'Pelamar')
+<x-app-layout title="Pelamar">
 
-@extends('layouts.admin.template')
-
-@section('content')
-
-<div class="section">
     <div class="container">
 
         <nav class="navbar navbar-light">
             <div class="container">
                 <div class="section-header mt-5 mb-5">
-                    <h1 class="head">Pelamar</h1>
+                    <h1 class="welcome">Pelamar</h1>
                 </div>
-                {{-- <form class="d-flex">
-                    <span class="icon"><i class="fa fa-search"></i></span>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form> --}}
             </div>
         </nav>
 
@@ -70,4 +61,4 @@
 
 @endpush
 
-@endsection
+</x-app-layout>

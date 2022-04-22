@@ -25,13 +25,13 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nip' => ['required', 'numeric', 'min:3', Rule::unique('users', 'nip')->ignore($this->user()),],
-            'email' => ['required', 'email:dns', Rule::unique('users','email')->ignore($this->user()->id),],
-            'nik' => ['required', 'min:5', 'numeric' , Rule::unique('users','nik')->ignore($this->user()->id),],
-            'npwp' => ['required', 'min:5', 'numeric' , Rule::unique('users','npwp')->ignore($this->user()),],
-            'bpjs_kes' => ['required', 'min:5', 'numeric' , Rule::unique('users','bpjs_kes')->ignore($this->user()),],
-            'bpjs_tk' => ['required', 'min:5', 'numeric' , Rule::unique('users','bpjs_tk')->ignore($this->user()),],
-            'rekening' => ['required', 'min:5', 'numeric' , Rule::unique('users','rekening')->ignore($this->user()),],
+            'nip' => ['required', 'numeric', 'min:3', Rule::unique('users', 'nip')->ignore($this->user),],
+            'email' => ['required', 'email:dns', Rule::unique('users','email')->ignore($this->user),],
+            'nik' => ['required', 'min:5', 'numeric' , Rule::unique('users','nik')->ignore($this->user),],
+            'npwp' => ['required', 'min:5', 'numeric' , Rule::unique('users','npwp')->ignore($this->user),],
+            'bpjs_kes' => ['required', 'min:5', 'numeric' , Rule::unique('users','bpjs_kes')->ignore($this->user),],
+            'bpjs_tk' => ['required', 'min:5', 'numeric' , Rule::unique('users','bpjs_tk')->ignore($this->user),],
+            'rekening' => ['required', 'min:5', 'numeric' , Rule::unique('users','rekening')->ignore($this->user),],
             'name' => ['required', 'max:35', 'string', 'min:5'],
             'jabatan' => ['required', 'min:5', 'max:35', 'string'],
             'divisi' => ['required', 'min:5', 'max:35', 'string'],

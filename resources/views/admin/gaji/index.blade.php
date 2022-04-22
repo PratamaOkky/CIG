@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card border-0 d-flext align-items-center mt-5 py-5">
+                <div class="card border-0 d-flex align-items-center mt-5 py-5">
                     <div class="card-content">
                         <div class="card-body">
                             <h1 class="welcome mb-4 mt-5">Upload Gaji</h1>

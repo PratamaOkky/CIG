@@ -1,12 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\homepage;
+namespace App\Http\Controllers\Homepage;
 
-use App\Models\Karir;
-use App\Models\Pesan;
-use App\Models\Pelamar;
-use App\Models\Artikel;
-use Illuminate\Support\Str;
+use App\Models\{Karir, Pesan, Pelamar, Artikel};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,14 +18,16 @@ class HomeController extends Controller
      // artikel
      public function blog()
      {
-         $data= Artikel::paginate(3);
-        return view('homepage.blog.index', ['data'=> $data]);
+        return view('homepage.blog.index', [
+            'data' => Artikel::paginate(3),
+        ]);
      }
 
      public function detail()
      {
-        $artikel = Artikel::all();
-        return view('homepage.blog.detail', ['artikel'=>$artikel]);
+        return view('homepage.blog.detail', [
+            'artikel' => Artikel::all(),
+        ]);
      }
     // About
     public function about()
@@ -48,18 +46,19 @@ class HomeController extends Controller
     // Karir
     public function career()
     {
-        $karir = Karir::OrderBy('created_at', 'asc')->get();
-        return view('homepage.kariru', ['karirs'=>$karir]);
+        return view('homepage.kariru', [
+            'karirs' => Karir::OrderBy('created_at', 'asc')->get(),
+        ]);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'email' => 'required|email',
-            'posisi' => 'required',
-            'telpon' => 'required|min:5|max:13',
-            'cv' => 'file|max:2048'
+            'nama' => ['required', 'max:35', 'min:3', 'string'],
+            'email' => ['required', 'email:dns'],
+            'posisi' => ['required', 'min:5', 'max:35', 'string'],
+            'telpon' => ['required', 'min:5', 'numeric'],
+            'cv' => ['required', 'file', 'max:2048']
         ]);
 
         if ($request->file('cv')) {
@@ -68,7 +67,7 @@ class HomeController extends Controller
 
         Pelamar::create($validatedData);
 
-        return redirect()->back()->with('success', 'CV Anda Berhasil Dikirim');
+        return redirect()->back()->withSuccess('CV Anda Berhasil Dikirim');
     }
     // End Karir
 
@@ -81,15 +80,15 @@ class HomeController extends Controller
     public function postKontak(Request $request)
     {
         $validate = $request->validate([
-            'nama' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'isi' => 'required'
+            'nama' => ['required', 'string', 'min:3', 'max:32'],
+            'email' => ['required', 'email:dns'],
+            'subject' => ['required', 'string', 'max:25'],
+            'isi' => ['required']
         ]);
 
         Pesan::create($validate);
 
-        return redirect()->back()->with('success', 'Berhasil Mengirim Pesan');
+        return redirect()->back()->withSuccess('Berhasil Mengirim Pesan');
     }
     // End Kontak
 }
