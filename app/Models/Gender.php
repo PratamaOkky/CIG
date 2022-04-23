@@ -11,8 +11,6 @@ class Gender extends Model
 
     protected $table = 'genders';
 
-    protected $with = ['user'];
-
     protected $fillable = [
         'gender',
     ];

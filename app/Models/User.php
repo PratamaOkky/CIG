@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-    protected $guarder = ['id'];
+    protected $guarded = ['id'];
 
     protected $with = ['level', 'gender'];
 
@@ -48,7 +48,6 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'id',
         'password',
         'remember_token',
     ];

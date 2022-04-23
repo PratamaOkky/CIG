@@ -11,7 +11,7 @@ class Gaji extends Model
 
     protected $table = 'wages';
 
-    // protected $guarder = ['id'];
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'nip',
